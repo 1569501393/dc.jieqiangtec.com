@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.5kym.com" versionCode="0.6">
+	<application setting="false">
+		<name><![CDATA[智慧商圈]]></name>
+		<identifie><![CDATA[weisrc_businesscenter]]></identifie>
+		<version><![CDATA[6.0.1]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[智慧商圈]]></ability>
+		<description><![CDATA[智慧商圈]]></description>
+		<author><![CDATA[悟空源码网]]></author>
+		<url><![CDATA[http://www.5kym.com]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text" />
+		</subscribes>
+		<handles>
+			<message type="text" />
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="入口设置" do="index" state="" direct="false" />
+			<entry title="商家入驻" do="settled" state="" direct="false" />
+		</cover>
+		<menu>
+			<entry title="分类管理" do="category" state="" direct="false" />
+			<entry title="商家管理" do="stores" state="" direct="false" />
+			<entry title="优惠资讯" do="news" state="" direct="false" />
+			<entry title="留言管理" do="feedback" state="" direct="false" />
+			<entry title="广告管理" do="slide" state="" direct="false" />
+			<entry title="系统设置" do="setting" state="" direct="false" />
+			<entry title="区域管理" do="area" state="" direct="false" />
+			<entry title="模板设置" do="template" state="" direct="false" />
+		</menu>
+		<home>
+			<entry title="微商圈" do="index" state="" direct="false" />
+		</home>
+	</bindings>
+	<install><![CDATA[
+
+]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[upgrade.php]]></upgrade>
+</manifest>

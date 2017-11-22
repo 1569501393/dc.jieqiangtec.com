@@ -1,0 +1,220 @@
+2017-10-21 13:21:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000452s ]
+
+2017-10-21 13:21:21 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563281 ) AND ( `endtime` >= 1508563281 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000160s ]
+
+2017-10-21 13:21:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000520s ]
+
+2017-10-21 13:21:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563288 ) AND ( `endtime` >= 1508563288 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+
+2017-10-21 13:21:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000449s ]
+
+2017-10-21 13:21:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563288 ) AND ( `endtime` >= 1508563288 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000159s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000428s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000157s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000497s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000502s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000167s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000421s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000163s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000419s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000156s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000422s ]
+
+2017-10-21 13:21:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563289 ) AND ( `endtime` >= 1508563289 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-10-21 13:21:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000479s ]
+
+2017-10-21 13:21:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563290 ) AND ( `endtime` >= 1508563290 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000166s ]
+
+2017-10-21 13:21:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000492s ]
+
+2017-10-21 13:21:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563290 ) AND ( `endtime` >= 1508563290 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000174s ]
+
+2017-10-21 13:21:35 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000429s ]
+
+2017-10-21 13:21:35 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563295 ) AND ( `endtime` >= 1508563295 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000149s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000502s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563296 ) AND ( `endtime` >= 1508563296 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000173s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000457s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563296 ) AND ( `endtime` >= 1508563296 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000156s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000445s ]
+
+2017-10-21 13:21:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563296 ) AND ( `endtime` >= 1508563296 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000159s ]
+
+2017-10-21 13:22:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000482s ]
+
+2017-10-21 13:22:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563320 ) AND ( `endtime` >= 1508563320 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000185s ]
+
+2017-10-21 13:22:47 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000462s ]
+
+2017-10-21 13:22:47 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508563367 ) AND ( `endtime` >= 1508563367 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000163s ]
+
+2017-10-21 13:40:46 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000445s ]
+
+2017-10-21 13:40:46 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508564446 ) AND ( `endtime` >= 1508564446 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000170s ]
+
+2017-10-21 13:43:37 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000452s ]
+
+2017-10-21 13:43:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508564617 ) AND ( `endtime` >= 1508564617 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000168s ]
+
+2017-10-21 13:43:58 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000431s ]
+
+2017-10-21 13:43:58 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508564638 ) AND ( `endtime` >= 1508564638 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-10-21 13:44:42 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000459s ]
+
+2017-10-21 13:44:42 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508564682 ) AND ( `endtime` >= 1508564682 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000182s ]
+
+2017-10-21 13:44:59 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000475s ]
+
+2017-10-21 13:44:59 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508564699 ) AND ( `endtime` >= 1508564699 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+

@@ -1,0 +1,2984 @@
+2017-11-03 08:29:58 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000423s ]
+
+2017-11-03 08:29:58 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000213s ]
+
+2017-11-03 08:30:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000442s ]
+
+2017-11-03 08:30:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000220s ]
+
+2017-11-03 08:30:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000452s ]
+
+2017-11-03 08:30:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000230s ]
+
+2017-11-03 09:29:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000417s ]
+
+2017-11-03 09:29:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000221s ]
+
+2017-11-03 09:29:31 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000405s ]
+
+2017-11-03 09:29:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-03 09:29:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000139s ]
+
+2017-11-03 09:30:08 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000429s ]
+
+2017-11-03 09:30:08 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000195s ]
+
+2017-11-03 09:30:11 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000455s ]
+
+2017-11-03 09:30:11 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000204s ]
+
+2017-11-03 09:30:11 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000128s ]
+
+2017-11-03 09:30:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000432s ]
+
+2017-11-03 09:30:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000193s ]
+
+2017-11-03 09:30:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000455s ]
+
+2017-11-03 09:30:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000206s ]
+
+2017-11-03 09:31:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000443s ]
+
+2017-11-03 09:31:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000208s ]
+
+2017-11-03 09:31:31 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000437s ]
+
+2017-11-03 09:31:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-03 09:31:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000137s ]
+
+2017-11-03 10:16:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509675401</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 10:16:41 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509675401',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509675401',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 10:16:41 response :
+------------
+
+2017-11-03 10:16:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000496s ]
+
+2017-11-03 10:16:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675403 ) AND ( `endtime` >= 1509675403 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-03 10:16:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000505s ]
+
+2017-11-03 10:16:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675404 ) AND ( `endtime` >= 1509675404 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-03 10:16:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000481s ]
+
+2017-11-03 10:16:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675409 ) AND ( `endtime` >= 1509675409 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000191s ]
+
+2017-11-03 10:16:53 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000500s ]
+
+2017-11-03 10:16:53 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675413 ) AND ( `endtime` >= 1509675413 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000212s ]
+
+2017-11-03 10:17:10 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000508s ]
+
+2017-11-03 10:17:10 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675430 ) AND ( `endtime` >= 1509675430 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000185s ]
+
+2017-11-03 10:17:11 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000451s ]
+
+2017-11-03 10:17:11 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509675431 ) AND ( `endtime` >= 1509675431 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000232s ]
+
+2017-11-03 10:37:23 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000566s ]
+
+2017-11-03 10:37:23 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000221s ]
+
+2017-11-03 10:37:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000431s ]
+
+2017-11-03 10:37:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000206s ]
+
+2017-11-03 10:37:48 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0009p7BYSw0LnJpUxWbD2924]]></FromUserName>
+<CreateTime>1509676668</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 10:37:48 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'createtime' => '1509676668',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509676668',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 10:37:48 response :
+------------
+
+2017-11-03 10:37:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000507s ]
+
+2017-11-03 10:37:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509676672 ) AND ( `endtime` >= 1509676672 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+
+2017-11-03 10:37:53 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000512s ]
+
+2017-11-03 10:37:53 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509676673 ) AND ( `endtime` >= 1509676673 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000203s ]
+
+2017-11-03 10:40:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000438s ]
+
+2017-11-03 10:40:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000194s ]
+
+2017-11-03 10:40:31 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000451s ]
+
+2017-11-03 10:40:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000204s ]
+
+2017-11-03 10:40:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000129s ]
+
+2017-11-03 10:41:19 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000463s ]
+
+2017-11-03 10:41:19 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000224s ]
+
+2017-11-03 10:41:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000453s ]
+
+2017-11-03 10:41:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000201s ]
+
+2017-11-03 10:41:37 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000582s ]
+
+2017-11-03 10:41:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000265s ]
+
+2017-11-03 10:41:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000154s ]
+
+2017-11-03 10:41:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000438s ]
+
+2017-11-03 10:41:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000226s ]
+
+2017-11-03 10:41:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000492s ]
+
+2017-11-03 10:41:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000229s ]
+
+2017-11-03 10:41:45 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000467s ]
+
+2017-11-03 10:41:45 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000206s ]
+
+2017-11-03 10:41:45 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000134s ]
+
+2017-11-03 10:41:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000418s ]
+
+2017-11-03 10:41:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000198s ]
+
+2017-11-03 10:46:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000441s ]
+
+2017-11-03 10:46:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000190s ]
+
+2017-11-03 10:46:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000346s ]
+
+2017-11-03 10:46:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000124s ]
+
+2017-11-03 10:47:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000496s ]
+
+2017-11-03 10:47:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000208s ]
+
+2017-11-03 10:47:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000368s ]
+
+2017-11-03 10:47:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000126s ]
+
+2017-11-03 10:50:16 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000463s ]
+
+2017-11-03 10:50:16 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000210s ]
+
+2017-11-03 10:52:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000526s ]
+
+2017-11-03 10:52:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000261s ]
+
+2017-11-03 10:52:22 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000518s ]
+
+2017-11-03 10:52:22 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000222s ]
+
+2017-11-03 10:52:22 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000131s ]
+
+2017-11-03 10:53:24 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000475s ]
+
+2017-11-03 10:53:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-03 10:53:24 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000338s ]
+
+2017-11-03 10:53:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000137s ]
+
+2017-11-03 10:54:10 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000452s ]
+
+2017-11-03 10:54:10 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000196s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000468s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=6,`ugid`=1,`title`='单季',`orderby`=1,`desc`='123123',`day`=90,`price`='1080',`status`=1 WHERE ( `gpid` = 6 ) [ RunTime:0.019726s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000419s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000183s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000355s ]
+
+2017-11-03 10:54:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000123s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000431s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=1,`ugid`=1,`title`='半年',`orderby`=10,`desc`='111',`day`=180,`price`='1800',`status`=1 WHERE ( `gpid` = 1 ) [ RunTime:0.007396s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000389s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000181s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000358s ]
+
+2017-11-03 10:55:54 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000124s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000447s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=5,`ugid`=1,`title`='整年',`orderby`=3,`desc`='前100家五折特惠',`day`=365,`price`='2400',`status`=1 WHERE ( `gpid` = 5 ) [ RunTime:0.008001s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000410s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000180s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000349s ]
+
+2017-11-03 10:57:55 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000125s ]
+
+2017-11-03 10:57:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000468s ]
+
+2017-11-03 10:57:57 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=5,`ugid`=1,`title`='整年',`orderby`=3,`desc`='前100家五折特惠',`day`=365,`price`='2400.00',`status`=1 WHERE ( `gpid` = 5 ) [ RunTime:0.015435s ]
+
+2017-11-03 10:57:58 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000461s ]
+
+2017-11-03 10:57:58 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-03 10:57:58 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000354s ]
+
+2017-11-03 10:57:58 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000122s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000482s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=1,`ugid`=1,`title`='半年',`orderby`=2,`desc`='111',`day`=180,`price`='1800.00',`status`=1 WHERE ( `gpid` = 1 ) [ RunTime:0.021806s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000439s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000189s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000366s ]
+
+2017-11-03 10:58:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000122s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000461s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=5,`ugid`=1,`title`='整年',`orderby`=3,`desc`='前100家五折特惠',`day`=365,`price`='2400.00',`status`=1 WHERE ( `gpid` = 5 ) [ RunTime:0.013085s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000397s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000184s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000338s ]
+
+2017-11-03 10:58:21 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000125s ]
+
+2017-11-03 10:58:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000454s ]
+
+2017-11-03 10:58:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000225s ]
+
+2017-11-03 10:58:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000465s ]
+
+2017-11-03 10:58:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000202s ]
+
+2017-11-03 10:58:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000354s ]
+
+2017-11-03 10:58:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000139s ]
+
+2017-11-03 11:00:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000443s ]
+
+2017-11-03 11:00:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-03 11:01:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000459s ]
+
+2017-11-03 11:01:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-03 11:01:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000461s ]
+
+2017-11-03 11:01:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000232s ]
+
+2017-11-03 11:02:46 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000433s ]
+
+2017-11-03 11:02:46 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-03 11:02:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000461s ]
+
+2017-11-03 11:02:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000203s ]
+
+2017-11-03 11:02:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000615s ]
+
+2017-11-03 11:02:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000280s ]
+
+2017-11-03 11:04:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000455s ]
+
+2017-11-03 11:04:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000193s ]
+
+2017-11-03 11:04:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000537s ]
+
+2017-11-03 11:04:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000222s ]
+
+2017-11-03 11:04:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000417s ]
+
+2017-11-03 11:04:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000165s ]
+
+2017-11-03 11:04:35 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000450s ]
+
+2017-11-03 11:04:35 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000212s ]
+
+2017-11-03 11:05:42 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000517s ]
+
+2017-11-03 11:05:42 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000236s ]
+
+2017-11-03 11:05:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000445s ]
+
+2017-11-03 11:05:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000233s ]
+
+2017-11-03 11:06:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000447s ]
+
+2017-11-03 11:06:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000234s ]
+
+2017-11-03 11:06:14 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000434s ]
+
+2017-11-03 11:06:14 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000213s ]
+
+2017-11-03 12:46:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000456s ]
+
+2017-11-03 12:46:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000239s ]
+
+2017-11-03 12:46:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000339s ]
+
+2017-11-03 12:46:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000129s ]
+
+2017-11-03 13:05:32 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509685532</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 13:05:32 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509685532',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509685532',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 13:05:32 response :
+------------
+
+2017-11-03 13:05:35 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000565s ]
+
+2017-11-03 13:05:35 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509685535 ) AND ( `endtime` >= 1509685535 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000218s ]
+
+2017-11-03 13:05:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000567s ]
+
+2017-11-03 13:05:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509685536 ) AND ( `endtime` >= 1509685536 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-03 13:05:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000588s ]
+
+2017-11-03 13:05:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509685541 ) AND ( `endtime` >= 1509685541 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000238s ]
+
+2017-11-03 13:05:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000527s ]
+
+2017-11-03 13:05:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509685544 ) AND ( `endtime` >= 1509685544 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000193s ]
+
+2017-11-03 13:05:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000482s ]
+
+2017-11-03 13:05:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509685544 ) AND ( `endtime` >= 1509685544 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000182s ]
+
+2017-11-03 13:16:17 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509686177</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 13:16:17 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509686177',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509686177',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 13:16:17 response :
+------------
+
+2017-11-03 13:16:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000433s ]
+
+2017-11-03 13:16:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686178 ) AND ( `endtime` >= 1509686178 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000175s ]
+
+2017-11-03 13:16:24 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000482s ]
+
+2017-11-03 13:16:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686184 ) AND ( `endtime` >= 1509686184 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000192s ]
+
+2017-11-03 13:16:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000467s ]
+
+2017-11-03 13:16:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686186 ) AND ( `endtime` >= 1509686186 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-03 13:16:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000439s ]
+
+2017-11-03 13:16:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686212 ) AND ( `endtime` >= 1509686212 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000176s ]
+
+2017-11-03 13:17:04 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000450s ]
+
+2017-11-03 13:17:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686224 ) AND ( `endtime` >= 1509686224 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000170s ]
+
+2017-11-03 13:17:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000460s ]
+
+2017-11-03 13:17:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686264 ) AND ( `endtime` >= 1509686264 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000205s ]
+
+2017-11-03 13:17:58 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509686278</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 13:17:58 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509686278',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509686278',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 13:17:58 response :
+------------
+
+2017-11-03 13:17:58 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000481s ]
+
+2017-11-03 13:17:58 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686278 ) AND ( `endtime` >= 1509686278 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000205s ]
+
+2017-11-03 13:18:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000437s ]
+
+2017-11-03 13:18:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509686281 ) AND ( `endtime` >= 1509686281 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000169s ]
+
+2017-11-03 14:39:15 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509691155</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 14:39:15 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509691155',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509691155',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 14:39:15 response :
+------------
+
+2017-11-03 14:39:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000522s ]
+
+2017-11-03 14:39:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509691158 ) AND ( `endtime` >= 1509691158 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000197s ]
+
+2017-11-03 15:16:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000464s ]
+
+2017-11-03 15:16:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000251s ]
+
+2017-11-03 15:16:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000440s ]
+
+2017-11-03 15:16:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000188s ]
+
+2017-11-03 15:16:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000380s ]
+
+2017-11-03 15:16:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000124s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000525s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=6,`ugid`=1,`title`='单季',`orderby`=1,`desc`='前100家五折特惠',`day`=90,`price`='1080.00',`status`=1 WHERE ( `gpid` = 6 ) [ RunTime:0.005611s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000488s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000205s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000373s ]
+
+2017-11-03 15:17:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000127s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000487s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+UPDATE `ims_users_group_vipprice` SET `gpid`=1,`ugid`=1,`title`='半年',`orderby`=2,`desc`='前100家五折特惠',`day`=180,`price`='1800.00',`status`=1 WHERE ( `gpid` = 1 ) [ RunTime:0.016417s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000579s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000241s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000435s ]
+
+2017-11-03 15:17:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000141s ]
+
+2017-11-03 15:17:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000459s ]
+
+2017-11-03 15:17:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000229s ]
+
+2017-11-03 15:18:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000516s ]
+
+2017-11-03 15:18:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-03 15:18:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000382s ]
+
+2017-11-03 15:18:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000129s ]
+
+2017-11-03 15:20:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000455s ]
+
+2017-11-03 15:20:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000193s ]
+
+2017-11-03 15:20:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000371s ]
+
+2017-11-03 15:20:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000129s ]
+
+2017-11-03 15:21:33 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000480s ]
+
+2017-11-03 15:21:33 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000243s ]
+
+2017-11-03 15:21:33 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000371s ]
+
+2017-11-03 15:21:33 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000138s ]
+
+2017-11-03 15:21:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000474s ]
+
+2017-11-03 15:21:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000230s ]
+
+2017-11-03 15:23:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000472s ]
+
+2017-11-03 15:23:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000231s ]
+
+2017-11-03 15:23:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000410s ]
+
+2017-11-03 15:23:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000129s ]
+
+2017-11-03 15:31:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000443s ]
+
+2017-11-03 15:31:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000251s ]
+
+2017-11-03 15:31:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000518s ]
+
+2017-11-03 15:31:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000202s ]
+
+2017-11-03 15:31:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000362s ]
+
+2017-11-03 15:31:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000123s ]
+
+2017-11-03 15:33:06 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509694386</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 15:33:06 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509694386',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509694386',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 15:33:06 response :
+------------
+
+2017-11-03 15:33:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000436s ]
+
+2017-11-03 15:33:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509694389 ) AND ( `endtime` >= 1509694389 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000173s ]
+
+2017-11-03 15:33:24 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000518s ]
+
+2017-11-03 15:33:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509694404 ) AND ( `endtime` >= 1509694404 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000225s ]
+
+2017-11-03 15:35:39 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509694539</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 15:35:39 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509694539',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509694539',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 15:35:39 response :
+------------
+
+2017-11-03 15:35:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000479s ]
+
+2017-11-03 15:35:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509694539 ) AND ( `endtime` >= 1509694539 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+
+2017-11-03 15:35:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000467s ]
+
+2017-11-03 15:35:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509694544 ) AND ( `endtime` >= 1509694544 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000175s ]
+
+2017-11-03 15:49:08 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000463s ]
+
+2017-11-03 15:49:08 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000224s ]
+
+2017-11-03 15:49:08 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000349s ]
+
+2017-11-03 15:49:08 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000116s ]
+
+2017-11-03 15:54:10 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000429s ]
+
+2017-11-03 15:54:10 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000209s ]
+
+2017-11-03 15:54:11 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000483s ]
+
+2017-11-03 15:54:11 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000210s ]
+
+2017-11-03 15:54:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000441s ]
+
+2017-11-03 15:54:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000202s ]
+
+2017-11-03 15:54:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000445s ]
+
+2017-11-03 15:54:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-03 15:54:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000480s ]
+
+2017-11-03 15:54:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000225s ]
+
+2017-11-03 15:55:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000451s ]
+
+2017-11-03 15:55:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-03 15:55:48 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000470s ]
+
+2017-11-03 15:55:48 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000214s ]
+
+2017-11-03 15:56:04 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000441s ]
+
+2017-11-03 15:56:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000227s ]
+
+2017-11-03 15:57:33 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000506s ]
+
+2017-11-03 15:57:33 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509695853 ) AND ( `endtime` >= 1509695853 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000193s ]
+
+2017-11-03 15:58:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000433s ]
+
+2017-11-03 15:58:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509695932 ) AND ( `endtime` >= 1509695932 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000169s ]
+
+2017-11-03 15:58:55 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000508s ]
+
+2017-11-03 15:58:55 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509695935 ) AND ( `endtime` >= 1509695935 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000184s ]
+
+2017-11-03 16:41:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000475s ]
+
+2017-11-03 16:41:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000206s ]
+
+2017-11-03 16:41:36 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY00yS5yHUwKxVARp8b_21YceE]]></FromUserName>
+<CreateTime>1509698496</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:41:36 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY00yS5yHUwKxVARp8b_21YceE',
+    'createtime' => '1509698496',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY00yS5yHUwKxVARp8b_21YceE',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509698496',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:41:36 response :
+------------
+
+2017-11-03 16:41:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000473s ]
+
+2017-11-03 16:41:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698498 ) AND ( `endtime` >= 1509698498 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000192s ]
+
+2017-11-03 16:41:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000476s ]
+
+2017-11-03 16:41:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698499 ) AND ( `endtime` >= 1509698499 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+
+2017-11-03 16:45:58 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509698758</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:45:58 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509698758',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509698758',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:45:58 response :
+------------
+
+2017-11-03 16:45:59 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000444s ]
+
+2017-11-03 16:45:59 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698759 ) AND ( `endtime` >= 1509698759 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-11-03 16:46:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000514s ]
+
+2017-11-03 16:46:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698760 ) AND ( `endtime` >= 1509698760 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000178s ]
+
+2017-11-03 16:46:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000518s ]
+
+2017-11-03 16:46:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698769 ) AND ( `endtime` >= 1509698769 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000200s ]
+
+2017-11-03 16:46:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000444s ]
+
+2017-11-03 16:46:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698778 ) AND ( `endtime` >= 1509698778 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000172s ]
+
+2017-11-03 16:46:19 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000431s ]
+
+2017-11-03 16:46:19 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698779 ) AND ( `endtime` >= 1509698779 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-11-03 16:46:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000451s ]
+
+2017-11-03 16:46:21 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698781 ) AND ( `endtime` >= 1509698781 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-11-03 16:46:33 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000493s ]
+
+2017-11-03 16:46:33 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698793 ) AND ( `endtime` >= 1509698793 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-03 16:47:08 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000512s ]
+
+2017-11-03 16:47:08 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698828 ) AND ( `endtime` >= 1509698828 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-03 16:47:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000456s ]
+
+2017-11-03 16:47:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698837 ) AND ( `endtime` >= 1509698837 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-03 16:47:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000473s ]
+
+2017-11-03 16:47:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698850 ) AND ( `endtime` >= 1509698850 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000180s ]
+
+2017-11-03 16:47:31 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000444s ]
+
+2017-11-03 16:47:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698851 ) AND ( `endtime` >= 1509698851 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000186s ]
+
+2017-11-03 16:47:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509698861</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:47:41 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509698861',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509698861',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:47:41 response :
+------------
+
+2017-11-03 16:47:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000500s ]
+
+2017-11-03 16:47:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698861 ) AND ( `endtime` >= 1509698861 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000187s ]
+
+2017-11-03 16:47:46 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000468s ]
+
+2017-11-03 16:47:46 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698866 ) AND ( `endtime` >= 1509698866 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000184s ]
+
+2017-11-03 16:47:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000460s ]
+
+2017-11-03 16:47:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698877 ) AND ( `endtime` >= 1509698877 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000175s ]
+
+2017-11-03 16:48:12 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000540s ]
+
+2017-11-03 16:48:12 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698892 ) AND ( `endtime` >= 1509698892 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000206s ]
+
+2017-11-03 16:48:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000506s ]
+
+2017-11-03 16:48:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698893 ) AND ( `endtime` >= 1509698893 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000194s ]
+
+2017-11-03 16:48:14 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000462s ]
+
+2017-11-03 16:48:14 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509698894 ) AND ( `endtime` >= 1509698894 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000180s ]
+
+2017-11-03 16:50:47 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0009p7BYSw0LnJpUxWbD2924]]></FromUserName>
+<CreateTime>1509699047</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:50:47 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'createtime' => '1509699047',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509699047',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:50:47 response :
+------------
+
+2017-11-03 16:50:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000492s ]
+
+2017-11-03 16:50:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509699052 ) AND ( `endtime` >= 1509699052 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000194s ]
+
+2017-11-03 16:51:17 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0009p7BYSw0LnJpUxWbD2924]]></FromUserName>
+<CreateTime>1509699077</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=savewineform&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:51:17 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'createtime' => '1509699077',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=savewineform&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509699077',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=savewineform&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:51:17 response :
+------------
+
+2017-11-03 16:52:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000480s ]
+
+2017-11-03 16:52:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509699138 ) AND ( `endtime` >= 1509699138 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000183s ]
+
+2017-11-03 16:52:25 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0009p7BYSw0LnJpUxWbD2924]]></FromUserName>
+<CreateTime>1509699145</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:52:25 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'createtime' => '1509699145',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '430524688',
+    'from' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509699145',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:52:25 response :
+------------
+
+2017-11-03 16:52:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000438s ]
+
+2017-11-03 16:52:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509699145 ) AND ( `endtime` >= 1509699145 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000170s ]
+
+2017-11-03 16:52:32 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0009p7BYSw0LnJpUxWbD2924]]></FromUserName>
+<CreateTime>1509699152</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=queue&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:52:32 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'createtime' => '1509699152',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=queue&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0009p7BYSw0LnJpUxWbD2924',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509699152',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&storeid=21&do=queue&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:52:32 response :
+------------
+
+2017-11-03 16:53:50 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509699230</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 16:53:51 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509699230',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509699230',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 16:53:51 response :
+------------
+
+2017-11-03 16:53:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000465s ]
+
+2017-11-03 16:53:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509699231 ) AND ( `endtime` >= 1509699231 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000185s ]
+
+2017-11-03 17:12:53 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000438s ]
+
+2017-11-03 17:12:53 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000212s ]
+
+2017-11-03 17:29:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000452s ]
+
+2017-11-03 17:29:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = null ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000194s ]
+
+2017-11-03 17:38:44 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509701924</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 17:38:44 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509701924',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509701924',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 17:38:44 response :
+------------
+
+2017-11-03 17:38:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000487s ]
+
+2017-11-03 17:38:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509701924 ) AND ( `endtime` >= 1509701924 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000191s ]
+
+2017-11-03 17:43:31 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000510s ]
+
+2017-11-03 17:43:31 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000246s ]
+
+2017-11-03 17:43:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000429s ]
+
+2017-11-03 17:43:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000215s ]
+
+2017-11-03 17:44:02 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000458s ]
+
+2017-11-03 17:44:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000229s ]
+
+2017-11-03 17:44:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000144s ]
+
+2017-11-03 17:44:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000510s ]
+
+2017-11-03 17:44:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000249s ]
+
+2017-11-03 17:44:20 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000478s ]
+
+2017-11-03 17:44:20 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000259s ]
+
+2017-11-03 17:44:20 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000188s ]
+
+2017-11-03 17:45:59 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000420s ]
+
+2017-11-03 17:45:59 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000223s ]
+
+2017-11-03 17:46:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000428s ]
+
+2017-11-03 17:46:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000200s ]
+
+2017-11-03 17:46:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 1 ) LIMIT 1   [ RunTime:0.000125s ]
+
+2017-11-03 17:47:23 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000435s ]
+
+2017-11-03 17:47:23 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = null ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000209s ]
+
+2017-11-03 17:47:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000520s ]
+
+2017-11-03 17:47:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000246s ]
+
+2017-11-03 17:48:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000444s ]
+
+2017-11-03 17:48:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-03 17:49:47 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509702587</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 17:49:47 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509702587',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509702587',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 17:49:47 response :
+------------
+
+2017-11-03 17:49:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000511s ]
+
+2017-11-03 17:49:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702589 ) AND ( `endtime` >= 1509702589 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000197s ]
+
+2017-11-03 17:49:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000450s ]
+
+2017-11-03 17:49:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702590 ) AND ( `endtime` >= 1509702590 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000175s ]
+
+2017-11-03 17:50:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000460s ]
+
+2017-11-03 17:50:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702650 ) AND ( `endtime` >= 1509702650 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-03 17:50:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000485s ]
+
+2017-11-03 17:50:54 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702654 ) AND ( `endtime` >= 1509702654 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000182s ]
+
+2017-11-03 17:50:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000503s ]
+
+2017-11-03 17:50:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702657 ) AND ( `endtime` >= 1509702657 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000190s ]
+
+2017-11-03 17:51:30 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1509702690</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 17:51:30 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1509702690',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509702690',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 17:51:30 response :
+------------
+
+2017-11-03 17:51:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000571s ]
+
+2017-11-03 17:51:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702690 ) AND ( `endtime` >= 1509702690 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000196s ]
+
+2017-11-03 17:51:32 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000440s ]
+
+2017-11-03 17:51:32 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702692 ) AND ( `endtime` >= 1509702692 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000205s ]
+
+2017-11-03 17:51:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000444s ]
+
+2017-11-03 17:51:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702696 ) AND ( `endtime` >= 1509702696 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000175s ]
+
+2017-11-03 17:51:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000475s ]
+
+2017-11-03 17:51:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702709 ) AND ( `endtime` >= 1509702709 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000229s ]
+
+2017-11-03 17:51:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000457s ]
+
+2017-11-03 17:51:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509702710 ) AND ( `endtime` >= 1509702710 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000203s ]
+
+2017-11-03 18:18:16 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509704296</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 18:18:16 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509704296',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509704296',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 18:18:16 response :
+------------
+
+2017-11-03 18:18:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000443s ]
+
+2017-11-03 18:18:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509704298 ) AND ( `endtime` >= 1509704298 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000169s ]
+
+2017-11-03 18:18:37 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509704317</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 18:18:37 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509704317',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509704317',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 18:18:37 response :
+------------
+
+2017-11-03 18:18:37 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000485s ]
+
+2017-11-03 18:18:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509704317 ) AND ( `endtime` >= 1509704317 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000177s ]
+
+2017-11-03 18:29:42 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509704982</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.439491</Latitude>
+<Longitude>118.083595</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2017-11-03 18:29:42 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509704982',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.439491',
+    'longitude' => '118.083595',
+    'precision' => '65.000000',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509704982',
+    'type' => 'trace',
+    'location_x' => '24.439491',
+    'location_y' => '118.083595',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-11-03 18:29:42 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-11-03 18:29:47 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509704987</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>428646407</MenuId>
+</xml>
+
+2017-11-03 18:29:47 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509704987',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'menuid' => '428646407',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509704987',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 18:29:47 response :
+------------
+
+2017-11-03 18:29:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000498s ]
+
+2017-11-03 18:29:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509704990 ) AND ( `endtime` >= 1509704990 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000182s ]
+
+2017-11-03 18:29:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000513s ]
+
+2017-11-03 18:29:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509704991 ) AND ( `endtime` >= 1509704991 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000202s ]
+
+2017-11-03 18:29:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000522s ]
+
+2017-11-03 18:29:54 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509704994 ) AND ( `endtime` >= 1509704994 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000198s ]
+
+2017-11-03 18:30:03 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000626s ]
+
+2017-11-03 18:30:03 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705003 ) AND ( `endtime` >= 1509705003 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000220s ]
+
+2017-11-03 18:30:27 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000484s ]
+
+2017-11-03 18:30:27 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705027 ) AND ( `endtime` >= 1509705027 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000198s ]
+
+2017-11-03 18:31:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000462s ]
+
+2017-11-03 18:31:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705086 ) AND ( `endtime` >= 1509705086 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000176s ]
+
+2017-11-03 18:32:02 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000513s ]
+
+2017-11-03 18:32:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705122 ) AND ( `endtime` >= 1509705122 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000218s ]
+
+2017-11-03 18:32:05 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000654s ]
+
+2017-11-03 18:32:05 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705125 ) AND ( `endtime` >= 1509705125 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000232s ]
+
+2017-11-03 18:32:07 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000516s ]
+
+2017-11-03 18:32:07 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705127 ) AND ( `endtime` >= 1509705127 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000318s ]
+
+2017-11-03 18:32:12 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000465s ]
+
+2017-11-03 18:32:12 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705132 ) AND ( `endtime` >= 1509705132 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000191s ]
+
+2017-11-03 18:32:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000458s ]
+
+2017-11-03 18:32:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705145 ) AND ( `endtime` >= 1509705145 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000178s ]
+
+2017-11-03 18:32:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000445s ]
+
+2017-11-03 18:32:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705146 ) AND ( `endtime` >= 1509705146 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-11-03 18:32:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000476s ]
+
+2017-11-03 18:32:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705149 ) AND ( `endtime` >= 1509705149 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000193s ]
+
+2017-11-03 18:32:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000491s ]
+
+2017-11-03 18:32:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705158 ) AND ( `endtime` >= 1509705158 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000190s ]
+
+2017-11-03 18:32:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000470s ]
+
+2017-11-03 18:32:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705159 ) AND ( `endtime` >= 1509705159 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000182s ]
+
+2017-11-03 18:32:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000461s ]
+
+2017-11-03 18:32:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509705161 ) AND ( `endtime` >= 1509705161 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000186s ]
+
+2017-11-03 20:19:02 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY007ii1nrPRxSCeihLAxANMB8]]></FromUserName>
+<CreateTime>1509711541</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430524688</MenuId>
+</xml>
+
+2017-11-03 20:19:02 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'createtime' => '1509711541',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430524688',
+    'from' => 'oSRY007ii1nrPRxSCeihLAxANMB8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1509711541',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-03 20:19:02 response :
+------------
+
+2017-11-03 20:19:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000443s ]
+
+2017-11-03 20:19:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509711546 ) AND ( `endtime` >= 1509711546 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-03 20:19:07 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000436s ]
+
+2017-11-03 20:19:07 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509711547 ) AND ( `endtime` >= 1509711547 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000193s ]
+

@@ -1,0 +1,439 @@
+2017-11-11 09:13:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1510362814</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430755670</MenuId>
+</xml>
+
+2017-11-11 09:13:34 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1510362814',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430755670',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1510362814',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-11 09:13:34 response :
+------------
+
+2017-11-11 09:13:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000441s ]
+
+2017-11-11 09:13:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510362816 ) AND ( `endtime` >= 1510362816 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000177s ]
+
+2017-11-11 09:13:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000479s ]
+
+2017-11-11 09:13:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510362831 ) AND ( `endtime` >= 1510362831 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000198s ]
+
+2017-11-11 09:14:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000447s ]
+
+2017-11-11 09:14:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510362846 ) AND ( `endtime` >= 1510362846 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000171s ]
+
+2017-11-11 09:14:12 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000439s ]
+
+2017-11-11 09:14:12 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510362852 ) AND ( `endtime` >= 1510362852 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000172s ]
+
+2017-11-11 09:14:14 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000456s ]
+
+2017-11-11 09:14:14 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510362854 ) AND ( `endtime` >= 1510362854 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-11 11:04:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000456s ]
+
+2017-11-11 11:04:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000195s ]
+
+2017-11-11 14:02:39 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1510380159</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430755670</MenuId>
+</xml>
+
+2017-11-11 14:02:39 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1510380159',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430755670',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1510380159',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-11 14:02:39 response :
+------------
+
+2017-11-11 14:02:42 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000496s ]
+
+2017-11-11 14:02:42 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510380162 ) AND ( `endtime` >= 1510380162 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000208s ]
+
+2017-11-11 14:02:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000444s ]
+
+2017-11-11 14:02:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510380177 ) AND ( `endtime` >= 1510380177 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-11-11 17:11:09 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY002sNxP0bwNvR-pdAsYYFKz8]]></FromUserName>
+<CreateTime>1510391469</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430755670</MenuId>
+</xml>
+
+2017-11-11 17:11:09 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY002sNxP0bwNvR-pdAsYYFKz8',
+    'createtime' => '1510391469',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430755670',
+    'from' => 'oSRY002sNxP0bwNvR-pdAsYYFKz8',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1510391469',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-11 17:11:09 response :
+------------
+
+2017-11-11 17:11:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000466s ]
+
+2017-11-11 17:11:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510391473 ) AND ( `endtime` >= 1510391473 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000188s ]
+
+2017-11-11 17:11:14 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000446s ]
+
+2017-11-11 17:11:14 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510391474 ) AND ( `endtime` >= 1510391474 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-11 17:28:02 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fbed32f1f289]]></ToUserName>
+<FromUserName><![CDATA[oSRY0002kWJeWI40pNCycPqBUO3E]]></FromUserName>
+<CreateTime>1510392482</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>430755670</MenuId>
+</xml>
+
+2017-11-11 17:28:02 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fbed32f1f289',
+    'fromusername' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'createtime' => '1510392482',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'menuid' => '430755670',
+    'from' => 'oSRY0002kWJeWI40pNCycPqBUO3E',
+    'to' => 'gh_fbed32f1f289',
+    'time' => '1510392482',
+    'type' => 'text',
+    'content' => 'http://www.dianlema.net/app/index.php?i=6&c=entry&id=21&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-11 17:28:02 response :
+------------
+
+2017-11-11 17:28:05 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000442s ]
+
+2017-11-11 17:28:05 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510392485 ) AND ( `endtime` >= 1510392485 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-11-11 17:28:06 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000451s ]
+
+2017-11-11 17:28:06 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1510392486 ) AND ( `endtime` >= 1510392486 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000221s ]
+
+2017-11-11 19:12:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw2GhlfkWr2nszuZwujNZzVk]]></FromUserName>
+<CreateTime>1510398761</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2017-11-11 19:12:41 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'createtime' => '1510398761',
+    'msgtype' => 'event',
+    'event' => 'subscribe',
+    'eventkey' => '',
+    'from' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1510398761',
+    'type' => 'text',
+    'redirection' => true,
+    'source' => 'subscribe',
+  ),
+)
+
+2017-11-11 19:12:41 response :
+------------
+
+2017-11-11 19:12:48 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw2GhlfkWr2nszuZwujNZzVk]]></FromUserName>
+<CreateTime>1510398768</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>36.440575</Latitude>
+<Longitude>120.165321</Longitude>
+<Precision>110.000000</Precision>
+</xml>
+
+2017-11-11 19:12:48 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'createtime' => '1510398768',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '36.440575',
+    'longitude' => '120.165321',
+    'precision' => '110.000000',
+    'from' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1510398768',
+    'type' => 'trace',
+    'location_x' => '36.440575',
+    'location_y' => '120.165321',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-11-11 19:12:48 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-11-11 19:12:56 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw2GhlfkWr2nszuZwujNZzVk]]></FromUserName>
+<CreateTime>1510398776</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[2088]]></Content>
+<MsgId>6487113347267439713</MsgId>
+</xml>
+
+2017-11-11 19:12:56 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'createtime' => '1510398776',
+    'msgtype' => 'text',
+    'content' => '2088',
+    'msgid' => '6487113347267439713',
+    'from' => 'oEZ6bw2GhlfkWr2nszuZwujNZzVk',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1510398776',
+    'type' => 'text',
+    'event' => NULL,
+    'redirection' => false,
+    'source' => NULL,
+  ),
+)
+
+2017-11-11 19:12:56 response :
+------------
+
+2017-11-11 21:08:00 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw26kL4fH8z0Dw32WLI0A9VU]]></FromUserName>
+<CreateTime>1510405680</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish]]></EventKey>
+<MenuId>428646407</MenuId>
+</xml>
+
+2017-11-11 21:08:00 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw26kL4fH8z0Dw32WLI0A9VU',
+    'createtime' => '1510405680',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'menuid' => '428646407',
+    'from' => 'oEZ6bw26kL4fH8z0Dw32WLI0A9VU',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1510405680',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-11 21:08:00 response :
+------------
+

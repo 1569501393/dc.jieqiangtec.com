@@ -1,0 +1,26 @@
+1
+  Star 0
+ Fork 0 1569501393/dc.jieqiangtec.com
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
+Quick setup ¡ª if you¡¯ve done this kind of thing before
+ Set up in Desktop	or	
+ HTTPS
+ SSH
+
+https://github.com/1569501393/dc.jieqiangtec.com.git
+
+We recommend every repository include a README, LICENSE, and .gitignore.
+¡­or create a new repository on the command line
+
+echo "# dc.jieqiangtec.com" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/1569501393/dc.jieqiangtec.com.git
+git push -u origin master
+¡­or push an existing repository from the command line
+
+git remote add origin https://github.com/1569501393/dc.jieqiangtec.com.git
+git push -u origin master
+¡­or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.

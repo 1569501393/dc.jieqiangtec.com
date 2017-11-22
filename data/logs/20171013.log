@@ -1,0 +1,488 @@
+2017-10-13 15:41:16 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880476</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.439415</Latitude>
+<Longitude>118.083633</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2017-10-13 15:41:16 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880476',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.439415',
+    'longitude' => '118.083633',
+    'precision' => '65.000000',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880476',
+    'type' => 'trace',
+    'location_x' => '24.439415',
+    'location_y' => '118.083633',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-13 15:41:16 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-10-13 15:41:33 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880493</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 15:41:33 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880493',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880493',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 15:41:33 response :
+------------
+
+2017-10-13 15:41:35 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880495</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 15:41:35 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880495',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880495',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 15:41:35 response :
+------------
+
+2017-10-13 15:41:45 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880505</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 15:41:45 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880505',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880505',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 15:41:45 response :
+------------
+
+2017-10-13 15:48:14 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880893</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 15:48:14 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880893',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880893',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 15:48:14 response :
+------------
+
+2017-10-13 15:48:36 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507880916</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 15:48:36 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507880916',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507880916',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 15:48:36 response :
+------------
+
+2017-10-13 18:07:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507889254</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.484194</Latitude>
+<Longitude>118.174614</Longitude>
+<Precision>48.000000</Precision>
+</xml>
+
+2017-10-13 18:07:34 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507889254',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.484194',
+    'longitude' => '118.174614',
+    'precision' => '48.000000',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507889254',
+    'type' => 'trace',
+    'location_x' => '24.484194',
+    'location_y' => '118.174614',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-13 18:07:34 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-10-13 20:52:55 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507899175</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 20:52:55 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507899175',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507899175',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 20:52:55 response :
+------------
+
+2017-10-13 20:54:50 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507899290</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 20:54:50 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507899290',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507899290',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 20:54:50 response :
+------------
+
+2017-10-13 20:54:53 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507899293</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 20:54:53 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507899293',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507899293',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 20:54:53 response :
+------------
+
+2017-10-13 20:54:56 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507899296</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 20:54:56 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507899296',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507899296',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 20:54:56 response :
+------------
+
+2017-10-13 20:55:00 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1507899300</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-13 20:55:00 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1507899300',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1507899300',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=queue&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-13 20:55:00 response :
+------------
+

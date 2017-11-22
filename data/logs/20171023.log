@@ -1,0 +1,363 @@
+2017-10-23 11:24:00 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1508729039</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.439747</Latitude>
+<Longitude>118.083572</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2017-10-23 11:24:00 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1508729039',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.439747',
+    'longitude' => '118.083572',
+    'precision' => '65.000000',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729039',
+    'type' => 'trace',
+    'location_x' => '24.439747',
+    'location_y' => '118.083572',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-23 11:24:00 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-10-23 11:24:05 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwy69eIxS1-_ET7pz1t9EnIo]]></FromUserName>
+<CreateTime>1508729045</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2017-10-23 11:24:05 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'createtime' => '1508729045',
+    'msgtype' => 'event',
+    'event' => 'subscribe',
+    'eventkey' => '',
+    'from' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729045',
+    'type' => 'text',
+    'redirection' => true,
+    'source' => 'subscribe',
+  ),
+)
+
+2017-10-23 11:24:05 response :
+------------
+
+2017-10-23 11:24:13 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwy69eIxS1-_ET7pz1t9EnIo]]></FromUserName>
+<CreateTime>1508729053</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.441544</Latitude>
+<Longitude>118.079948</Longitude>
+<Precision>30.000000</Precision>
+</xml>
+
+2017-10-23 11:24:13 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'createtime' => '1508729053',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.441544',
+    'longitude' => '118.079948',
+    'precision' => '30.000000',
+    'from' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729053',
+    'type' => 'trace',
+    'location_x' => '24.441544',
+    'location_y' => '118.079948',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-23 11:24:13 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-10-23 11:24:30 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1508729070</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-23 11:24:30 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1508729070',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729070',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-23 11:24:30 response :
+------------
+
+2017-10-23 11:24:30 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwy69eIxS1-_ET7pz1t9EnIo]]></FromUserName>
+<CreateTime>1508729070</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-23 11:24:30 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'createtime' => '1508729070',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729070',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-23 11:24:30 response :
+------------
+
+2017-10-23 11:24:42 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1508729082</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>427729260</MenuId>
+</xml>
+
+2017-10-23 11:24:42 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1508729082',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'menuid' => '427729260',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729082',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=waplist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-10-23 11:24:42 response :
+------------
+
+2017-10-23 11:25:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000434s ]
+
+2017-10-23 11:25:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508729109 ) AND ( `endtime` >= 1508729109 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000167s ]
+
+2017-10-23 11:25:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000492s ]
+
+2017-10-23 11:25:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508729115 ) AND ( `endtime` >= 1508729115 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000165s ]
+
+2017-10-23 11:25:16 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000449s ]
+
+2017-10-23 11:25:16 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 2 ) AND ( `starttime` <= 1508729116 ) AND ( `endtime` >= 1508729116 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-10-23 11:26:18 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwy69eIxS1-_ET7pz1t9EnIo]]></FromUserName>
+<CreateTime>1508729178</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.440079</Latitude>
+<Longitude>118.082565</Longitude>
+<Precision>90.000000</Precision>
+</xml>
+
+2017-10-23 11:26:18 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'createtime' => '1508729178',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.440079',
+    'longitude' => '118.082565',
+    'precision' => '90.000000',
+    'from' => 'oEZ6bwy69eIxS1-_ET7pz1t9EnIo',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508729178',
+    'type' => 'trace',
+    'location_x' => '24.440079',
+    'location_y' => '118.082565',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-23 11:26:18 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-10-23 14:43:37 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bw85UJYZcLBMNHMO9gWbFtSA]]></FromUserName>
+<CreateTime>1508741016</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.461683</Latitude>
+<Longitude>118.109138</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2017-10-23 14:43:37 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'createtime' => '1508741016',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.461683',
+    'longitude' => '118.109138',
+    'precision' => '65.000000',
+    'from' => 'oEZ6bw85UJYZcLBMNHMO9gWbFtSA',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1508741016',
+    'type' => 'trace',
+    'location_x' => '24.461683',
+    'location_y' => '118.109138',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-10-23 14:43:37 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+

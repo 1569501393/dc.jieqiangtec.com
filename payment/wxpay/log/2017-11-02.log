@@ -1,0 +1,1600 @@
+微信支付回调微信支付回调微信支付回调微信支付回调===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态正确。
+订单状态已更新。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态正确。
+订单状态已更新。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态正确。
+订单状态已更新。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102162518643475
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => m3sbxx8cv4w1oj10yptymkernjdtnj21
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102162518643475
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => DB96273D7423FFF3AC78651C92CBB75E
+    [time_end] => 20171102162529
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000016201711021955711601
+)
+
+订单状态正确。
+订单状态已更新。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164020127936
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 0t8ubn3eoceslzxs3xt875flp5leq5yd
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164020127936
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 60A231D5A5D283D3D937EE9DE72788DB
+    [time_end] => 20171102164040
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021959543094
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102162518643475
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => m3sbxx8cv4w1oj10yptymkernjdtnj21
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102162518643475
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => DB96273D7423FFF3AC78651C92CBB75E
+    [time_end] => 20171102162529
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000016201711021955711601
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态正确。
+订单状态已更新。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164020127936
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 0t8ubn3eoceslzxs3xt875flp5leq5yd
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164020127936
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 60A231D5A5D283D3D937EE9DE72788DB
+    [time_end] => 20171102164040
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021959543094
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102162518643475
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => m3sbxx8cv4w1oj10yptymkernjdtnj21
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102162518643475
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => DB96273D7423FFF3AC78651C92CBB75E
+    [time_end] => 20171102162529
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000016201711021955711601
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164020127936
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 0t8ubn3eoceslzxs3xt875flp5leq5yd
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164020127936
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 60A231D5A5D283D3D937EE9DE72788DB
+    [time_end] => 20171102164040
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021959543094
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102162518643475
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => m3sbxx8cv4w1oj10yptymkernjdtnj21
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102162518643475
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => DB96273D7423FFF3AC78651C92CBB75E
+    [time_end] => 20171102162529
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000016201711021955711601
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164020127936
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 0t8ubn3eoceslzxs3xt875flp5leq5yd
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164020127936
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 60A231D5A5D283D3D937EE9DE72788DB
+    [time_end] => 20171102164040
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021959543094
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102162518643475
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => m3sbxx8cv4w1oj10yptymkernjdtnj21
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102162518643475
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => DB96273D7423FFF3AC78651C92CBB75E
+    [time_end] => 20171102162529
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000016201711021955711601
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164020127936
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 0t8ubn3eoceslzxs3xt875flp5leq5yd
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164020127936
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 60A231D5A5D283D3D937EE9DE72788DB
+    [time_end] => 20171102164040
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021959543094
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164510574870
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => itsug7elc9t15xhlcdd836kmwo05fhaj
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164510574870
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 00F32F151F26E121CBA6B614003B9444
+    [time_end] => 20171102164519
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000024201711021964315733
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102164658180733
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 5xl841g0s4208t7ys6re6b91t1b9n8t3
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102164658180733
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => E366D913B0B21B3618D7C807B52F1BD4
+    [time_end] => 20171102164710
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000025201711021961242883
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.01
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102165625426639
+    [bank_type] => CFT
+    [cash_fee] => 1
+    [fee_type] => CNY
+    [is_subscribe] => N
+    [mch_id] => 1491081962
+    [nonce_str] => 8qrserpx49warvgcjhem8te1pftke1wv
+    [openid] => oSRY00_RyW5_O7qURC1QV3pW4J70
+    [out_trade_no] => 20171102165625426639
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => BDF1A7BA6F8B243792D3A9A22F2DC9A8
+    [time_end] => 20171102165635
+    [total_fee] => 1
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000015201711021961594372
+)
+
+订单状态错误。
+===========
+微信支付回调开始
+微信支付扫码Notify开始
+正式版
+进入验证签名
+获取支付数据成功
+正在回调NotifyCallBack
+进入订单处理流程
+wxnotify微信支付验证通过，支付金额0.1
+接受数据Array
+(
+    [appid] => wxf906fe71b74173e8
+    [attach] => 20171102173255595416
+    [bank_type] => CFT
+    [cash_fee] => 10
+    [fee_type] => CNY
+    [is_subscribe] => Y
+    [mch_id] => 1491081962
+    [nonce_str] => n7x8tx7et23scebo7k04parwvk4vv0xm
+    [openid] => oSRY005X21OxPllfXAlfbcnlrF-A
+    [out_trade_no] => 20171102173255595416
+    [result_code] => SUCCESS
+    [return_code] => SUCCESS
+    [sign] => 42D4A8C91E76C39F7866EA69F8FE417E
+    [time_end] => 20171102173312
+    [total_fee] => 10
+    [trade_type] => NATIVE
+    [transaction_id] => 4200000026201711021969760365
+)
+
+订单状态错误。

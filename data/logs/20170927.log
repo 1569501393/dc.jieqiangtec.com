@@ -1,0 +1,157 @@
+2017-09-27 12:54:44 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwzskhjvDR059pZRPyTP2DyI]]></FromUserName>
+<CreateTime>1506488084</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2017-09-27 12:54:44 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'createtime' => '1506488084',
+    'msgtype' => 'event',
+    'event' => 'subscribe',
+    'eventkey' => '',
+    'from' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1506488084',
+    'type' => 'text',
+    'redirection' => true,
+    'source' => 'subscribe',
+  ),
+)
+
+2017-09-27 12:54:44 response :
+------------
+
+2017-09-27 12:54:48 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwzskhjvDR059pZRPyTP2DyI]]></FromUserName>
+<CreateTime>1506488087</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.466448</Latitude>
+<Longitude>118.097717</Longitude>
+<Precision>10.000000</Precision>
+</xml>
+
+2017-09-27 12:54:48 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'createtime' => '1506488087',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.466448',
+    'longitude' => '118.097717',
+    'precision' => '10.000000',
+    'from' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1506488087',
+    'type' => 'trace',
+    'location_x' => '24.466448',
+    'location_y' => '118.097717',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-09-27 12:54:48 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-09-27 12:55:01 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwzskhjvDR059pZRPyTP2DyI]]></FromUserName>
+<CreateTime>1506488101</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[还有招人吗]]></Content>
+<MsgId>6470317126035931480</MsgId>
+</xml>
+
+2017-09-27 12:55:01 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'createtime' => '1506488101',
+    'msgtype' => 'text',
+    'content' => '还有招人吗',
+    'msgid' => '6470317126035931480',
+    'from' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1506488101',
+    'type' => 'text',
+    'event' => NULL,
+    'redirection' => false,
+    'source' => NULL,
+  ),
+)
+
+2017-09-27 12:55:01 response :
+------------
+
+2017-09-27 12:55:03 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwzskhjvDR059pZRPyTP2DyI]]></FromUserName>
+<CreateTime>1506488103</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[请问]]></Content>
+<MsgId>6470317134625866075</MsgId>
+</xml>
+
+2017-09-27 12:55:03 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'createtime' => '1506488103',
+    'msgtype' => 'text',
+    'content' => '请问',
+    'msgid' => '6470317134625866075',
+    'from' => 'oEZ6bwzskhjvDR059pZRPyTP2DyI',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1506488103',
+    'type' => 'text',
+    'event' => NULL,
+    'redirection' => false,
+    'source' => NULL,
+  ),
+)
+
+2017-09-27 12:55:03 response :
+------------
+

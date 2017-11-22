@@ -1,0 +1,1058 @@
+2017-11-02 09:50:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000478s ]
+
+2017-11-02 09:50:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509587401 ) AND ( `endtime` >= 1509587401 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000179s ]
+
+2017-11-02 09:50:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000474s ]
+
+2017-11-02 09:50:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509587413 ) AND ( `endtime` >= 1509587413 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000181s ]
+
+2017-11-02 11:19:37 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000468s ]
+
+2017-11-02 11:19:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509592777 ) AND ( `endtime` >= 1509592777 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000180s ]
+
+2017-11-02 12:43:18 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000537s ]
+
+2017-11-02 12:43:18 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509597798 ) AND ( `endtime` >= 1509597798 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000214s ]
+
+2017-11-02 14:47:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000447s ]
+
+2017-11-02 14:47:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000227s ]
+
+2017-11-02 14:51:54 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000424s ]
+
+2017-11-02 14:51:54 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000208s ]
+
+2017-11-02 14:51:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000419s ]
+
+2017-11-02 14:51:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-02 14:52:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000434s ]
+
+2017-11-02 14:52:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000230s ]
+
+2017-11-02 15:36:48 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509608208</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.439505</Latitude>
+<Longitude>118.083656</Longitude>
+<Precision>69.613899</Precision>
+</xml>
+
+2017-11-02 15:36:48 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509608208',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.439505',
+    'longitude' => '118.083656',
+    'precision' => '69.613899',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509608208',
+    'type' => 'trace',
+    'location_x' => '24.439505',
+    'location_y' => '118.083656',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-11-02 15:36:48 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-11-02 15:36:49 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509608209</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish]]></EventKey>
+<MenuId>428646407</MenuId>
+</xml>
+
+2017-11-02 15:36:49 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509608209',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'menuid' => '428646407',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509608209',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&id=20&do=detail&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-02 15:36:49 response :
+------------
+
+2017-11-02 15:36:51 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000475s ]
+
+2017-11-02 15:36:51 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509608211 ) AND ( `endtime` >= 1509608211 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000194s ]
+
+2017-11-02 15:36:52 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_weisrc_dish_ad` [ RunTime:0.000492s ]
+
+2017-11-02 15:36:52 HjSql :
+------------
+String:
+SELECT * FROM `ims_weisrc_dish_ad` WHERE ( `position` = 3 ) AND ( `uniacid` = 6 ) AND ( `starttime` <= 1509608212 ) AND ( `endtime` >= 1509608212 ) AND ( `status` = 1 ) ORDER BY `displayorder` asc  [ RunTime:0.000211s ]
+
+2017-11-02 16:07:03 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509610023</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>24.439421</Latitude>
+<Longitude>118.083580</Longitude>
+<Precision>36.795628</Precision>
+</xml>
+
+2017-11-02 16:07:03 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509610023',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '24.439421',
+    'longitude' => '118.083580',
+    'precision' => '36.795628',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509610023',
+    'type' => 'trace',
+    'location_x' => '24.439421',
+    'location_y' => '118.083580',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2017-11-02 16:07:03 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2017-11-02 16:07:05 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_925d4d7e2212]]></ToUserName>
+<FromUserName><![CDATA[oEZ6bwwDHUmm68wE2waN7vYDsCkY]]></FromUserName>
+<CreateTime>1509610025</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish]]></EventKey>
+<MenuId>428646407</MenuId>
+</xml>
+
+2017-11-02 16:07:05 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_925d4d7e2212',
+    'fromusername' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'createtime' => '1509610025',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'menuid' => '428646407',
+    'from' => 'oEZ6bwwDHUmm68wE2waN7vYDsCkY',
+    'to' => 'gh_925d4d7e2212',
+    'time' => '1509610025',
+    'type' => 'text',
+    'content' => 'http://lgzol.cn/app/index.php?i=5&c=entry&storeid=20&do=reservationIndex&m=weisrc_dish',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2017-11-02 16:07:05 response :
+------------
+
+2017-11-02 16:45:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000433s ]
+
+2017-11-02 16:45:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000195s ]
+
+2017-11-02 16:46:42 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000458s ]
+
+2017-11-02 16:46:42 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000213s ]
+
+2017-11-02 16:47:20 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000446s ]
+
+2017-11-02 16:47:20 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000204s ]
+
+2017-11-02 16:56:53 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000449s ]
+
+2017-11-02 16:56:53 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000206s ]
+
+2017-11-02 16:57:02 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000433s ]
+
+2017-11-02 16:57:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000208s ]
+
+2017-11-02 17:31:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000593s ]
+
+2017-11-02 17:31:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000190s ]
+
+2017-11-02 17:31:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000337s ]
+
+2017-11-02 17:31:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000122s ]
+
+2017-11-02 17:32:02 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000436s ]
+
+2017-11-02 17:32:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000208s ]
+
+2017-11-02 17:32:04 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000425s ]
+
+2017-11-02 17:32:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000205s ]
+
+2017-11-02 17:32:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000131s ]
+
+2017-11-02 17:32:37 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000452s ]
+
+2017-11-02 17:32:37 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-02 17:49:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000455s ]
+
+2017-11-02 17:49:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000234s ]
+
+2017-11-02 17:49:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000428s ]
+
+2017-11-02 17:49:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000209s ]
+
+2017-11-02 17:52:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000462s ]
+
+2017-11-02 17:52:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000225s ]
+
+2017-11-02 17:52:02 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000481s ]
+
+2017-11-02 17:52:02 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000244s ]
+
+2017-11-02 17:52:42 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000615s ]
+
+2017-11-02 17:52:42 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000308s ]
+
+2017-11-02 18:09:40 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000525s ]
+
+2017-11-02 18:09:40 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000227s ]
+
+2017-11-02 18:09:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000474s ]
+
+2017-11-02 18:09:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000212s ]
+
+2017-11-02 18:09:49 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000419s ]
+
+2017-11-02 18:09:49 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000212s ]
+
+2017-11-02 18:12:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000465s ]
+
+2017-11-02 18:12:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000202s ]
+
+2017-11-02 18:12:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000444s ]
+
+2017-11-02 18:12:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000216s ]
+
+2017-11-02 18:16:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000443s ]
+
+2017-11-02 18:16:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000217s ]
+
+2017-11-02 18:16:22 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000527s ]
+
+2017-11-02 18:16:22 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000250s ]
+
+2017-11-02 18:16:23 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000422s ]
+
+2017-11-02 18:16:23 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000215s ]
+
+2017-11-02 18:16:23 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000160s ]
+
+2017-11-02 18:16:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000437s ]
+
+2017-11-02 18:16:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000200s ]
+
+2017-11-02 18:16:32 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000470s ]
+
+2017-11-02 18:16:32 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000196s ]
+
+2017-11-02 18:16:34 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000457s ]
+
+2017-11-02 18:16:34 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000204s ]
+
+2017-11-02 18:16:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000482s ]
+
+2017-11-02 18:16:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000255s ]
+
+2017-11-02 18:16:41 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000447s ]
+
+2017-11-02 18:16:41 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000195s ]
+
+2017-11-02 18:16:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000427s ]
+
+2017-11-02 18:16:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000197s ]
+
+2017-11-02 18:16:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000178s ]
+
+2017-11-02 18:16:56 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000477s ]
+
+2017-11-02 18:16:56 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000229s ]
+
+2017-11-02 18:17:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000483s ]
+
+2017-11-02 18:17:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000236s ]
+
+2017-11-02 18:17:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000388s ]
+
+2017-11-02 18:17:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000155s ]
+
+2017-11-02 18:17:34 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000462s ]
+
+2017-11-02 18:17:34 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000207s ]
+
+2017-11-02 18:17:34 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000345s ]
+
+2017-11-02 18:17:34 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000123s ]
+
+2017-11-02 18:17:45 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000465s ]
+
+2017-11-02 18:17:45 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000232s ]
+
+2017-11-02 18:17:48 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000458s ]
+
+2017-11-02 18:17:48 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000280s ]
+
+2017-11-02 18:18:01 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000451s ]
+
+2017-11-02 18:18:01 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-02 18:18:04 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000458s ]
+
+2017-11-02 18:18:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000209s ]
+
+2017-11-02 18:18:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000131s ]
+
+2017-11-02 18:18:09 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000449s ]
+
+2017-11-02 18:18:09 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000200s ]
+
+2017-11-02 18:18:12 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000450s ]
+
+2017-11-02 18:18:12 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000210s ]
+
+2017-11-02 18:18:12 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000148s ]
+
+2017-11-02 18:18:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000437s ]
+
+2017-11-02 18:18:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000241s ]
+
+2017-11-02 18:18:21 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000469s ]
+
+2017-11-02 18:18:21 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000224s ]
+
+2017-11-02 18:18:24 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000525s ]
+
+2017-11-02 18:18:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000253s ]
+
+2017-11-02 18:18:24 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000145s ]
+
+2017-11-02 18:18:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000464s ]
+
+2017-11-02 18:18:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000201s ]
+
+2017-11-02 18:18:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000489s ]
+
+2017-11-02 18:18:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000223s ]
+
+2017-11-02 18:18:43 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000407s ]
+
+2017-11-02 18:18:43 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000150s ]
+
+2017-11-02 18:19:00 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000518s ]
+
+2017-11-02 18:19:00 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000241s ]
+
+2017-11-02 18:19:03 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000439s ]
+
+2017-11-02 18:19:03 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-02 18:19:04 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000458s ]
+
+2017-11-02 18:19:04 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000211s ]
+
+2017-11-02 18:19:10 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000449s ]
+
+2017-11-02 18:19:10 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000211s ]
+
+2017-11-02 18:19:13 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000483s ]
+
+2017-11-02 18:19:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000247s ]
+
+2017-11-02 18:19:13 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000134s ]
+
+2017-11-02 18:19:16 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000503s ]
+
+2017-11-02 18:19:16 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000292s ]
+
+2017-11-02 18:19:20 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000483s ]
+
+2017-11-02 18:19:20 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000237s ]
+
+2017-11-02 18:19:22 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000452s ]
+
+2017-11-02 18:19:22 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000230s ]
+
+2017-11-02 18:19:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000433s ]
+
+2017-11-02 18:19:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` ORDER BY `orderby` asc  [ RunTime:0.000184s ]
+
+2017-11-02 18:19:57 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group` [ RunTime:0.000359s ]
+
+2017-11-02 18:19:57 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group`  [ RunTime:0.000122s ]
+
+2017-11-02 18:20:44 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000497s ]
+
+2017-11-02 18:20:44 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000261s ]
+
+2017-11-02 18:21:07 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000443s ]
+
+2017-11-02 18:21:07 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000225s ]
+
+2017-11-02 18:21:15 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000414s ]
+
+2017-11-02 18:21:15 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000199s ]
+
+2017-11-02 18:21:26 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000441s ]
+
+2017-11-02 18:21:26 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000218s ]
+
+2017-11-02 18:21:28 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000414s ]
+
+2017-11-02 18:21:28 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000193s ]
+
+2017-11-02 18:21:30 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000451s ]
+
+2017-11-02 18:21:30 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000227s ]
+
+2017-11-02 18:21:32 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000448s ]
+
+2017-11-02 18:21:32 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-02 18:21:35 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000470s ]
+
+2017-11-02 18:21:35 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000271s ]
+
+2017-11-02 18:21:35 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000144s ]
+
+2017-11-02 18:21:36 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000454s ]
+
+2017-11-02 18:21:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-02 18:21:36 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000129s ]
+
+2017-11-02 18:21:39 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000465s ]
+
+2017-11-02 18:21:39 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000215s ]
+
+2017-11-02 18:21:50 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000429s ]
+
+2017-11-02 18:21:50 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000215s ]
+
+2017-11-02 18:22:25 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000454s ]
+
+2017-11-02 18:22:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000203s ]
+
+2017-11-02 18:22:25 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000141s ]
+
+2017-11-02 18:22:29 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000444s ]
+
+2017-11-02 18:22:29 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000219s ]
+
+2017-11-02 18:22:32 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000470s ]
+
+2017-11-02 18:22:32 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000222s ]
+
+2017-11-02 18:22:32 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000131s ]
+
+2017-11-02 18:22:38 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000463s ]
+
+2017-11-02 18:22:38 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000223s ]
+
+2017-11-02 18:23:16 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000422s ]
+
+2017-11-02 18:23:16 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000198s ]
+
+2017-11-02 18:23:17 HjSql :
+------------
+String:
+SHOW COLUMNS FROM `ims_users_group_vipprice` [ RunTime:0.000423s ]
+
+2017-11-02 18:23:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `ugid` = 1 ) AND ( `status` = 1 ) ORDER BY `orderby` asc  [ RunTime:0.000211s ]
+
+2017-11-02 18:23:17 HjSql :
+------------
+String:
+SELECT * FROM `ims_users_group_vipprice` WHERE ( `gpid` = 6 ) LIMIT 1   [ RunTime:0.000134s ]
+
