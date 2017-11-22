@@ -47,6 +47,9 @@ AND :time<endtime AND :usercount<=limit_num AND status=1 ORDER BY limit_num ASC 
     } else {
         $num = intval(findNum($queueOrder['num']));
         $num++;
+        if ($num > 998) {
+            $num = 1;
+        }
         $num = $queueSetting['prefix'] . str_pad($num, 3, "0", STR_PAD_LEFT);
     }
     $queueid = $queueSetting['id'];
@@ -96,12 +99,6 @@ if ($oid > 0) {
         $this->sendQueueNotice($oid);
         $setting = $this->getSetting();
         if (!empty($setting)) {
-//            if (!empty($setting['tpluser'])) {
-//                $tousers = explode(',', $setting['tpluser']);
-//                foreach ($tousers as $key => $value) {
-//                    $this->sendAdminQueueNotice($oid, $value, $setting);
-//                }
-//            }
             $accounts = pdo_fetchall("SELECT * FROM " . tablename($this->table_account) . " WHERE weid = :weid AND storeid=:storeid AND status=2 AND is_notice_queue=1 ORDER BY id DESC ", array(':weid' => $this->_weid, ':storeid' => $storeid));
             foreach ($accounts as $key => $value) {
                 if (!empty($value['from_user'])) {

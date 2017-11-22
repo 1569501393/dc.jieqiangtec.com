@@ -26,7 +26,9 @@ $order = $this->getOrderById($id);
 if (empty($order)) {
     message('订单不存在');
 }
-
+//if ($order['status'] != 1) {
+//    message('该订单商家还未确认，不能配送!');
+//}
 $user = $this->getFansByOpenid($from_user);
 $op = $_GPC['op'];
 if ($op == 'acceptorder') {

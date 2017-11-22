@@ -543,7 +543,7 @@
                 {if $item['is_reservation']==1}
                 <div class="operation-nav-item ng-scope {if $item['is_reservation']!=1}inavailable{/if}">
                     <a href="{if $item['is_reservation']!=1}#{else}{php echo $this->createMobileUrl('reservationIndex', array('storeid' => $item['id'], 'mode' => 3), true)}{/if}">
-                        <div class="icon2 red ng-scope"><i class="icon icon-yuding-img" src="../image/icon_Reserve.png"></i></div>
+                        <div class="icon2 red ng-scope"><i class="icon icon-yuding"></i></div>
                         <div class="text ng-binding">{$item['btn_reservation']}</div>
                     </a>
                 </div>

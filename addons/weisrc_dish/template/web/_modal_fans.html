@@ -27,6 +27,7 @@
         $(':text[name="nickname"]').val(data.nickname);
         $(':hidden[name="from_user"]').val(data.from_user);
         $(':hidden[name="agentid"]').val(data.id);
+        $('#modal-module-menus').modal('hide');
         $('.cover img').attr('src', data.headimgurl);
     }
 </script>

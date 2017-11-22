@@ -303,14 +303,14 @@
                 <div class="form-group" id="print_label">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">设置可打印的标签</label>
                     <div class="col-sm-9">
-                        <select class="form-control" style="margin-right:15px;" name="print_label[]" autocomplete="off" multiple="true" size="10">
+                        <select class="form-control" style="margin-right:15px;height: 100% !important;" name="print_label[]" autocomplete="off" multiple="true" size="10">
                             <option value="0" {if count($print_label)==0}selected="selected"{/if}>全部标签</option>
                             {loop $lables $row}
 <option value="{$row['id']}" {if count($print_label)>0 && in_array($row['id'],$print_label)}
                             selected="selected"{/if}>{$row['title']}</option>
                             {/loop}
                         </select>
-                        <span class="help-block">当您设置了标签后，该打印机就只关心来自标签的订单。</span>
+                        <span class="help-block" style="color:#f00">可以按住ctrl键选择多个标签，当您设置了标签后，该打印机就只关心来自标签的订单。</span>
                     </div>
                 </div>
                 <div class="form-group">

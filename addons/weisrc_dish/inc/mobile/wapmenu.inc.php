@@ -57,19 +57,6 @@ if ($store['is_rest'] != 1) {
 
 $iscard = $this->get_sys_card($from_user);
 
-$over_radius = 0;
-if ($mode == 2) {
-    //距离
-    $delivery_radius = floatval($store['delivery_radius']);
-    $distance = $this->getDistance($user['lat'], $user['lng'], $store['lat'], $store['lng']);
-    $distance = floatval($distance);
-    if ($store['not_in_delivery_radius'] == 0) { //只能在距离范围内
-        if ($distance > $delivery_radius) {
-            $over_radius = 1;
-        }
-    }
-}
-
 $mealtimes = pdo_fetchall("SELECT * FROM " . tablename($this->table_mealtime) . " WHERE weid=:weid AND storeid=:storeid ORDER BY id ASC", array(':weid' => $weid, ':storeid' => $storeid));
 
 $dispatchareas = pdo_fetchall("SELECT * FROM " . tablename($this->table_dispatcharea) . " WHERE weid=:weid AND storeid=:storeid ORDER BY id ASC", array(':weid' => $weid, ':storeid' => $storeid));
@@ -133,7 +120,9 @@ if ($issms == 1 && empty($checkcode)) {
 
 $setting = $this->getSetting();
 
-$cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " a LEFT JOIN " . tablename('weisrc_dish_goods') . " b ON a.goodsid=b.id WHERE a.weid=:weid AND a.from_user=:from_user AND a.storeid=:storeid", array(':weid' => $weid, ':from_user' => $from_user, ':storeid' => $storeid));
+$cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " a LEFT JOIN " . tablename('weisrc_dish_goods') . " b ON a.goodsid=b.id WHERE
+ a.weid=:weid AND a.from_user=:from_user AND a.storeid=:storeid AND total<>0", array(':weid' => $weid, ':from_user' =>
+    $from_user, ':storeid' => $storeid));
 
 $packvalue = 0;
 foreach ($cart as $key => $value) {
@@ -224,11 +213,34 @@ if ($isnewuser == 1) { //新用户
 
 $is_auto_address = intval($setting['is_auto_address']);
 
+$over_radius = 0;
+$delivery_radius = floatval($store['delivery_radius']);
+if ($mode == 2) {
+    //距离
+    $distance = $this->getDistance($user['lat'], $user['lng'], $store['lat'], $store['lng']);
+    $distance = floatval($distance);
+    if ($store['not_in_delivery_radius'] == 0) { //只能在距离范围内
+        if ($distance > $delivery_radius) {
+            $over_radius = 1;
+        }
+    }
+}
+
 $dispatchprice = 0;
-if ($store['is_delivery_distance'] == 1 && $is_auto_address == 0 && $useraddress) { //按距离收费
-    $distance = $this->getDistance($useraddress['lat'], $useraddress['lng'], $store['lat'], $store['lng'], 2);
+if ($is_auto_address == 0 && $useraddress) { //多收餐地址 算距离
+    $distance = $this->getDistance($useraddress['lat'], $useraddress['lng'], $store['lat'], $store['lng']);
+    $distance = floatval($distance);
+}
+
+if ($store['is_delivery_distance'] == 1) { //按距离收费
     $distanceprice = $this->getdistanceprice($storeid, $distance);
     $dispatchprice = floatval($distanceprice['dispatchprice']);
+
+    if ($store['not_in_delivery_radius'] == 0) { //只能在距离范围内
+        if ($distance > $delivery_radius) {
+            $over_radius = 1;
+        }
+    }
 } else {
     //配送费
     $dispatchprice = floatval($store['dispatchprice']);

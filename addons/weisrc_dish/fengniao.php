@@ -6,10 +6,14 @@ class fengniao
     public  $APP_ID = '';
     public  $SECRET_KEY = '';
 
-    function __construct($appid, $key)
+    function __construct($appid, $key, $mode = 1)
     {
-//        $this->API_URL = 'https://exam-anubis.ele.me/anubis-webapi';
-        $this->API_URL = 'https://open-anubis.ele.me/anubis-webapi';
+        if ($mode == 1) {
+            $this->API_URL = 'https://open-anubis.ele.me/anubis-webapi';
+        } else {
+            $this->API_URL = 'https://exam-anubis.ele.me/anubis-webapi';
+        }
+
         $this->APP_ID = $appid;
         $this->SECRET_KEY = $key;
     }
@@ -43,10 +47,46 @@ class fengniao
         return $this->doPost($url, $requestJson);
     }
 
+    //订单投诉
+    public function complaintQrder($data)
+    {
+        $url = $this->API_URL . "/v2/order/complaint";
+        $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $salt = mt_rand(1000, 9999);
+        $urlencodeData = urlencode($dataJson);
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //生成签名
+        $requestJson = json_encode(array(
+            'app_id' => $this->APP_ID,
+            'salt' => $salt,
+            'data' => $urlencodeData,
+            'signature' => $sig
+        ));
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //发送请求
+    }
+
     public function queryQrder($partner_order_code)
     {
-
         $url = $this->API_URL . "/v2/order/query";
+        $data = array("partner_order_code" => $partner_order_code);
+        $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $salt = mt_rand(1000, 9999);
+        $urlencodeData = urlencode($dataJson);
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //生成签名
+
+        $requestJson = json_encode(array(
+            'app_id' => $this->APP_ID,
+            'salt' => $salt,
+            'data' => $urlencodeData,
+            'signature' => $sig
+        ));
+
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //发送请求
+    }
+
+    //订单骑手位置
+    public function getcarrier($partner_order_code)
+    {
+        $url = $this->API_URL . "/v2/order/carrier";
         $data = array("partner_order_code" => $partner_order_code);
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);

@@ -10,12 +10,14 @@ $agentid = intval($_GPC['agentid']);
 $agentid2 = 0;
 $agentid3 = 0;
 
+//echo '调试中';
+//print_r($_W['fans']);
+//exit;
+
 $method = 'UserCenter'; //method
 $host = $this->getOAuthHost();
 $authurl = $host . 'app/' . $this->createMobileUrl($method, array('agentid' => $agentid), true) . '&authkey=1';
 $url = $host . 'app/' . $this->createMobileUrl($method, array('agentid' => $agentid), true);
-
-//hjay
 if (isset($_COOKIE[$this->_auth2_openid])) {
     $from_user = $_COOKIE[$this->_auth2_openid];
     $nickname = $_COOKIE[$this->_auth2_nickname];
@@ -112,8 +114,8 @@ if (!empty($fans)) {
 }
 
 $is_savewine = 0;
-$is_savewine_store = pdo_fetch("select * from " . tablename($this->table_stores) . " WHERE weid =:weid AND is_savewine=1 LIMIT 1", array(':weid' => $weid));
-if (!empty($is_savewine_store)) {
+$is_savewine_store = pdo_fetch("select * from " . tablename($this->table_stores) . " WHERE weid =:weid AND is_savewine=1 AND deleted=0 LIMIT 1", array(':weid' => $weid));
+if ($is_savewine_store) {
     $is_savewine = 1;
 }
 
@@ -155,8 +157,29 @@ $share_url = $host . 'app/' . $this->createMobileUrl('usercenter', array('agenti
 
 $is_commission = 0;
 $commission_tip = "";
+$agent_url = $host . 'app/' . $this->createMobileUrl('usercenter', array('agentid' => $fans['id']), true);
+$qrcode_url = $this->createMobileUrl('GetQrcode',array('url'=>$agent_url)); //
+
+$auto_commission_coin = intval($setting['auto_commission_coin']);
+if ($setting['is_auto_commission']==1 && $auto_commission_coin > 0) { //自动成为分销商
+    if ($coin >= $auto_commission_coin) { //条件达到
+        pdo_update($this->table_fans, array('is_commission' => 2), array('id' => $fans['id']));
+        $fans = $this->getFansByOpenid($from_user);
+    }
+}
+
 if ($setting['is_commission']==1) { //开启分销
     if ($setting['commission_mode'] == 2) { //代理商模式
+        $scene_str = 'fxdish_' . $fans['id'];
+        if ($this->_accountlevel == 4) {
+            if (!empty($setting['commission_keywords'])) {
+                $qrcode = $this->createQrcode($setting['commission_keywords'], $scene_str);
+                if ($qrcode) {
+                    $qrcode_url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . urlencode($qrcode['ticket']);
+                    pdo_update($this->table_fans, array('scene_str' => $scene_str), array('id' => $fans['id']));
+                }
+            }
+        }
         if ($fans['is_commission']==2) { //代理商
             $commission_tip = "[代理商]";
             $is_commission = 1;
@@ -170,8 +193,6 @@ if ($setting['is_commission']==1) { //开启分销
         $is_commission = 1;
     }
 }
-
-$agent_url = $host . 'app/' . $this->createMobileUrl('usercenter', array('agentid' => $fans['id']), true);
 
 $ispop = 0;
 if ($setting['tiptype'] == 1) { //关注后隐藏

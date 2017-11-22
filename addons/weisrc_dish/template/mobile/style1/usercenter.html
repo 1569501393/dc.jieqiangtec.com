@@ -136,7 +136,7 @@
 <div class="link-KF2">
     <div class="con-ma">
         <p style="padding-bottom: 0px;margin-bottom: 0px;">长按保存您的推广二维码</p>
-        <img src="{php echo $this->createMobileUrl('GetQrcode',array('url'=>$agent_url))}"/>
+        <img src="{php echo $qrcode_url}"/>
     </div>
 </div>
 <div class="grayshare" style="display: none;">
@@ -206,6 +206,9 @@
             </a>
             <a href="{if !empty($setting['link_card'])}{$setting['link_card']}{else}{if IMS_VERSION == '0.8'}index.php?i={$weid}&c=mc&a=card&do=mycard{else}index.php?i={$weid}&c=mc&a=bond&do=card{/if}{/if}" class="arrow-right">
                 <i class="fa fa-credit-card label-orange"></i> {if !empty($setting['link_card_name'])}{$setting['link_card_name']}{else}会员卡{/if}
+            </a>
+            <a href="{php echo $this->createMobileUrl('useraddress', array(), true)}" class="arrow-right">
+                <i class="fa fa-map-marker label-orange"></i> 收货地址
             </a>
             {if $is_savewine==1}
             <a href="{php echo $this->createMobileUrl('savewinelist', array(), true)}" class="arrow-right">
@@ -282,7 +285,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
 <input type="hidden" name="lat" id="lat" value="{$fans['lat']}">
 <input type="hidden" name="lng" id="lng" value="{$fans['lng']}">
 <script type="text/javascript">

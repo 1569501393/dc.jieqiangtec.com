@@ -27,7 +27,7 @@ color:#333;
 	height: 44px;
 	font-size: 14px;
 	color: #fff;
-	background-color: #d93728;
+	background-color: #3190e8;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -41,7 +41,7 @@ color:#333;
 	-webkit-box-align: center; 
 	-webkit-align-items: center;
 	align-items: center;
-	border-bottom: 1px solid #d93728;
+	border-bottom: 1px solid #3190e8;
 }
 
 .i-user{

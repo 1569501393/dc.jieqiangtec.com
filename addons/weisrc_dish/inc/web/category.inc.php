@@ -96,7 +96,7 @@ if ($operation == 'display') {
 } elseif ($operation == 'deleteall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $category = pdo_fetch("SELECT * FROM " . tablename($this->table_category) . " WHERE id = :id", array(':id' => $id));

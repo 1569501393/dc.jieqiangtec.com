@@ -15,6 +15,7 @@ if ($id == 0) { //未选队列
     if (empty($order)) {
         $this->showMsg('订单不存在！');
     }
+    $store = $this->getStoreById($order['storeid']);
 
     $coin = floatval($order['totalprice']);
     if ($order['paytype'] == 1 && $order['status'] != -1) {
@@ -33,6 +34,8 @@ if ($id == 0) { //未选队列
     $this->feieSendFreeMessage($id);
     $this->_yilianyunSendFreeMessage($id);
     $setting = pdo_fetch("select * from " . tablename($this->table_setting) . " where weid =:weid LIMIT 1", array(':weid' => $weid));
+//    file_put_contents(IA_ROOT . "/addons/weisrc_dish/canclefengniao.log", '1' . PHP_EOL, FILE_APPEND);
+    $this->cancelfengniao($order, $store, $setting);
     if (!empty($setting)) {
         //平台提醒
         if ($setting['is_notice'] == 1) {

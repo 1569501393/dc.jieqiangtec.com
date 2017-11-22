@@ -85,18 +85,4 @@ foreach ($order_list as $key => $value) {
     }
 }
 
-
-include 'adlist.php';
-//hjay
-// $ob = Hj\M("ims_weisrc_dish_ad");
-// $adlist = $ob->where(
-//     array(
-//         'position'=>'2',
-//         'starttime'=>array('ELT',time()),
-//         'endtime'=>array('EGT',time()),
-//         'status'=>'1'
-//     ))->order(array('displayorder'=>'asc'))->select();
-    
-    
-    
 include $this->template($this->cur_tpl . '/order');

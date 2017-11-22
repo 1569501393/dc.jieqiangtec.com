@@ -15,7 +15,7 @@ body{
 	height: 44px;
 	font-size: 14px;
 	color: #fff;
-	background-color: #d93728;
+	background-color: #3190e8;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -65,7 +65,7 @@ body{
     font-size: 14px;
 }
 .filter-nav span.curt{
-	color:#d93728;
+	color:#3190e8;
 	}
 .filter-nav:after {
     content: "";
@@ -337,7 +337,7 @@ body{
 	/*vertical-align: middle;*/
 /*}*/
 .filter-scroller dd.selected{
-    border-color: #d93728;
+    border-color: #3190e8;
     background-color: #fff;
 }
 .filter-scroller dd.selected font{
@@ -391,8 +391,8 @@ body{
 }
 .filter-btn a:last-child {
     color: #fff;
-    background-color: #d93728;
-    border: 1px solid #d93728;
+    background-color: #3190e8;
+    border: 1px solid #3190e8;
 }
 
 /*item-list*/
@@ -565,10 +565,10 @@ opacity:0.8;
 }
 .icon-delivery{
     padding: 0px 1px;
-    border: 1px solid #d93728;
+    border: 1px solid #3190e8;
     border-radius: 2px;
     background-color: #fff;
-    color: #d93728;
+    color: #3190e8;
     font-size: 10px;
     line-height: 12px;
 }
@@ -605,7 +605,7 @@ opacity:0.8;
     color: #999;
 }
 .time-wrap{
-    color: #d93728;
+    color: #3190e8;
 }
 .timedistance-wrap span+span:before {
     margin: 0 3px;

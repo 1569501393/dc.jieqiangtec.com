@@ -176,7 +176,21 @@
 				</form>
 			</div>
 			{/if}
-
+			{if $store['is_jxkj_unipay'] == 1}
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right mui-media" href="{$jxkj_pay_url}">
+					<img src="resource/images/wx-icon.png" alt="" class="mui-media-object mui-pull-left"/>
+					<span class="mui-media-body mui-block">
+						{if (!empty($store['jxkj_pay_name']))}
+						{$store['jxkj_pay_name']}
+						{else}
+						万融收银
+						{/if}
+						<span class="mui-block mui-text-muted mui-mt5">银行安全支付服务</span>
+					</span>
+				</a>
+			</li>
+			{/if}
 			{if $pay['baifubao']['switch']}
 			<div class="pay-btn" id="baifubao-panel">
 				<form action="{php echo url('mc/cash/baifubao');}" method="post">

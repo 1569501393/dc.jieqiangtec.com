@@ -429,7 +429,7 @@
                 <form role="form" action="" method="post">
                     <input type="hidden" name="addDish" value="1">
                     <div class="table-responsive">
-                        <table class="table table-hover text-center" id="addShow">
+                        <table class="table table-hover text-center" id="addShow"  style="min-width:100%;">
                         </table>
                     </div>
                     <div class="modal-footer">
@@ -524,7 +524,12 @@
                     <tr>
                         <td>{$row['id']}</td>
                         <td>{if !empty($category[$row['pcate']])}<span class="text-error">[{$category[$row['pcate']]['name']}] </span>{/if}
-                            <a href="{php echo $this->createWebUrl('goods', array('id' => $row['id'], 'op' => 'post', 'storeid' => $item['storeid']))}">{$row['title']}</a></td>
+                            <a href="{php echo $this->createWebUrl('goods', array('id' => $row['id'], 'op' => 'post', 'storeid' => $item['storeid']))}">{$row['title']}
+                                {if !empty($row['optionname'])}
+                                [{$row['optionname']}]
+                                {/if}
+                            </a>
+                        </td>
                         <td style="text-align:center;">
                             <img src="{php echo tomedia($row['thumb']);}" width="50" />
                         </td>

@@ -41,17 +41,49 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <select class="form-control" id="usertype" name="usertype" autocomplete="off">
+                        <option value="0">全部级别</option>
+                        <option value="1" {if $usertype==1}selected{/if}>股东[顶级]</option>
+                        <option value="2" {if $usertype==2}selected{/if}>代理商[一级]</option>
+                        <option value="3" {if $usertype==3}selected{/if}>消费者[二级]</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="datapage" name="datapage" autocomplete="off">
+                        <option value="0">导出条数</option>
+                        <option value="1" >1～100</option>
+                        <option value="2" >101～200</option>
+                        <option value="3" >201～300</option>
+                        <option value="4" >301～400</option>
+                        <option value="5" >401～500</option>
+                        <option value="6" >501～600</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <input type="text" class="form-control" placeholder="请输入" name="keyword">
                 </div>
                 <button class="btn btn-success"><i class="fa fa-search"></i> 搜索</button>
+                <button class="btn btn-success" name="out_put" value="output"><i class="fa fa-file"></i> 导出</button>
             </form>
         </div>
     </div>
     <style>
         /*width:50px;height:50px;border-radius:50%;*/
     </style>
+
     <form action="" method="post" class="form-horizontal form" >
         <div class="panel panel-default">
+            {if $agentid != 0}
+            <div class="panel-heading">
+                <div class="row-fluid">
+                    <div class="span3 control-group">
+                        推荐人数:<strong class="text-danger">{$page_total}</strong>
+                        ,总消费:<strong class="text-danger">{$page_totalprice}</strong>
+                    </div>
+                </div>
+            </div>
+            {/if}
             <div class="table-responsive panel-body">
                 <table class="table table-hover">
                     <thead class="navbar-inner">
@@ -59,13 +91,13 @@
                         <th style="width:10%;">推荐人</th>
                         <th style="width:10%;">昵称</th>
                         <th style="width:10%;">名称/手机</th>
-                        <th style="width:12%;">推广佣金/配送佣金</th>
+                        <th style="width:10%;">推广佣金/配送佣金</th>
                         <th style="width:10%;">下单数量</th>
                         <th style="width:10%;">消费金额</th>
-                        <th style="width:20%;">余额/积分</th>
+                        <th style="width:12%;">余额/积分</th>
 
                         <th style="width:8%;">状态</th>
-                        <th style="width:10%;"></th>
+                        <th style="width:20%;"></th>
                     </tr>
                     </thead>
                     <tbody id="level-list">
@@ -73,11 +105,15 @@
                     <tr>
                         <td>
                             {if $item['agentid']<>0}
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allfans', array('id' => $item['agentid'], 'op' => 'post'))}">
                             <img src="{php echo tomedia($item['agentheadimgurl']);}" style="width:30px;height:30px;padding1px;border:1px solid #ccc"/>
-                            </br>{$item['agentnickname']}</td>
-                        {else}
-                        <span class="label label-primary">平台</span>
-                        {/if}
+                            </a>
+                            </br>{$item['agentnickname']}
+
+                        </td>
+                            {else}
+                            <span class="label label-primary">平台</span>
+                            {/if}
                         </td>
                         <td style="white-space:normal;">
                             <img src="{php echo tomedia($item['headimgurl']);}" style="width:30px;height:30px;padding1px;border:1px solid #ccc"/>
@@ -123,7 +159,10 @@
                             {/if}
                         </td>
                         <td>
-                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allfans', array('id' => $item['id'], 'op' => 'post'))}"><i class="fa fa-search"></i>详情</a>
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allorder', array('op' => 'display', 'from_user' => $item['from_user']))}">订单</a>
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allfans', array('id' => $item['id'], 'op' => 'display', 'agentid' => $item['id']))}">下级</a>
+
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allfans', array('id' => $item['id'], 'op' => 'post'))}">详情</a>
                             {if $_W['isfounder'] || $_W['role'] == 'manager'}
                             {if $item['status'] == 1}
                             <a class="btn btn-default btn-sm" onclick="return confirm('您确定要禁止下单吗？');return false;" href="{php echo $this->createWebUrl('allfans', array('id' => $item['id'], 'status' => $item['status'], 'op' => 'setstatus'))}"
@@ -391,6 +430,13 @@
                     </div>
                 </div>
                 {/if}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">场景值</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="scene_str" value="{$item['scene_str']}"
+                               class="form-control" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="require">*</span>推荐人</label>
                     <div class="col-sm-9 col-xs-12">

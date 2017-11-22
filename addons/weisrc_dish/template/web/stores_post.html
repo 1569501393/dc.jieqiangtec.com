@@ -9,7 +9,7 @@
 </script>
 
 <link rel="stylesheet" href="{$_W['siteroot']}addons/weisrc_dish/public/web/css/awesome-bootstrap-checkbox.css">
-<div class="main">
+<div class="main" style="margin-top: 0px;">
     <script>
         require(['jquery', 'util'], function($, u){
             $('.account p a').each(function(){
@@ -120,6 +120,16 @@
                         <label class="col-xs-12 col-sm-3 col-md-2 control-label">收银网址</label>
                         <div class="col-sm-3 col-xs-5">
                             <span  id="tpshouyin" class="label label-success "></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body" style="width: 100%;float: none;">
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品接口</label>
+                        <div class="col-sm-3 col-xs-5">
+                            <span  class="label label-success ">
+                                {$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&sid={$reply['id']}&do=getdishlist&m=weisrc_dish
+                            </span>
                         </div>
                     </div>
                 </div>

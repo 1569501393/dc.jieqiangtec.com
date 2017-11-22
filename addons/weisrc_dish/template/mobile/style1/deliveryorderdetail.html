@@ -14,7 +14,7 @@
     <link data-turbolinks-track="true" href="{RES}/mobile/{php echo $this->cur_tpl}/assets/diandanbao/weixin.css?v=1" media="all"
           rel="stylesheet">
     <script src="{RES}/mobile/{php echo $this->cur_tpl}/assets/diandanbao/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
     <style type="text/css">@media screen {
         .smnoscreen {
             display: none
@@ -184,7 +184,7 @@
                 <div id="map" style="width: 100%; height: 220px; overflow: hidden; position: relative; z-index: 0; color: rgb(0, 0, 0); text-align: left; background-color: rgb(243, 241, 236);">
                 </div>
             </a>
-            <a class="list-item arrow-right ng-binding" href="http://api.map.baidu.com/marker?location={$order['lat']},{$order['lng']}&title={$order['address']}&content={$order['address']}&output=html&src=wzj|wzj">
+            <a class="list-item arrow-right ng-binding" href="https://api.map.baidu.com/marker?location={$order['lat']},{$order['lng']}&title={$order['address']}&content={$order['address']}&output=html&src=wzj|wzj">
                 <i class="fa fa-map-marker"></i> 点击一键导航
             </a>
         </div>
@@ -452,7 +452,9 @@
             {loop $order['goods'] $item}
             <div class="list-item ng-scope">
                 <div class="name ng-binding">
-                    {$item['title']}
+                    {$item['title']}{if !empty($item['optionname'])}
+                    [{$item['optionname']}]
+                    {/if}
                 </div>
                 <div class="quantity-info">
                     <span class="quantity ng-binding">{$item['total']}份</span>
@@ -625,7 +627,7 @@
             <div class="item ng-scope">
                 <span class="label ng-binding">地址</span>
                 <span class="value ng-binding">
-                <a href="http://api.map.baidu.com/marker?location={$order['lat']},{$order['lng']}&title={$order['address']}&content={$order['address']}&output=html&src=wzj|wzj" >{$order['address']} <span
+                <a href="https://api.map.baidu.com/marker?location={$order['lat']},{$order['lng']}&title={$order['address']}&content={$order['address']}&output=html&src=wzj|wzj" >{$order['address']} <span
                         class="mt-delivery">导航</span>
                 </span>
             </div>

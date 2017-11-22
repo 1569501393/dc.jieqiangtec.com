@@ -205,7 +205,9 @@
             {loop $order['goods'] $item}
             <div class="list-item ng-scope">
                 <div class="name ng-binding">
-                    {$item['title']}
+                    {$item['title']}{if !empty($item['optionname'])}
+                    [{$item['optionname']}]
+                    {/if}
                 </div>
                 <div class="quantity-info">
                     <span class="quantity ng-binding">{$item['total']}份</span>

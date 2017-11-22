@@ -196,10 +196,10 @@ overflow-y: auto;
     height: 36px;
     line-height: 36px;
     padding: 0px;
-	width:100%;
 }
 .menu-tabs a.selected span {
-    border-bottom: 3px solid #d93728;
+    /*border-bottom: 3px solid #3190e8;*/
+    border-bottom: 3px solid #FE4F4E;
     color: #2f2f2f;
 }
 .pref-info{
@@ -329,7 +329,7 @@ text-align:center; z-index:100000}
 .tag {
     color: #656565;
     font-size: 14px;
-    height: 61px;
+    height: 51px;
     position: relative;
     text-align: left;
     width: 100%;
@@ -344,9 +344,10 @@ text-align:center; z-index:100000}
     color: #06c1ae;
 }
 .tag.focus::before {
-    background: #d93728;
+    /*background: #3190e8;*/
+    background: #FE4F4E;
     content: "";
-    height: 61px;
+    height: 51px;
     left: 0;
     position: absolute;
     top: 0px;
@@ -354,7 +355,7 @@ text-align:center; z-index:100000}
 }
 .tag-inner {
     border-bottom: 1px dotted #bfbfbf;
-    height: 60px;
+    height: 50px;
     margin: 0 6px;
     position: relative;
 }
@@ -379,7 +380,8 @@ text-align:center; z-index:100000}
 .tag.focus .tag-text{
     /*color: #06c1ae;*/
     font-size: 15px;
-    color: #666;
+    /*color: #666;*/
+    color: #FE4F4E;
 }
 #mainwrap {
     -moz-box-flex: 1;
@@ -463,7 +465,7 @@ text-align:center; z-index:100000}
     width: 62px;
 }
 .food-cont {
-    margin-left: 72px;
+    margin-left: 82px;
 }
 .foodname {
     -moz-box-orient: vertical;
@@ -549,12 +551,13 @@ text-align:center; z-index:100000}
     margin-top: 3px;
 }
 .food-price {
-    color: #d53527;
+    /*color: #fea000;*/
+    color: #FE4F4E;
     font-size: 14px;
 }
 
 .cart {
-    background-color: #fff;
+    background-color: #3f4249;
     border-top: 1px solid #cacaca;
     bottom: 0;
     height: 50px;
@@ -606,7 +609,7 @@ text-align:center; z-index:100000}
     font-size: 20px;
     line-height: 50px;
     margin-left: 4px;
-	color: #000000;
+	color: #fff;
 }
 .cart-origin {
     color: #999;
@@ -651,7 +654,9 @@ text-align:center; z-index:100000}
     text-align: center;
 }
 .cart-btn-confirm .inner {
-    background-color: #d53527;
+    /*background-color: #4cd964;*/
+    background-color: #FE4F4E;
+    /*FE4F4E*/
     color: #fff;
 }
 .flyer-img{display: block;width: 25px;height: 25px;border-radius: 25px;position: fixed;z-index: 9999;}
@@ -714,9 +719,11 @@ text-align:center; z-index:100000}
 }
 .rest-txt {
     float: left;
+    margin-left: 12px;
 	font-size:14px;
 }
 .detail-address p, .detail-time p, .detail-service p {
+    margin-left: 96px;
     padding-right: 15px;
 	font-size:14px;
 }
@@ -734,9 +741,9 @@ text-align:center; z-index:100000}
     vertical-align: middle;
 }
 .mt-delivery-tag {
-    border: 1px solid #d53527;
+    border: 1px solid #52b3ff;
     border-radius: 4px;
-    color: #d53527;
+    color: #52b3ff;
     display: inline-block;
     font-size: 11px;
     margin: 6px 6px 0 0;
@@ -844,7 +851,7 @@ img.baitem {
     transform: rotate(45deg);
 }
 .cart-header .cart-b{
-	background:url(../image/carts.png) no-repeat scroll 0 0 / 50px auto;
+	background:url(../image/carts.png?v=3) no-repeat scroll 0 0 / 50px auto;
     display: block;
     height: 50px;
     width: 50px;
@@ -885,6 +892,17 @@ img.baitem {
     color: #999;
     font-size: 14px;
 }
+.popup-cart-close-btn {
+    display: inline;
+    float: right;
+    margin-top: 10px;
+    padding: 0 20px;
+    height: 20px;
+    border: none;
+    background-size: auto 18px;
+    color: #999;
+    font-size: 14px;
+}
 .native-scroll{
     padding: 0 12px;
     float: left;
@@ -904,6 +922,7 @@ img.baitem {
 	width:50%; height:30px; line-height:30px;
 	font-size:16px;
 	float:left;
+    overflow: hidden;
 	}
 .cart-item-price{
 	width:20%; height:30px; line-height:30px;
@@ -955,7 +974,8 @@ img.baitem {
     font-size: 14px;
     text-align: center;
 	float:right;
-	background-color: #4cd964;
+	/*background-color: #4cd964;*/
+    background-color: #FE4F4E;
     color: #fff;
 	position:absolute;
 	right:0;

@@ -20,15 +20,26 @@ if ($operation == 'display') {
     //门店列表
     $storelist = pdo_fetchall("SELECT * FROM " . tablename($this->table_stores) . " WHERE weid = :weid", array(':weid' => $weid), 'id');
 
+    $shoptype = pdo_fetchall("SELECT * FROM " . tablename($this->table_type) . " where weid = :weid ORDER BY displayorder DESC", array(':weid' => $weid));
+
     $deliverylist = pdo_fetchall("SELECT * FROM " . tablename($this->table_account) . "  WHERE weid = :weid AND role=4 AND status=2 ORDER BY id DESC LIMIT 50", array(':weid' => $this->_weid));
 
     $commoncondition = " weid = '{$_W['uniacid']}' ";
+
+    if ($_GPC['types'] != 0) {
+        $storeids = pdo_fetchall("SELECT id FROM " . tablename($this->table_stores) . " WHERE typeid = :typeid", array(':typeid' => $_GPC['types']), 'id');
+        $commoncondition .= " AND storeid IN ('" . implode("','", array_keys($storeids)) . "')";
+    }
+
     if ($storeid != 0) {
         $commoncondition .= " AND storeid={$storeid} ";
     }
     $ispay = intval($_GPC['ispay']);
     if (isset($_GPC['ispay']) && $_GPC['ispay'] != '') {
         $commoncondition .= " AND ispay={$ispay} ";
+    }
+    if (!empty($_GPC['from_user'])) {
+        $commoncondition .= " AND from_user='{$_GPC['from_user']}' ";
     }
 
     if (!empty($_GPC['time'])) {
@@ -104,7 +115,7 @@ if ($operation == 'display') {
     $order_price = sprintf('%.2f', $order_price);
 
     //打印数量
-    $print_order_count = pdo_fetchall("SELECT orderid,COUNT(1) as count FROM " . tablename($this->table_print_order) . "  GROUP BY orderid,weid having weid = :weid", array(':weid' => $_W['uniacid']), 'orderid');
+//    $print_order_count = pdo_fetchall("SELECT orderid,COUNT(1) as count FROM " . tablename($this->table_print_order) . "  GROUP BY orderid,weid having weid = :weid", array(':weid' => $_W['uniacid']), 'orderid');
 
     //门店列表
     $storelist = pdo_fetchall("SELECT * FROM " . tablename($this->table_stores) . " WHERE weid = :weid", array(':weid' => $weid), 'id');
@@ -260,6 +271,8 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
         $this->addOrderLog($id, $_W['user']['username'], 2, 2, 5);
         $order = $this->getOrderById($id);
         $this->sendOrderNotice($order, $store, $setting);
+
+
         message('取消订单操作成功！', referer(), 'success');
     }
     if (!empty($_GPC['open'])) {
@@ -269,7 +282,8 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     }
 
     $item = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE id = :id", array(':id' => $id));
-    $goods = pdo_fetchall("SELECT a.goodsid,a.price, a.total,b.thumb,b.title,b.id,b.pcate,b.credit FROM " . tablename($this->table_order_goods) . " a INNER JOIN " . tablename($this->table_goods) . " b ON a.goodsid=b.id WHERE a.orderid = :id", array(':id' => $id));
+    $goods = pdo_fetchall("SELECT a.goodsid,a.price, a.total,b.thumb,b.title,b.id,b.pcate,b.credit,a.optionname FROM " . tablename($this->table_order_goods) . "
+a INNER JOIN " . tablename($this->table_goods) . " b ON a.goodsid=b.id WHERE a.orderid = :id", array(':id' => $id));
 
     $discount = pdo_fetchall("SELECT * FROM " . tablename($this->table_category) . " WHERE weid=:weid and storeid=:storeid", array(":weid" => $weid, ":storeid" => $order['storeid']));
 
@@ -281,6 +295,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
             $table_title = $tablezones['title'] . '-' . $table['title'];
         }
     }
+
     if ($item['couponid'] != 0) {
         $coupon = pdo_fetch("SELECT a.* FROM " . tablename($this->table_coupon) . "
         a INNER JOIN " . tablename($this->table_sncode) . " b ON a.id=b.couponid
@@ -423,7 +438,6 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
                         pdo_update($this->table_tables, array('status' => 0), array('id' => $order['tables']));
                     }
                     $this->set_commission($id);
-
                     $delivery_money = floatval($order['delivery_money']);//配送佣金
                     $delivery_id = intval($order['delivery_id']);//配送员
                     if ($delivery_money > 0) {
@@ -475,17 +489,27 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     if (empty($order)) {
         message('订单不存在！', '', 'error');
     }
-  //  if (!$this->exists()) {
-   //     message('退款失败!!！', $url, 'error');
-    //}
+    if (!$this->exists()) {
+        message('退款失败!!！', $url, 'error');
+    }
+
     $this->addOrderLog($id, $_W['user']['username'], 2, 2, 6);
+
     if ($order['ispay'] == 1 || $order['ispay'] == 2 || $order['ispay'] == 4) { //已支付和待退款的可以退款
         if ($order['paytype'] == 2) { //微信支付
-            $result = $this->refund($id);
+            $store = $this->getStoreById($order['storeid']);
+            if ($store['is_jxkj_unipay'] == 1) { //万融收银
+                $result = $this->refund4($id, $storeid);
+            } else if ($store['is_jueqi_ymf'] == 1) { //崛起支付
+                $result = $this->refund3($id, $order['storeid']);
+            } else {
+                $result = $this->refund2($id);
+            }
+
             if ($result == 1) {
                 message('退款成功！', $url, 'success');
             } else {
-                message('退款失败！AAA'.$result, $url, 'error');
+                message('退款失败！', $url, 'error');
             }
         } else if ($order['paytype'] == 1) {
             $coin = floatval($order['totalprice']);

@@ -10,7 +10,7 @@
 			订单编号<span class="mui-pull-right mui-text-muted">{$params['ordersn']}</span>
 		</li>
 		<li class="mui-table-view-cell">
-			商家名称<span class="mui-pull-right mui-text-muted">{$_W['account']['name']}</span>
+			商家名称<span class="mui-pull-right mui-text-muted">{$store['title']}</span>
 		</li>
 		{if !empty($mine)}
 		<li class="mui-table-view-cell">
@@ -128,6 +128,21 @@
 				<img src="resource/images/wx-icon.png" alt="" class="mui-media-object mui-pull-left"/>
 				<span class="mui-media-body mui-block">
 					微信支付(银行版)
+					<span class="mui-block mui-text-muted mui-mt5">银行安全支付服务</span>
+				</span>
+			</a>
+		</li>
+		{/if}
+		{if $store['is_jxkj_unipay'] == 1}
+		<li class="mui-table-view-cell">
+			<a class="mui-navigate-right mui-media" href="{$jxkj_pay_url}">
+				<img src="resource/images/wx-icon.png" alt="" class="mui-media-object mui-pull-left"/>
+				<span class="mui-media-body mui-block">
+					{if (!empty($store['jxkj_pay_name']))}
+					{$store['jxkj_pay_name']}
+					{else}
+					万融收银
+					{/if}
 					<span class="mui-block mui-text-muted mui-mt5">银行安全支付服务</span>
 				</span>
 			</a>
@@ -401,8 +416,14 @@
 		$('.js-wechat-pay a').addClass('js-pay');
 		$('#wetitle').html('微信支付');
 	});
+	var is_submit = 0;
 	$(document).on('click', '.js-pay', function() {
-		$(this).find('form').submit();
+		if (is_submit == 0) {
+			is_submit = 1;
+			$(this).find('form').submit();
+		} else {
+			return false;
+		}
 	})
 </script>
 

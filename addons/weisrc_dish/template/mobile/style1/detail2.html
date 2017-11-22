@@ -188,7 +188,7 @@
 {php include $this->template($this->cur_tpl.'/_nave');}
 <div class="fakeloader"></div>
 <div id="wrap1">
-    <div id="header" style="background-color: #d93728;">
+    <div id="header" style="background-color: #3190e8;">
         <!--<div id="header" style="background: rgba(0, 0, 0, 0) linear-gradient(to right, #6a3f34 0px, #a57664 50%, #9995a3 100%) repeat scroll 0 0;">-->
         <div class="back" onclick="jumpurl();">
             <i class="i-back"></i>
@@ -201,7 +201,7 @@
             <!--<i class="i-share"></i>-->
          <!--</div>-->
     </div>
-    <div class="shop" style="background-color: #d93728;">
+    <div class="shop" style="background-color: #3190e8;">
         <!--<div class="shop" style="background: rgba(0, 0, 0, 0) linear-gradient(to right, #6a3f34 0px, #a57664 50%, #9995a3 100%) repeat scroll 0 0;">-->
     	<div class="shopheader-main">
             <img class="shopheader-logo" src="{php echo tomedia($item['logo']);}">
@@ -502,7 +502,7 @@
                 {if $item['is_reservation']==1}
                 <div class="operation-nav-item ng-scope {if $item['is_reservation']!=1}inavailable{/if}">
                     <a href="{if $item['is_reservation']!=1}#{else}{php echo $this->createMobileUrl('reservationIndex', array('storeid' => $item['id'], 'mode' => 3), true)}{/if}">
-                        <div class="icon2 red ng-scope"><i class="icon icon-yuding-img" src="../image/icon_Reserve.png"></i></div>
+                        <div class="icon2 red ng-scope"><i class="icon icon-yuding"></i></div>
                         <div class="text ng-binding">{$item['btn_reservation']}</div>
                     </a>
                 </div>
@@ -601,7 +601,7 @@
             <div class="detail-address">
                 <i class="rest-ico"></i>
                 <span class="rest-txt">商家地址：</span>
-                <p>{$item['address']} <a href="http://api.map.baidu.com/marker?location={$item['lat']},{$item['lng']}&title={$item['title']}&content={$item['address']}&output=html&src=wzj|wzj" ><span
+                <p>{$item['address']} <a href="https://api.map.baidu.com/marker?location={$item['lat']},{$item['lng']}&title={$item['title']}&content={$item['address']}&output=html&src=wzj|wzj" ><span
                         class="mt-delivery">导航</span></a>
                 </p>
             </div>

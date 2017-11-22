@@ -37,7 +37,7 @@ if ($sortid == 1) {
 
 if (!empty($list)) {
     foreach ($list as $key => $value) {
-        $good_count = pdo_fetchcolumn("SELECT sum(sales) FROM " . tablename($this->table_goods) . " WHERE storeid=:id ", array(':id' => $value['id']));
+//        $good_count = pdo_fetchcolumn("SELECT sum(sales) FROM " . tablename($this->table_goods) . " WHERE storeid=:id ", array(':id' => $value['id']));
         $list[$key]['sales'] = intval($good_count);
         $newlimitprice = '';
         $oldlimitprice = '';

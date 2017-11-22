@@ -1,6 +1,6 @@
 <audio id="music" >
-    <source src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=您有未处理的订单，请尽快处理" type="audio/mpeg">
-    <embed height="0" width="0" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=您有未处理的订单，请尽快处理">
+    <source src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=您有未处理的订单，请尽快处理" type="audio/mpeg">
+    <embed height="0" width="0" src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=您有未处理的订单，请尽快处理">
 </audio>
 <script>
     var audioEl = $("#music")[0];
@@ -9,12 +9,12 @@
             $.post("{php echo $this->createWebUrl('checkorder', array('storeid' => $storeid));}", function(data){
                 if(data == 'success') {
                     var tip = '您有未处理的订单，请尽快处理';
-                    audioEl.src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + tip;
+                    audioEl.src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + tip;
                     audioEl.load();
                     audioEl.play();
                 } else {
                     if (data != '') {
-                        audioEl.src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + data;
+                        audioEl.src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + data;
                         audioEl.load();
                         audioEl.play();
                     }

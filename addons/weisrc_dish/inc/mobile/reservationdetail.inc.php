@@ -34,8 +34,10 @@ tablezonesid=:tablezonesid ORDER BY id DESC", array(':storeid' => $storeid, ':ta
     }
 
     if ($tables) {
+//        $order = pdo_fetchall("SELECT * FROM " . tablename($this->table_order) . " WHERE weid = :weid AND storeid=:storeid AND tables IN ('" . implode("','", array_keys($tables)) . "') AND
+//meal_time=:meal_time AND dining_mode=3  AND status<>-1 AND paytype<>0", array(':weid' => $this->_weid, ':storeid' => $storeid, ':meal_time' => $reservation_time));
         $order = pdo_fetchall("SELECT * FROM " . tablename($this->table_order) . " WHERE weid = :weid AND storeid=:storeid AND tables IN ('" . implode("','", array_keys($tables)) . "') AND
-meal_time=:meal_time AND dining_mode=3  AND status<>-1 AND paytype<>0", array(':weid' => $this->_weid, ':storeid' => $storeid, ':meal_time' => $reservation_time));
+meal_time=:meal_time AND dining_mode=3  AND status<>-1", array(':weid' => $this->_weid, ':storeid' => $storeid, ':meal_time' => $reservation_time));
         foreach ($tables as $key => $value) {
             $tables[$key]['title'] = $value['title'] . '(' . $value['user_count'] . '人桌)';
             foreach($order as $okey => $ovalue) {

@@ -96,6 +96,13 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-xs-12 col-sm-3 col-md-2 control-label">列表默认提示信息</label>
+        <div class="col-sm-9">
+            <input type="text" name="listinfo" value="{$reply['listinfo']}" id="listinfo" class="form-control" />
+            <div class="help-block">在商品列表页显示</div>
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-xs-12 col-sm-3 col-md-2 control-label">预定公告</label>
         <div class="col-sm-9">
             <input type="text" name="reservation_announce" value="{$reply['reservation_announce']}" id="reservation_announce" class="form-control" />
@@ -187,11 +194,10 @@
         </div>
         <div class="col-sm-3">
             <div class="input-group clockpicker">
-                <input type="text" class="form-control" value="{$reply['endtime1']}"
-                       name="endtime1">
-                                <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-time"></span>
-                                </span>
+                <input type="text" class="form-control" value="{$reply['endtime1']}" name="endtime1">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
             </div>
         </div>
     </div>
@@ -199,11 +205,10 @@
         <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
         <div class="col-sm-3">
             <div class="input-group clockpicker">
-                <input type="text" class="form-control" value="{$reply['begintime2']}"
-                       name="begintime2">
-                                <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-time"></span>
-                                </span>
+                <input type="text" class="form-control" value="{$reply['begintime2']}" name="begintime2">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
             </div>
         </div>
         <div class="col-sm-3">

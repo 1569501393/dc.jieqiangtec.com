@@ -31,7 +31,6 @@ pdo_query("UPDATE " . tablename($this->table_goods) . " SET today_counts=0,lastt
 $operation = !empty($_GPC['op']) ? $_GPC['op'] : 'display';
 if ($operation == 'post') {
     load()->func('tpl');
-
     $id = intval($_GPC['id']);
     if (!empty($id)) {
         $item = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id = :id", array(':id' => $id));
@@ -42,11 +41,28 @@ if ($operation == 'post') {
                 $item['thumbArr'] = explode('|', $item['thumb_url']);
             }
             if (!empty($item['week'])) {
-
                 $weeks = explode(',', $item['week']);
             }
         }
     }
+    if (empty($item)) {
+        $item = array(
+            'isshow_sales' => 1,
+            'status' => 1,
+            'week' => '0,1,2,3,4,5,6',
+            'istime' => 0,
+            'begintime' => "00:00",
+            'endtime' => "23:59"
+        );
+        $weeks = explode(',', $item['week']);
+        $starttime = date('Y-m-d H:i');
+        $endtime = date('Y-m-d H:i', TIMESTAMP + 86400 * 30);
+    } else {
+        $starttime = date('Y-m-d H:i', $item['startdate']);
+        $endtime = date('Y-m-d H:i', $item['enddate']);
+    }
+
+    $optionlist = pdo_fetchall("SELECT * FROM " . tablename('weisrc_dish_goods_option') . " WHERE goodsid=:goodsid order by id", array(':goodsid' => $id));
     if (checksubmit('submit')) {
         $data = array(
             'weid' => intval($weid),
@@ -62,10 +78,16 @@ if ($operation == 'post') {
             'description' => trim($_GPC['description']),
             'content' => trim($_GPC['content']),
             'taste' => trim($_GPC['taste']),
+            'istime' => intval($_GPC['istime']),
+            'begintime' => trim($_GPC['begintime']),
+            'endtime' => trim($_GPC['endtime']),
+            'startdate' => strtotime($_GPC['datelimit']['start']),
+            'enddate' => strtotime($_GPC['datelimit']['end']),
             'counts' => intval($_GPC['counts']),
             'today_counts' => intval($_GPC['today_counts']),
             'sales' => intval($_GPC['sales']),
             'isspecial' => empty($_GPC['marketprice']) ? 1 : 2,
+            'isoptions' => intval($_GPC['isoptions']),
             'marketprice' => floatval($_GPC['marketprice']),
             'commission_money1' => floatval($_GPC['commission_money1']),
             'commission_money2' => floatval($_GPC['commission_money2']),
@@ -76,6 +98,7 @@ if ($operation == 'post') {
             'subcount' => intval($_GPC['subcount']),
             'status' => intval($_GPC['status']),
             'recommend' => intval($_GPC['recommend']),
+            'isshow_sales' => intval($_GPC['isshow_sales']),
             'displayorder' => intval($_GPC['displayorder']),
             'dateline' => TIMESTAMP,
         );
@@ -101,10 +124,41 @@ if ($operation == 'post') {
         }
         if (empty($id)) {
             pdo_insert($this->table_goods, $data);
+            $id = pdo_insertid();
         } else {
             unset($data['dateline']);
             pdo_update($this->table_goods, $data, array('id' => $id));
         }
+
+        //增加
+        if (is_array($_GPC['optiontitle'])) {
+            foreach ($_GPC['optiontitle'] as $nid => $val) {
+                $optiontitle = trim($_GPC['optiontitle'][$nid]);
+                $optionprice = floatval($_GPC['optionprice'][$nid]);
+                $optionstart = trim($_GPC['optionstart'][$nid]);
+                $optiondisplayorder = intval($_GPC['optiondisplayorder'][$nid]);
+
+                if (empty($optiontitle)) {
+                    continue;
+                }
+
+                $data = array(
+                    'goodsid' => $id,
+                    'start' => $optionstart,
+                    'title' => $optiontitle,
+                    'price' => $optionprice,
+                    'displayorder' => $optiondisplayorder
+                );
+                pdo_insert('weisrc_dish_goods_option', $data);
+                $did = pdo_insertid();
+                $optionids[] = $did;
+            }
+        }
+        $optionids = implode(',', array_unique($optionids));
+        if (!empty($optionids)) {
+            pdo_query('delete from ' . tablename('weisrc_dish_goods_option') . " where goodsid = :goodsid and id not in ({$optionids})", array(':goodsid' => $id));
+        }
+
         message('商品更新成功！', $this->createWebUrl('goods', array('op' => 'display', 'storeid' => $storeid)), 'success');
     }
 } elseif ($operation == 'display') {
@@ -155,7 +209,7 @@ if ($operation == 'post') {
 } elseif ($operation == 'deleteall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id = :id", array(':id' => $id));
@@ -171,7 +225,7 @@ if ($operation == 'post') {
 } elseif ($operation == 'upall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id = :id", array(':id' => $id));
@@ -187,7 +241,7 @@ if ($operation == 'post') {
 }  elseif ($operation == 'downall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id = :id", array(':id' => $id));

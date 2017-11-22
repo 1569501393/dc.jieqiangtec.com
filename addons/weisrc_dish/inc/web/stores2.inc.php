@@ -12,6 +12,7 @@ $cur_store = $this->getStoreById($id);
 
 $code = $this->copyright;
 $config = $this->module['config']['weisrc_dish'];
+$config['is_fengniao'] = 1;
 $setting = $this->getSetting();
 
 $action = 'stores2';
@@ -85,6 +86,7 @@ if ($operation == 'setting') {
     $is_bm_payu = $this->checkModule("bm_payu");
     $is_bank_pay = $this->checkModule("bm_payms");
     $is_vtiny_bankpay = $this->checkModule("vtiny_bankpay");
+    $is_jxkj_unipay = $this->checkModule("jxkj_unipay");//87行加入
     $is_ld_wxserver = $this->checkModule("ld_wxserver");
 
     if (empty($reply)) {
@@ -119,6 +121,7 @@ if ($operation == 'setting') {
         $reply['is_add_order'] = "0";
         $reply['is_bank_pay'] = "0";
         $reply['is_vtiny_bankpay'] = "0";
+        $reply['is_jxkj_unipay'] = "0";
         $reply['is_delivery_nowtime'] = "1";
         $reply['is_jueqi_ymf'] = "0";
         $reply['is_order_tip'] = "0";
@@ -181,6 +184,9 @@ if ($operation == 'setting') {
             'is_bank_pay' => intval($_GPC['is_bank_pay']),
             'bank_pay_id' => intval($_GPC['bank_pay_id']),
             'is_vtiny_bankpay' => intval($_GPC['is_vtiny_bankpay']),
+            'jxkj_pay_id' => intval($_GPC['jxkj_pay_id']),
+            'is_jxkj_unipay' => intval($_GPC['is_jxkj_unipay']),
+            'jxkj_pay_name' => trim($_GPC['jxkj_pay_name']),
             'vtiny_bankpay_id' => intval($_GPC['vtiny_bankpay_id']),
             'vtiny_bankpay_url' => trim($_GPC['vtiny_bankpay_url']),
             'is_ld_wxserver' => intval($_GPC['is_ld_wxserver']),
@@ -205,6 +211,7 @@ if ($operation == 'setting') {
             'coupon_link1' => trim($_GPC['coupon_link1']),
             'coupon_link2' => trim($_GPC['coupon_link2']),
             'coupon_link3' => trim($_GPC['coupon_link3']),
+            'listinfo' => trim($_GPC['listinfo']),
             'is_locktables' => intval($_GPC['is_locktables']),
             'is_brand' => intval($_GPC['is_brand']),
             'wechat' => intval($_GPC['wechat']),
@@ -240,6 +247,7 @@ if ($operation == 'setting') {
             'is_jueqi_ymf' => intval($_GPC['is_jueqi_ymf']),
             'jueqi_host' => trim($_GPC['jueqi_host']),
             'jueqi_customerId' => trim($_GPC['jueqi_customerId']),
+            'jueqi_secret' => trim($_GPC['jueqi_secret']),
             'is_newlimitprice' => intval($_GPC['is_newlimitprice']),
             'is_oldlimitprice' => intval($_GPC['is_oldlimitprice']),
             'is_delivery_distance' => intval($_GPC['is_delivery_distance']),
@@ -302,7 +310,8 @@ if ($operation == 'setting') {
                     message('您只能添加' . $config['storecount'] . '家门店');
                 }
             }
-            $id = pdo_insert($this->table_stores, $data);
+            pdo_insert($this->table_stores, $data);
+            $id = pdo_insertid();
         }
         $timeids = array(0);
         if (is_array($_GPC['begintimes'])) {
@@ -357,7 +366,7 @@ if ($operation == 'setting') {
                     $begindistance = floatval($_GPC['begindistance'][$nid]);
                     $enddistance = floatval($_GPC['enddistance'][$nid]);
                     $sendingprice = floatval($_GPC['sendingprice'][$nid]);
-                    $dispatchprice = floatval($_GPC['dispatchprice'][$nid]);
+                    $dispatchprice = floatval($_GPC['dispatchprices'][$nid]);
                     $freeprice = $_GPC['freeprice'][$nid];
 
                     if (empty($enddistance)) {
@@ -387,7 +396,7 @@ if ($operation == 'setting') {
             }
         }
 
-        message('操作成功!', "referer");
+        message('操作成功!', $url);
     }
 } elseif ($operation == 'delete') {
     $id = intval($_GPC['id']);

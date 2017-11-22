@@ -174,7 +174,7 @@ if ($operation == 'post') {
 } elseif ($operation == 'finishall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -208,7 +208,7 @@ if ($operation == 'post') {
     }
     $this->_feieSend($_GPC['idArr'], 1, 1);
     $this->message("操作成功,共操作{$rowcount}条数据!", '', 0);
-} elseif ($operation == '') {
+} elseif ($operation == 'printall') {
     $rowcount = 0;
     $notrowcount = 0;
     $position_type = intval($_GPC['position_type']);

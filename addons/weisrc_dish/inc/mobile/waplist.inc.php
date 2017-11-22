@@ -159,7 +159,7 @@ $collection = pdo_fetch("SELECT * FROM " . tablename($this->table_collection) . 
 
 $isrest = 0;
 if ($mode != 3 && $mode != 5) {
-    if ($store['is_rest'] != 1) {
+    if ($store['is_rest'] == 0) {
         $isrest = 1;
     }
 }
@@ -216,6 +216,17 @@ $goodslist = array();
 foreach ($category as $key => $value) {
     $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . " WHERE weid = '{$weid}' AND  storeid={$storeid} AND status = '1'
 AND deleted=0 AND pcate=:pcate AND find_in_set(".$week.",week) ORDER BY displayorder DESC, subcount DESC, id DESC ", array(':pcate' => $value['id']));
+    foreach ($goods as $k => $v) {
+        if ($v['istime'] == 1) {
+            if ($v['begindate'] > TIMESTAMP || TIMESTAMP > $v['enddate']) {
+                unset($goods[$k]);
+            }
+            $goodsstate = $this->check_hourtime($v['beigintime'], $v['endtime']);
+            if ($goodsstate == 0) {
+                unset($goods[$k]);
+            }
+        }
+    }
     $goodslist[$value['id']]['goods'] = $goods;
 }
 
@@ -268,6 +279,11 @@ status<>3 AND status<>-1 ORDER BY id DESC LIMIT 1", array(':from_user' => $from_
     $jump_url = $this->createMobileurl('queue', array('from_user' => $from_user, 'storeid' => $storeid), true);
 }
 
+$is_not_exists = 0;
+if (!$this->getmodules()) {
+    $is_not_exists = 1;
+}
+
 //智能点餐
 $intelligents = pdo_fetchall("SELECT 1 FROM " . tablename($this->table_intelligent) . " WHERE weid=:weid AND storeid=:storeid GROUP BY name ORDER by name", array(':weid' => $weid, ':storeid' => $storeid));
 
@@ -293,6 +309,4 @@ $tipqrcode = tomedia($setting['tipqrcode']);
 $tipbtn = intval($setting['tipbtn']);
 $follow_url = $setting['follow_url'];
 
-include 'adlist.php';
-// echo $this->cur_tpl . '/list';
 include $this->template($this->cur_tpl . '/list');

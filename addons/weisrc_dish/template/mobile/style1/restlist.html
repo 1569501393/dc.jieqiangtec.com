@@ -13,11 +13,6 @@
     <link rel="stylesheet" href="{php echo $this->cur_mobile_path}/css/shop.css?v=2">
     <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/fakeLoader.css">
     <script src="{php echo $this->cur_mobile_path}/script/jquery-1.8.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/script/swiper/idangerous.swiper.css">
-    <script src="{php echo $this->cur_mobile_path}/script/swiper/idangerous.swiper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/script/swiper/idangerous.swiper.css">
-    <script src="{php echo $this->cur_mobile_path}/script/swiper/idangerous.swiper.min.js"></script>
-
     <style>
         i {
             width: 12px;
@@ -39,21 +34,6 @@
             color: #a7a2a9;
         }
 
-        .pc_home_roll { width: 100%;
-    height: 135px;
-    position: relative;
-    overflow: hidden;
-    position: fixed;
-    top: 44px;
-    z-index: 999;
-    background-color: #fff; }
-        .pc_home_roll .swiper-container { height:100%; width:100%; }
-        .pc_home_roll .swiper-container a { height: 135px; width: 100%; }
-        .pc_home_roll .swiper-container .swiper-slide  img { height: 100%; width: auto; }
-        .pc_home_roll .pagination { position:absolute; z-index:1027; left:0; bottom:0px; text-align:center; width:100%; margin:0px 0; }
-        .pc_home_roll span.swiper-pagination-switch { display:inline-block; width:8px; height:8px; border-radius:4px; margin:0 3px; cursor:pointer; margin:0 5px; background:#888; }
-        .pc_home_roll span.swiper-active-switch { background:#333; }
-
     </style>
 </head>
 <body>
@@ -61,8 +41,6 @@
 {php $url_search = $this->createMobileUrl('search', array(), true);}
 {php $url_user = $this->createMobileUrl('usercenter', array(), true);}
 <div id="wrap" style="height:100%;overflow: scroll;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-    
-    
     <div id="header">
         <div class="search" tapmode="topbar-active" onclick="javascript:window.location.href='{$url_search}'">
             <i class="i-search"></i>
@@ -72,26 +50,7 @@
             <i class="i-user"></i>
         </div>
     </div>
-    <div class="pc_home_roll">
-        <div class="swiper-container">
-            <div class="swiper-wrapper"> 
-                {loop $adlist $item1}
-                <div class="swiper-slide">
-                    <center>
-                        <a href="{$item1['url']}">
-                            <img src="{$item1['thumb']}">
-                        </a>
-                    </center>
-                </div>
-                {/loop}
-            </div>
-            <div class="swiper-wrapper"> 
-                
-            </div>
-        </div>
-        <div class="pagination"></div>
-    </div>
-    <span class="filter" style="top:180px;">
+    <span class="filter">
         <div class="filter-header">
             <a class="filter-nav" href="javascript:" data-value="0">
                 <span>{$curtype}</span><i class="i-up"></i>
@@ -153,10 +112,8 @@
             </ul>
         </section>
     </span>
-    <div id="main" style="margin-top:220px;padding-bottom: 70px;">
+    <div id="main" style="margin-top:84px;padding-bottom: 70px;">
         <div class="box item-list" id="index-data">
-
-
             {loop $restlist $item}
             {if $item['default_jump']==1}
             {php $url = $this->createMobileUrl('detail', array('id' => $item['id']), true);}
@@ -280,7 +237,7 @@
         <input type="hidden" id="isposition" name="isposition" value="{$isposition}" />
         <input type="hidden" id="cururl" name="cururl" value="{php echo $this->createMobileurl('waprestlist', array('typeid' => $typeid,'areaid' => $areaid, 'sortid' => $sortid), true)}" />
         {if $isposition==0}
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5PESLgvMcSbSUbPjmDKgvGZ3"></script>
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=5PESLgvMcSbSUbPjmDKgvGZ3"></script>
         <script type="text/javascript" src="../addons/weisrc_dish/template/js/postion.js?v=3"></script>
         {/if}
         <script>
@@ -347,22 +304,8 @@
                     $('.popup-overlay').addClass('modal-overlay-visible')
                 }
             });
-
-            new Swiper('.swiper-container',{
-                loop:true,
-                grabCursor: true,
-                speed: 500,
-                autoplay : 3000,
-                pagination: '.pagination',
-                autoplayDisableOnInteraction: false,
-                paginationClickable: true, 
-                preventClicks : false,
-                preventLinksPropagation : false
-            });
-
         });
     </script>
-
 </div>
 {php echo register_jssdk(false);}
 <script>

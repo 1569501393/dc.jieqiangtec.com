@@ -177,16 +177,5 @@ if ($item['wechat'] == 1 || $item['alipay'] == 1) {
     $is_online_pay = 1;
 }
 
-//hjay
-include 'adlist.php';
-// $ob = Hj\M("ims_weisrc_dish_ad");
-// $adlist = $ob->where(
-//     array(
-//         'position'=>'2',
-//         'starttime'=>array('ELT',time()),
-//         'endtime'=>array('EGT',time()),
-//         'status'=>'1'
-//     ))->order(array('displayorder'=>'asc'))->select();
-
 
 include $this->template($this->cur_tpl . '/detail');

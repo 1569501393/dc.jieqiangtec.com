@@ -31,34 +31,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品限星期购买</label>
-                    <div class="col-sm-9">
-                        <div style="border:1px #eee dashed; padding:10px;background:#F5F5F5;">
-                            <label for="week1" class="checkbox-inline">
-                                <input id="week1" type="checkbox" name="week[]" value="1" {if empty($item) || in_array(1, $weeks)}checked{/if}> 星期一
-                            </label>
-                            <label for="week2" class="checkbox-inline">
-                                <input id="week2" type="checkbox" name="week[]" value="2" {if empty($item) || in_array(2, $weeks)}checked{/if}> 星期二
-                            </label>
-                            <label for="week3" class="checkbox-inline">
-                                <input id="week3" type="checkbox" name="week[]" value="3" {if empty($item) || in_array(3, $weeks)}checked{/if}> 星期三
-                            </label>
-                            <label for="week4" class="checkbox-inline">
-                                <input id="week4" type="checkbox" name="week[]" value="4" {if empty($item) || in_array(4, $weeks)}checked{/if}> 星期四
-                            </label>
-                            <label for="week5" class="checkbox-inline">
-                                <input id="week5" type="checkbox" name="week[]" value="5" {if empty($item) || in_array(5, $weeks)}checked{/if}> 星期五
-                            </label>
-                            <label for="week6" class="checkbox-inline">
-                                <input id="week6" type="checkbox" name="week[]" value="6" {if empty($item) || in_array(6, $weeks)}checked{/if}> 星期六
-                            </label>
-                            <label for="week7" class="checkbox-inline">
-                                <input id="week7" type="checkbox" name="week[]" value="0" {if empty($item) || in_array(0, $weeks)}checked{/if}> 星期日
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">打印标签</label>
                     <div class="col-sm-9">
                         <select class="form-control" style="margin-right:15px;" name="labelid"  autocomplete="off" class="form-control">
@@ -141,6 +113,8 @@
                         <div class="help-block"></div>
                     </div>
                 </div>
+            <!--isshow_sales-->
+
                 {if $_W['role'] != 'operator'}
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">购买积分</label>
@@ -167,12 +141,12 @@
                         <span class="help-block"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">口味</label>
-                    <div class="col-sm-9">
-                        <textarea style="height:50px;" class="form-control" name="taste" cols="70">{$item['taste']}</textarea>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-xs-12 col-sm-3 col-md-2 control-label">口味</label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<textarea style="height:50px;" class="form-control" name="taste" cols="70">{$item['taste']}</textarea>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否上架</label>
                     <div class="col-sm-9">
@@ -182,6 +156,16 @@
                         <span class="help-block"></span>
                     </div>
                 </div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否显示销量</label>
+                <div class="col-sm-9">
+                    <label for="isshow_sales1" class="radio-inline"><input type="radio" name="isshow_sales" value="1" id="isshow_sales1" {if $item['isshow_sales'] == 1}checked="true"{/if} /> 是</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="isshow_sales2" class="radio-inline"><input type="radio" name="isshow_sales" value="0" id="isshow_sales2"  {if $item['isshow_sales'] == 0}checked="true"{/if} /> 否</label>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">排序</label>
                     <div class="col-sm-9">

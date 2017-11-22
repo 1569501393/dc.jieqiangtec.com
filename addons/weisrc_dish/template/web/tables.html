@@ -2,7 +2,7 @@
 {template 'public/comhead'}
 {if $operation == 'display'}
 <link rel="stylesheet" type="text/css" href="{$_W['siteroot']}addons/weisrc_dish/template/css/main.css"/>
-<div class="main">
+<div class="main" style="margin-top: 0px;">
     <ul class="nav nav-tabs" role="tablist">
         <li>
             <a href="{php echo $this->createWebUrl('tablezones', array('op' => 'display', 'storeid' => $storeid))}">餐桌类型</a>
@@ -92,6 +92,7 @@
                             </div>
                             <div class="name overflow-ellipsis">
                                 <span><a href="{php echo $this->createWebUrl('tables', array('op' => 'detail', 'storeid' => $storeid, 'tablesid' => $item['id']))}">{$item['title']}</a></span>
+                                <br/>
                                 <form accept-charset="UTF-8" action="{php echo $this->createWebUrl('tables', array('op' => 'updatestate', 'storeid' => $storeid, 'tablesid' => $item['id']))}" data-remote="true" method="post" style="display:inline-block;">
                                     <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
                                         <input name="_method" type="hidden" value="PUT">

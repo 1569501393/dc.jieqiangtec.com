@@ -11,7 +11,8 @@
                 <label for="is_newlimitprice2"> 关闭 </label>
             </div>
             <div class="radio radio-info radio-inline">
-                <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'display'))}">点击设置活动</a>
+                <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'display'))}" style="color: #f00">
+                    点击设置活动</a>
             </div>
             <div class="help-block">
             </div>
@@ -21,7 +22,7 @@
         <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
         <div class="col-sm-9 form-control-static">
             {loop $clist1 $row1}
-            <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'post', 'id' => $row1['id']))}">({$row1['id']}).{$row1['title']}</a>
+            <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'post', 'id' => $row1['id']))}">({$row1['id']}){$row1['title']}[编辑]</a>
             <br/>
             {/loop}
         </div>
@@ -38,7 +39,8 @@
                 <label for="is_oldlimitprice2"> 关闭 </label>
             </div>
             <div class="radio radio-info radio-inline">
-                <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'display'))}">
+                <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'display'))}"
+                   style="color: #f00">
                     点击设置活动</a>
             </div>
             <div class="help-block">
@@ -49,7 +51,7 @@
         <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
         <div class="col-sm-9 form-control-static">
             {loop $clist2 $row2}
-            <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'post', 'id' => $row2['id']))}">({$row2['id']}).{$row2['title']}</a>
+            <a href="{php echo $this->createWebUrl('coupon', array('storeid' => $storeid, 'op' => 'post', 'id' => $row2['id']))}">({$row2['id']}){$row2['title']}[编辑]</a>
             <br/>
             {/loop}
         </div>

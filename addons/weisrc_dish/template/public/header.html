@@ -76,6 +76,9 @@
 	.navbar-inverse .navbar-nav>li>a{
 		color: #777;
 	}
+	.main {
+		margin-top:0px;
+	}
 </style>
 <div class="navbar navbar-inverse navbar-static-top" role="navigation" style="position:static;border-top: 4px solid #20a0ff;background-color: #fff;border-bottom: 0px solid #d9dadc;">
 	<div class="col-xs-12 col-sm-3 col-lg-2">
@@ -112,7 +115,7 @@
 			<li {if $_GPC['do']=='coupon'}class="active"{/if}><a href="{php echo $this->createWebUrl('coupon', array('op' => 'display', 'storeid' => $storeid))}"><i class="fa fa-share-alt"></i>营销</a></li>
 			<li {if $_GPC['do']=='tables'}class="active"{/if}><a href="{php echo $this->createWebUrl('tables', array('op' => 'display', 'storeid' => $storeid))}"><i class="fa fa-book"></i>餐桌</a></li>
 			<li {if $_GPC['do']=='reservation'}class="active"{/if}><a href="{php echo $this->createWebUrl('reservation', array('op' => 'display', 'storeid' => $storeid))}"><i class="fa fa-book"></i>预定</a></li>
-			<li {if $_GPC['do']=='coreuser'}class="active"{/if}><a href="{php echo $this->createWebUrl('coreuser', array('op' => 'display', 'storeid' => $storeid))}"><i class="fa fa-user"></i>员工</a></li>
+			<li {if $_GPC['do']=='cash'}class="active"{/if}><a href="{php echo $this->createWebUrl('cash', array('op' => 'display', 'storeid' => $storeid))}"><i class="fa fa-user"></i>代客</a></li>
 			{/if}
 		</ul>
 		{/if}

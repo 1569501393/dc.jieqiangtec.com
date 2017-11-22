@@ -5,6 +5,7 @@
  */
 defined('IN_IA') or exit('Access Denied');
 load()->model('module');
+load()->model('extension');
 
 $eid = intval($_GPC['eid']);
 if(!empty($eid)) {
@@ -31,10 +32,23 @@ if(!$entry['direct']) {
 	if(empty($module)) {
 		message("访问非法, 没有操作权限. (module: {$entry['module']})");
 	}
+	$version = intval(IMS_VERSION);
+
 	if($entry['entry'] == 'menu') {
-		$permission = uni_user_module_permission_check($entry['module'] . '_menu_' . $entry['do'], $entry['module']);
+
+		if ($version <= 154) {
+			$permission = uni_user_module_permission_check($entry['module'] . '_menu_' . $entry['do'], $entry['module']);
+		} else {
+			$permission = permission_check_account_user_module($entry['module'] . '_menu_' . $entry['do'], $entry['module']);
+		}
+//		$permission = permission_check_account_user_module($entry['module'] . '_menu_' . $entry['do'], $entry['module']);
 	} else {
-		$permission = uni_user_module_permission_check($entry['module'] . '_rule', $entry['module']);
+		if ($version <= 154) {
+			$permission = uni_user_module_permission_check($entry['module'] . '_rule', $entry['module']);
+		} else {
+			$permission = permission_check_account_user_module($entry['module'] . '_rule', $entry['module']);
+		}
+//		$permission = permission_check_account_user_module($entry['module'] . '_rule', $entry['module']);
 	}
 	if(!$permission) {
 		message('您没有权限进行该操作');

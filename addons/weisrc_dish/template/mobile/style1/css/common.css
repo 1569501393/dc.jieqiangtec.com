@@ -8,7 +8,7 @@ body{
 	width:100%;
     background-color: #f0f0f0;
     color: #333;
-	font-family: "SourceHanSansCN Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 i{
@@ -208,10 +208,10 @@ background-size: 18px;
     background: #e7e7e7;
 }
 .footer-bar.bar-tab .tab-item.active, .bar-tab .tab-item:active {
-    color: #77100b;
+    color: #3190e8;
 }
 .footer-bar.bar-tab .tab-item.active .icon, .bar-tab .tab-item:active .icon {
-    color: #77100b;
+    color: #3190e8;
 }
 
 .footer-bar.bar-tab .icon {

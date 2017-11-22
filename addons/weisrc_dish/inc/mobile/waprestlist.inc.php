@@ -22,8 +22,6 @@ $method = 'waprestlist'; //method
 $host = $this->getOAuthHost();
 $authurl = $host . 'app/' . $this->createMobileUrl($method, array('typeid' => $typeid, 'areaid' => $areaid), true) . '&authkey=1';
 $url = $host . 'app/' . $this->createMobileUrl($method, array('typeid' => $typeid, 'areaid' => $areaid), true);
-
-//删除微信提示 begin
 if (isset($_COOKIE[$this->_auth2_openid])) {
     $from_user = $_COOKIE[$this->_auth2_openid];
     $nickname = $_COOKIE[$this->_auth2_nickname];
@@ -55,9 +53,6 @@ $fans = $this->getFansByOpenid($from_user);
 if ($fans['status'] == 0) {
     die('系统调试中！');
 }
-//删除微信提示 end
-
-
 
 $lat = trim($_GPC['lat']);
 $lng = trim($_GPC['lng']);
@@ -75,7 +70,6 @@ if (!empty($lat) && !empty($lng)) {
 }
 
 if (empty($from_user)) {
-    //删除微信提示
     message('会话已过期，请重新发送关键字!');
 }
 
@@ -123,7 +117,7 @@ if ($sortid == 1) {
 
 if (!empty($restlist)) {
     foreach ($restlist as $key => $value) {
-        $good_count = pdo_fetchcolumn("SELECT sum(sales) FROM " . tablename($this->table_goods) . " WHERE storeid=:id ", array(':id' => $value['id']));
+//        $good_count = pdo_fetchcolumn("SELECT sum(sales) FROM " . tablename($this->table_goods) . " WHERE storeid=:id ", array(':id' => $value['id']));
         $restlist[$key]['sales'] = intval($good_count);
 
         if ($value['is_newlimitprice'] == 1) {
@@ -143,18 +137,6 @@ desc,id DESC LIMIT 10", array(':storeid' => $value['id'], ':time' => TIMESTAMP))
         }
     }
 }
-
-//hjay
-include 'adlist.php';
-// $ob = Hj\M("ims_weisrc_dish_ad");
-// $adlist = $ob->where(
-//     array(
-//         'position'=>'2',
-//         'starttime'=>array('ELT',time()),
-//         'endtime'=>array('EGT',time()),
-//         'status'=>'1'
-//     ))->order(array('displayorder'=>'asc'))->select();
-
 //message($areaid);
 $slide = $this->getAllSlides();
 $share_title = !empty($setting['share_title']) ? str_replace("#username#", $nickname, $setting['share_title']) : "您的朋友{$nickname}邀请您来吃饭";

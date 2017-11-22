@@ -12,7 +12,7 @@
     <title>{$setting['title']}</title>
     <link data-turbolinks-track="true" href="{RES}/mobile/{php echo $this->cur_tpl}/assets/diandanbao/weixin.css?v=1" media="all" rel="stylesheet">
     <script src="{RES}/mobile/{php echo $this->cur_tpl}/assets/diandanbao/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
     <style type="text/css">@media screen {
         .smnoscreen {
             display: none
@@ -140,10 +140,10 @@
     <div class="ddb-nav-footer ng-scope" style="text-align:center;">
         {php $ispaybtn =  0;}
         {if $order['ispay']==0}
-        {php $ispaybtn =  1;}
+        {php $ispaybtn = 1;}
         {/if}
         {if $order['paytype']==3 &&  $order['dining_mode']==2}
-        {php $ispaybtn = 0;}
+        {php $ispaybtn = 1;}
         {/if}
         {if $ispaybtn==1 && $order['status'] != -1}
         <span class="button border-green" onclick="confirmorder()">{if $order['paytype']!=0}去支付{else}确认订单{/if}</span>
@@ -420,7 +420,9 @@
             {loop $order['goods'] $item}
             <div class="list-item ng-scope">
                 <div class="name ng-binding">
-                    {$item['title']}
+                    {$item['title']}{if !empty($item['optionname'])}
+                    [{$item['optionname']}]
+                    {/if}
                 </div>
                 <div class="quantity-info">
                     <span class="quantity ng-binding">{$item['total']}份</span>

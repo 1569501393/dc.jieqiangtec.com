@@ -41,6 +41,7 @@ if ($is_permission == false) {
 }
 
 $order = $this->getOrderById($id);
+$store = $this->getStoreById($order['storeid']);
 if (empty($order)) {
     message('订单不存在');
 }
@@ -86,6 +87,10 @@ if ($orderstatus[$status] == 2) { //支付
     }
     $update_data['status'] = $orderstatus[$status];
     pdo_update($this->table_order, $update_data, array('id' => $order['id']));
+
+
+    $this->cancelfengniao($order, $store, $setting);
+
     $this->addOrderLog($id, $touser, 2, 1, 5);
 
 } elseif ($orderstatus[$status] == 1) { //确认
@@ -134,7 +139,6 @@ if ($orderstatus[$status] == 2) { //支付
 if (!empty($paylog) && $orderstatus[$status] != -1) {
     pdo_update('core_paylog', array('fee' => $totalprice), array('plid' => $paylog['plid']));
 }
-$store = $this->getStoreById($order['storeid']);
 if ($this->_accountlevel == 4) {
     $order = $this->getOrderById($id);
     $this->sendOrderNotice($order, $store, $setting);

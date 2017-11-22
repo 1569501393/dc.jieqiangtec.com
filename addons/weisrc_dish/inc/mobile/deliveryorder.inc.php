@@ -56,6 +56,7 @@ if ($is_permission == false) {
 }
 
 $strwhere = " WHERE weid = '{$weid}' AND dining_mode=2 AND status<>-1 ";
+//$strwhere = " WHERE weid = '{$weid}' AND dining_mode=2 AND status==1 ";
 //最近配送点
 if ($setting['delivery_mode'] == 3) {
     $areaid = intval($deliveryuser['areaid']);

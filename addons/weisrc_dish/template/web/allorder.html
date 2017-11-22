@@ -99,7 +99,7 @@
                     </div>
                     <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label" style="width: 90px;">下单时间</label>
                     <div class="col-sm-7 col-lg-3 col-xs-12">
-                        {php echo tpl_form_field_daterange('time', array('starttime'=>date('Y-m-d', $starttime),'endtime'=>date('Y-m-d', $endtime)),true);}
+                        {php echo tpl_form_field_daterange('time', array('starttime'=>date('Y-m-d H:i:s', $starttime),'endtime'=>date('Y-m-d H:i:s', $endtime)),true);}
                     </div>
                 </div>
                 <div class="form-group">
@@ -131,6 +131,18 @@
                         </button>
                     </div>
                 </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-md-2 control-label" style="width: 90px;">门店类型</label>
+                        <div class="col-sm-7 col-lg-2 col-xs-12">
+                            <select class="form-control" name="types" id="types">
+                                <option value="0">请选择</option>
+                                {loop $shoptype $item}
+                                <option value="{$item['id']}" {if $_GPC['types']==$item['id']}selected{/if}>{$item['name']}</option>
+                                {/loop}
+                            </select>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>
@@ -149,52 +161,47 @@
         <form action="" method="post" class="form-horizontal form" >
             <input type="hidden" name="storeid" value="{$storeid}" />
             <div class="table-responsive panel-body">
-                <table class="table table-hover">
+                <table class="table  table-bordered">
                     <thead class="navbar-inner">
                         <tr>
                             <th class='with-checkbox' style="width:2%;"><input type="checkbox" class="check_all" /></th>
                             <th style="width:5%;">编号</th>
-                            <th style="width:16%;">订单号</th>
                             <th style="width:10%;">订单总额</th>
                             <th style="width:15%;">联系信息</th>
                             <th style="width:14%;">类型</th>
                             <th style="width:8%;">状态</th>
                             <th style="width:10%;">支付状态</th>
-                            <th style="width:10%;">下单时间</th>
-                            <th style="width:12%; text-align:right;"></th>
+                            <th style="width:12%; text-align:right;">操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         {loop $list $item}
                         <tr>
-                            <td class="with-checkbox"><input type="checkbox" name="check" value="{$item['id']}"></td>
+                            <th colspan="8">
+                                <span class="time text-muted">{php echo date("Y-m-d H:i:s", $item['dateline'])}</span> &nbsp;&nbsp;
+                                <span class="order-number text-muted">订单编号: {$item['ordersn']}</span> &nbsp;&nbsp;
+                                <span class="order-number text-muted">门店: {$storelist[$item['storeid']]['title']}</span>
+                                <br/>
+                                {if $item['is_append']==1}
+                                <span class="label label-success">加单</span>
+                                {/if}
+                                {if $item['append_dish']==1}
+                                <span class="label label-danger">加菜</span>
+                                {/if}
+                                {if $item['isvip']==1}
+                                <span class="label label-success">会员</span>
+                                {/if}
+                                {if $item['ismerge']==1}
+                                <span class="label label-success">并单</span>
+                                {/if}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="with-checkbox text-center"><input type="checkbox" name="check" value="{$item['id']}"></td>
                             <td>
                                 {$item['id']}
                             </td>
-                            <td>
-                                {$item['ordersn']}
-                                {php $br = 0}
-                                {if $item['is_append']==1}
-                                <br/>
-                                <span class="label label-success">加单</span>
-                                {php $br = 1}
-                                {/if}
-								{if $item['append_dish']==1}
-                                    {if $br == 0}<br/>{/if}
-                                <span class="label label-danger">加菜</span>
-                                {php $br = 1}
-                                {/if}
-                                {if $item['isvip']==1}
-                                {if $br == 0}<br/>{/if}
-                                <span class="label label-success">会员</span>
-                                {/if}
-                                <br/>
-                                <span class="label label-info">{$storelist[$item['storeid']]['title']}</span>
-                                {if $item['ismerge']==1}
-                                <br/>
-                                <span class="label label-success">并单</span>
-                                {/if}
-                            </td>
+
                             <td>
                                 <span class="label label-warning" style="font-weight:bold;">￥{$item['totalprice']}</span>
                             </td>
@@ -246,6 +253,10 @@
                                 {if $item['status'] == 2}<span class="label label-success">已并台</span>{/if}
                                 {if $item['status'] == 3}<span class="label label-success">已完成</span>{/if}
                                 {if $item['status'] == -1}<span class="label label-danger">已取消</span>{/if}
+                                {if $item['isprint'] == 1}
+                                <br/>
+                                <span class="label label-warning">已打印</span>
+                                {/if}
                             </td>
                             <td>
                                 {if $item['paytype']}
@@ -290,10 +301,6 @@
                                 {if $item['ispay'] == 2}<span class="label label-info">待退款</span>{/if}
                                 {if $item['ispay'] == 3}<span class="label label-danger">已退款</span>{/if}
                                 {if $item['ispay'] == 4}<span class="label label-danger">退款失败</span>{/if}
-                            </td>
-                            <td>
-                                {php echo date("Y-m-d", $item['dateline'])}<br/>
-                                {php echo date("H:i:s", $item['dateline'])}
                             </td>
                             <td style="text-align:left;">
                                 <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('allorder', array('op' => 'detail', 'id' => $item['id'], 'storeid' => $storeid))}" title="详情">详情</a>

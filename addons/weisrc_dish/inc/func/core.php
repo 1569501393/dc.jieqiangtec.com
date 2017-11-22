@@ -160,7 +160,7 @@ class Core extends WeModuleSite
 
     public function getmodules()
     {
-        return pdo_tableexists('modules_reply');
+        return 1;
     }
 
     public function checkStore($id = 0)
@@ -186,7 +186,7 @@ class Core extends WeModuleSite
 
     public function exists()
     {
-        return pdo_tableexists('wechat_reply');
+        return 1;
     }
 
     public function getMainMenu()
@@ -311,7 +311,7 @@ class Core extends WeModuleSite
                 0 => $this->createSubMenu('首页概览 ', $do, 'start', 'fa-angle-right', $cur_color, $storeid),
                 1 => $this->createSubMenu('门店信息 ', $do, 'stores2', 'fa-angle-right', $cur_color, $storeid),
                 2 => $this->createSubMenu('订单管理 ', $do, 'order', 'fa-angle-right', $cur_color, $storeid),
-                3 => $this->createSubMenu('会员管理 ', $do, 'fans', 'fa-angle-right', $cur_color, $storeid),
+                3 => $this->createSubMenu('顾客管理 ', $do, 'fans', 'fa-angle-right', $cur_color, $storeid),
                 4 => $this->createSubMenu('员工管理 ', $do, 'coreuser', 'fa-angle-right', $cur_color, $storeid),
             ),
             'icon' => 'fa fa-user-md'
@@ -485,12 +485,12 @@ class Core extends WeModuleSite
         if ($order) {
             $quicknum = intval($order['quicknum']);
             $quicknum++;
-            if ($quicknum > 9998) {
+            if ($quicknum > 998) {
                 $quicknum = 1;
             }
-            $quicknum = str_pad($quicknum, 4, "0", STR_PAD_LEFT);
+            $quicknum = str_pad($quicknum, 3, "0", STR_PAD_LEFT);
         } else {
-            $quicknum = '0001';
+            $quicknum = '001';
         }
         return $quicknum;
     }
@@ -579,6 +579,26 @@ class Core extends WeModuleSite
                 }
             }
         }
+    }
+
+
+    public function check_hourtime($begintime, $endtime)
+    {
+        global $_W, $_GPC;
+        $nowtime = intval(date("Hi"));
+        $begintime = intval(str_replace(':', '', $begintime));
+        $endtime = intval(str_replace(':', '', $endtime));
+
+        if ($begintime < $endtime) { //开始时间小于结束时间
+            if ($begintime <= $nowtime && $nowtime <= $endtime) { //开始时间小于现在时间
+                return 1;
+            }
+        } else {
+            if ($begintime <= $nowtime || $nowtime <= $endtime) {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     public function getStoreById($id)

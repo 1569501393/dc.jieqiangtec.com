@@ -123,6 +123,38 @@
         </div>
         {php $paycount++;}
         {/if}
+        {if $is_jxkj_unipay}
+        <div class=" alert alert-warning">
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否支持万融收银</label>
+                <div class="col-sm-9">
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="is_jxkj_unipay1" value="1" name="is_jxkj_unipay" {if $reply['is_jxkj_unipay'] ==1}checked="true"{/if} >
+                        <label for="is_jxkj_unipay1"> 开启 </label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="is_jxkj_unipay2" value="0" name="is_jxkj_unipay"  {if empty($reply) || $reply['is_jxkj_unipay'] == 0}checked="true"{/if} >
+                        <label for="is_jxkj_unipay2"> 关闭 </label>
+                    </div>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">(M)万融收银接ID</label>
+                <div class="col-sm-9">
+                    <input type="text" name="jxkj_pay_id" class="form-control" value="{$reply['jxkj_pay_id']}"
+                           Placeholder="请填写支付rid"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付品牌</label>
+                <div class="col-sm-9">
+                    <input type="text" name="jxkj_pay_name" class="form-control" value="{$reply['jxkj_pay_name']}" placeholder="请填写支付品牌"/>
+                </div>
+            </div>
+        </div>
+        {php $paycount++;}
+        {/if}
         {if $is_vtiny_bankpay}
         <div class=" alert alert-warning">
         <div class="form-group">
@@ -199,6 +231,12 @@
             <label class="col-xs-12 col-sm-3 col-md-2 control-label">{if $_W['isfounder']}商户号(崛企){else}商户号{/if}</label>
             <div class="col-sm-9">
                 <input type="text" name="jueqi_customerId" class="form-control" value="{$reply['jueqi_customerId']}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-12 col-sm-3 col-md-2 control-label">{if $_W['isfounder']}密匙(崛企){else}密匙{/if}</label>
+            <div class="col-sm-9">
+                <input type="text" name="jueqi_secret" class="form-control" value="{$reply['jueqi_secret']}" />
             </div>
         </div>
         </div>

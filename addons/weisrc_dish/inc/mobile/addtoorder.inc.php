@@ -23,7 +23,6 @@ $is_handle_goods = 1; //是否处理商品
 if ($mode == 5 || $mode == 6) {
     $is_handle_goods = 0;
 }
-
 if (empty($from_user)) {
     $this->showTip('请重新发送关键字进入系统!');
 }
@@ -38,33 +37,37 @@ if ($mode != 6) {
 
 //外卖
 if ($mode == 2) {
+    if (empty($lat) || empty($lng)) {
+        $this->showTip('请重新选择配送地址!');
+    }
+
     //距离
     $delivery_radius = floatval($store['delivery_radius']);
     $distance = $this->getDistance($lat, $lng, $store['lat'], $store['lng']);
     $distance = floatval($distance);
-    if ($store['not_in_delivery_radius'] == 0) { //只能在距离范围内
+    if ($store['not_in_delivery_radius'] == 0 && $delivery_radius > 0) { //只能在距离范围内
         if ($distance > $delivery_radius) {
-            $this->showTip('超出配送范围，不允许下单!');
+            $this->showTip('超出配送范围，不允许下单。');
         }
     }
 }
-
 if ($mode != 6) {
     //购物车为空
-    $cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " WHERE weid = :weid AND from_user = :from_user AND storeid=:storeid", array(':weid' => $weid, ':from_user' => $from_user, ':storeid' => $storeid), 'goodsid');
+    $cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " WHERE weid = :weid AND from_user = :from_user AND storeid=:storeid", array(':weid' => $weid, ':from_user' => $from_user, ':storeid' => $storeid));
 }
-
 if ($is_handle_goods == 1) {
     if ($rtype != 1) {
         if (empty($cart)) {
             $this->showTip('请先添加商品!');
-        } else {
-            $goods = pdo_fetchall("SELECT id, title, thumb, marketprice, unitname FROM " . tablename($this->table_goods) . " WHERE id IN ('" . implode("','", array_keys($cart)) . "')");
         }
+
+//        else {
+//            $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . " WHERE id IN (SELECT goodsid FROM " . tablename($this->table_cart) . " WHERE weid = :weid AND from_user = :from_user AND storeid=:storeid)", array(':weid' => $weid, ':from_user' => $from_user, ':storeid' => $storeid));
+//        }
     }
 }
 
-if ($is_auto_address == 0) {
+if ($is_auto_address == 0) { //多收餐地址
     $guest_name = $useraddress['realname']; //用户名
     $tel = $useraddress['mobile']; //电话
     $address = $useraddress['address'] . ' ' . $useraddress['doorplate']; //地址
@@ -80,13 +83,12 @@ $counts = intval($_GPC['counts']); //预订人数
 $seat_type = intval($_GPC['seat_type']); //就餐形式
 $carports = intval($_GPC['carports']); //预订车位
 $remark = trim($_GPC['remark']); //备注
-
 $dispatcharea = trim($_GPC['dispatcharea']); //地址
 $tables = intval($_GPC['tables']); //桌号
 $tablezonesid = intval($_GPC['tablezonesid']); //桌台
 $append = intval($_GPC['append']); //是否加单
 
-if ($mode != 1 && $is_handle_goods == 1) {//非堂点非收银
+if ($mode != 4 && $mode != 1 && $is_handle_goods == 1) {//非堂点非收银
     if (empty($guest_name)) {
         $this->showTip('请选择您的联系方式!');
     }
@@ -122,7 +124,6 @@ status<>-1 AND status<>3 LIMIT 1", array(":weid" => $weid, ":storeid" => $storei
         $this->showTip('请先选择桌台!');
     }
 }
-
 $user = $this->getFansByOpenid($from_user);
 $fansdata = array('weid' => $weid,
     'from_user' => $from_user,
@@ -148,7 +149,6 @@ if (empty($user)) {
 } else {
     pdo_update($this->table_fans, $fansdata, array('id' => $user['id']));
 }
-
 //2.购物车 //a.添加订单、订单产品
 $totalnum = 0;
 $totalprice = 0;
@@ -174,7 +174,7 @@ if ($rtype != 1) {
 if ($mode == 2) { //外卖
     $dispatchprice = $store['dispatchprice'];
     if ($store['is_delivery_distance'] == 1 && $is_auto_address == 0) { //按距离收费
-        $distance = $this->getDistance($useraddress['lat'], $useraddress['lng'], $store['lat'], $store['lng'], 2);
+        $distance = $this->getDistance($useraddress['lat'], $useraddress['lng'], $store['lat'], $store['lng']);
         $distanceprice = $this->getdistanceprice($storeid, $distance);
         $dispatchprice = floatval($distanceprice['dispatchprice']);
     }
@@ -265,10 +265,10 @@ if ($couponid <> 0 && empty($coupon)) {
         $totalprice = $totalprice - $coupon['dmoney'];
     }
 }
-// if (!$this->getmodules()) {
-//     $totalprice = $totalprice+8;
-//     $goodsprice = $goodsprice-2;
-// }
+if (!$this->getmodules()) {
+    $totalprice = $totalprice;
+    $goodsprice = $goodsprice;
+}
 
 if ($mode == 5 || $mode == 6) { //收银
     $totalprice = floatval($_GPC['total']);
@@ -288,12 +288,16 @@ if ($append == 2) {
     }
     if ($rtype != 1) {
         foreach ($cart as $k => $v) {
+            if (empty($v['total'])) {
+                continue;
+            }
+
             if (in_array($v['goodsid'], $dishid)) {
                 $dishCon = array(":weid" => $weid, ":storeid" => $storeid, ":orderid" => $orderid, ":goodsid" => $v['goodsid']);
                 $sql = "UPDATE " . tablename($this->table_order_goods) . " SET total=total+{$v['total']},dateline=" . time() . " WHERE weid=:weid AND storeid=:storeid AND orderid=:orderid AND goodsid=:goodsid";
                 pdo_query($sql, $dishCon);
             } else {
-                $parm = array("weid" => $weid, "storeid" => $storeid, "orderid" => $orderid, "goodsid" => $v['goodsid'], "price" => $v['price'], "total" => $v['total'], 'dateline' => time());
+                $parm = array("weid" => $weid, "storeid" => $storeid, "orderid" => $orderid, "goodsid" => $v['goodsid'], "price" => $v['price'], "total" => $v['total'], 'dateline' => time(), 'optionid' => $row['optionid'], 'optionname' => $row['optionname']);
                 pdo_insert($this->table_order_goods, $parm);
             }
             $goodsName = pdo_fetch("SELECT title FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" => $v['goodsid']));
@@ -380,6 +384,8 @@ if ($append == 2) {
                     'weid' => $_W['uniacid'],
                     'storeid' => $row['storeid'],
                     'goodsid' => $row['goodsid'],
+                    'optionid' => $row['optionid'],
+                    'optionname' => $row['optionname'],
                     'orderid' => $orderid,
                     'price' => $row['price'],
                     'total' => $row['total'],

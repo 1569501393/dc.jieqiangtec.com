@@ -6,10 +6,12 @@
 <title>订单中心</title>
     <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/api.css"/>
     <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/order-new.css"/>
+    <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/order-new.css?v=8"/>
     <link rel="stylesheet" type="text/css" href="{php echo $this->cur_mobile_path}/css/fakeLoader.css">
     <script src="{php echo $this->cur_mobile_path}/script/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?ak=qen1OGw9ddzoDQrTX35gote2&v=2.0&services=false"></script>
+    <link rel="stylesheet" href="{php echo $this->cur_mobile_path}/mvalidate/validate.css" />
+    <script type="text/javascript" src="{php echo $this->cur_mobile_path}/mvalidate/jquery-mvalidate.js" ></script>
 </head>
 <body>
 <div class="fakeloader"></div>
@@ -20,7 +22,6 @@
         </a>
         <h1 class="title">确认订单</h1>
     </header>
-    
 	<div class="content">
     	<div class="list-block address-editor">
             <div class="address-editor-ribbon"></div>
@@ -88,7 +89,7 @@
 
                 <!--多收餐地址-->
                 {if $is_auto_address==0}
-                {if $mode != 1 }
+                {if $mode != 1 && $mode != 4}
                 <li class="item-content">
                     <div class="item-inner">
                         <div class="item-title label">
@@ -220,7 +221,6 @@
                                 address += e.addressComponent.district;
                                 address += e.addressComponent.street;
                                 address += e.addressComponent.streetNumber;
-//                                alert(address);
                                 $('#mapaddress').val(address);
 //                                if (confirm('检测到您的地址为,是否填入地址栏中：\r\n' + address)) {}
                             });
@@ -279,7 +279,7 @@
                                         positions(position); //当前经纬度
                                         setmapaddress(r.point);//初始化设置地图地址
                                     } else {
-                                        alert('获取当前位置失败,请确定您开启了定位服务');
+                                        $.mvalidateTip('获取当前位置失败,请确定您开启了定位服务');
                                     }
                                 }, {enableHighAccuracy: true});
                             }
@@ -292,7 +292,7 @@
 
                     </script>
                     {/if}
-                    {if $mode != 1}
+                    {if $mode != 1 && $mode != 4}
                     <li class="item-content">
                         <div class="item-inner">
                             <div class="item-title label">联系人:</div>
@@ -416,14 +416,18 @@
                                 {loop $cart $item}
                                 {if $item['total']>0}
                                 <div>
-                                    <div class="delivery-item-name">{$item['title']}</div>
+                                    <div class="delivery-item-name">
+                                        {$item['title']}
+                                        {if !empty($item['optionname'])}
+                                        [{$item['optionname']}]
+                                        {/if}
+                                    </div>
                                     <span class="delivery-item-count">×{$item['total']}</span>
                                     <span class="delivery-item-price">
                                         {if $iscard==1 && !empty($item['memberprice'])}
-                                        (会员)¥{$item['memberprice']}
-                                        {else}
-                                        ¥{$item['marketprice']}
+                                        (会员)
                                         {/if}
+                                        {$item['price']}
                                     </span>
                                 </div>
                                 {/if}
@@ -460,12 +464,15 @@
                             配送费用<em>￥{$dispatchprice}</em>
                             </div>
                             {/if}
+                            {/if}
+                            {if $mode==2}
                             {if $distance}
                             <div>
                                 商家距离<em>{$distance}km</em>
                             </div>
                             {/if}
                             {/if}
+
                             {if $mode==1 && $service_rate>0}
                             <div id="show_service">
                             %{$service_rate}服务费<em>￥0</em>
@@ -799,8 +806,7 @@ $(document).ready(function(e) {
         }
 
         if (status == 0) {
-            alert('系统调试中！');
-            return false;
+//            return false;
         }
 
         $("#btnselect").hide();
@@ -844,7 +850,7 @@ $(document).ready(function(e) {
                 success: function (data) {
                     if (data.message['code'] != 0) {
                         if (data.message['code'] == 2){
-                            alert("加菜成功");
+                            $.mvalidateTip("加菜成功");
                             var url = "{php echo $this->createMobileUrl('orderdetail', array(), true)}" + "&orderid=" + data.message['orderid'];
                         } else{
                             "{if $store['is_order_tip'] == 1}"
@@ -855,11 +861,11 @@ $(document).ready(function(e) {
                         }
                         location.href = url;
                     } else {
-                        alert(data.message['msg']);
+                        $.mvalidateTip(data.message['msg']);
                     }
                     $("#btnselect").show();
                 },error: function () {
-                    alert("订单提交失败！");
+                    $.mvalidateTip("订单提交失败！");
                 }
             });
         } else {
@@ -952,15 +958,16 @@ $(document).ready(function(e) {
 
     function checkMobile($mobileVal) {
         if (checkEmpty($mobileVal) == false) {
-            alert("请输入手机号码");
+            $.mvalidateTip("请输入手机号码");
             return false;
         } else {
             if ($mobileVal.length != 11) {
-                alert('手机号码长度不正确');
+                $.mvalidateTip('手机号码长度不正确');
                 return false;
             }
             else if (/^(((13[0-9]{1})|15[0-9]{1}|17[0-9]{1}|18[0-9]{1}|14[0-9]{1})+\d{8})$/.test($mobileVal) == false) {
-                alert('手机号码格式不正确');
+
+                $.mvalidateTip('手机号码格式不正确');
                 return false;
             }
             else {
@@ -1042,42 +1049,51 @@ $(document).ready(function(e) {
     function checkItem() {
         var ordertype = $("#mode").val();
         var meal_time = $("#meal_time").val();
-        if (ordertype != 1) {
+        if (ordertype != 1 && ordertype != 4) {
             "{if $is_auto_address==0}"
             "{if empty($useraddress)}"
-            alert('请输入您的真实姓名！');
+            $.mvalidateTip('请输入您的真实姓名！');
             return false;
             "{/if}"
             "{/if}"
         }
         totalprice = parseFloat($("#totalprice").val());
-        if (totalprice <= 0) { alert("金额为0，请选择菜品！"); return false; }
+//        if (totalprice <= 0) { ("金额为0，请选择菜品！"); return false; }
 
         "{if $is_auto_address==1}"
-        if (ordertype != 1) {
+        if (ordertype != 1 && ordertype != 4) {
             if (!checkMobile($("#tel").val())) {
                 return false;
             }
-            if ($("#username").val() == "" || $("#username").val() == "(必填*)请输入您的真实姓名") { alert("请输入您的真实姓名！"); return false; }
+            if ($("#username").val() == "" || $("#username").val() == "(必填*)请输入您的真实姓名") {
+                $.mvalidateTip("请输入您的真实姓名！");
+                return false;
+            }
         }
         "{/if}"
 
         if (ordertype == 1) { //店内
-            if ($("#counts").val() == "") { alert("请输入用餐人数！"); return false; }
-            if (!new RegExp("^[0-9]*$").test($("#counts").val())) { alert("用餐人数只能为数字！"); return false; }
-            if ($("#tables").val() == "") { alert("请输入桌号！"); return false; }
+            if ($("#counts").val() == "") {
+                $.mvalidateTip("请输入用餐人数！");
+                return false; }
+            if (!new RegExp("^[0-9]*$").test($("#counts").val())) {
+                $.mvalidateTip("用餐人数只能为数字！");
+                return false; }
+            if ($("#tables").val() == "") {
+                $.mvalidateTip("请输入桌号！");
+                return false; }
         } else if (ordertype == 2){//外卖
             "{if $is_auto_address==1}"
 //            address = $("#address").val();
-//            if (address == "" || address == "请输入您的联系地址！") { alert("请输入您的联系地址！"); return false; }
+//            if (address == "" || address == "请输入您的联系地址！") { ("请输入您的联系地址！"); return false; }
             "{else}"
             "{if empty($useraddress)}"
-            alert('请先添加收餐地址！');
+            $.mvalidateTip('请先添加收餐地址！');
             return false;
             "{/if}"
             "{/if}"
             if (meal_time == '休息中') {
-                alert('未在配送时间！');
+                $.mvalidateTip('未在配送时间！');
                 return false;
             }
         }
@@ -1099,7 +1115,7 @@ $(document).ready(function(e) {
         wx.ready(function () {
             wx.openAddress({
                 trigger: function (res) {
-                    alert('用户开始拉出地址');
+                    $.mvalidateTip('用户开始拉出地址');
                 },
                 success: function (res) {
                     username = res.userName;
@@ -1111,11 +1127,11 @@ $(document).ready(function(e) {
 //                    $('.input-address').text(address);
                 },
                 cancel: function (res) {
-                    alert('请选择收货地址');
+                    $.mvalidateTip('请选择收货地址');
                 },
                 fail: function (res) {
-                    alert('请选择收货地址');
-//                    alert(JSON.stringify(res));
+                    $.mvalidateTip('请选择收货地址');
+//                    (JSON.stringify(res));
                 }
             });
         });

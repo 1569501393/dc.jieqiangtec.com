@@ -10,7 +10,7 @@ $GLOBALS['frames'] = $this->getMainMenu();
 
 $operation = !empty($_GPC['op']) ? $_GPC['op'] : 'display';
 if ($operation == 'display') {
-    $condition = '';
+    $condition = " weid=:weid AND from_user<>'' ";
     if (!empty($_GPC['keyword'])) {
         $types = trim($_GPC['types']);
         $condition .= " AND {$types} LIKE '%{$_GPC['keyword']}%'";
@@ -18,14 +18,48 @@ if ($operation == 'display') {
     if (isset($_GPC['status']) && $_GPC['status'] != '') {
         $condition .= " AND status={$_GPC['status']} ";
     }
+
+    $agentid = intval($_GPC['agentid']);
+    if ($agentid != 0) {
+        $condition .= " AND (agentid={$agentid} OR agentid2={$agentid}) ";
+    }
+
+    $paras = array(':weid' => $weid);
+
     $pindex = max(1, intval($_GPC['page']));
     $psize = 8;
 
     $start = ($pindex - 1) * $psize;
     $limit = "";
     $limit .= " LIMIT {$start},{$psize}";
-    $list = pdo_fetchall("SELECT * FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND from_user<>'' {$condition} ORDER BY lasttime DESC,id DESC " . $limit, array(':weid' => $weid));
-    $total = pdo_fetchcolumn("SELECT count(1) FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND from_user<>'' {$condition} ", array(':weid' => $weid));
+
+    $usertype = intval($_GPC['usertype']);
+    if ($usertype == 1) {
+        $condition .= " AND is_commission=2 AND agentid=0 ";
+    } else if ($usertype == 2) {
+        $condition .= " AND is_commission=2 AND agentid>0 ";
+    } else if ($usertype == 3) {
+        $condition .= " AND is_commission=1 ";
+    }
+
+    $datapage = intval($_GPC['datapage']);
+
+    if ($_GPC['out_put'] == 'output') {
+        $this->out_fans($condition, $paras, $datapage);
+    }
+
+    $list = pdo_fetchall("SELECT * FROM " . tablename($this->table_fans) . " WHERE {$condition} ORDER BY lasttime DESC,id DESC " . $limit, $paras);
+    if ($agentid != 0) {
+        $totallist = pdo_fetchall("SELECT * FROM " . tablename($this->table_fans) . " WHERE {$condition} ORDER BY lasttime DESC,id DESC " , $paras);
+
+        $page_total = count($totallist);
+    }
+    $total = pdo_fetchcolumn("SELECT count(1) FROM " . tablename($this->table_fans) . " WHERE {$condition} ", array(':weid' => $weid));
+
+    $datapage = ceil($total / 100);
+    if($datapage <= 1) {
+
+    }
 
     load()->model('mc');
     load()->func('compat.biz');
@@ -34,11 +68,25 @@ if ($operation == 'display') {
         if ($value['agentid'] > 0) {
             $agent = pdo_fetch("SELECT * FROM " . tablename($this->table_fans) . " WHERE id = :id", array(':id' => $value['agentid']));
             if ($agent) {
-                $list[$key]['agentheadimgurl'] = $agent['headimgurl'];
-                $list[$key]['agentnickname'] = $agent['nickname'];
+                if (empty($agent['nickname'])) {
+                    $agentfans = mc_fetch($agent['from_user'], array("nickname","avatar"));
+                    $list[$key]['agentheadimgurl'] = $agentfans['avatar'];
+                    $list[$key]['agentnickname'] = $agentfans['nickname'];
+                    pdo_update($this->table_fans, array('headimgurl' => $agentfans['avatar'], 'nickname' =>
+                        $agentfans['nickname']), array('id' => $agent['id']));
+                } else {
+                    $list[$key]['agentheadimgurl'] = $agent['headimgurl'];
+                    $list[$key]['agentnickname'] = $agent['nickname'];
+                }
             }
         }
-        $fans = mc_fetch($value['from_user'], array("credit1","credit2"));
+        $fans = mc_fetch($value['from_user'], array("credit1","credit2","nickname","avatar"));
+        if (empty($value['nickname'])) {
+            $list[$key]['headimgurl'] = $fans['avatar'];
+            $list[$key]['nickname'] = $fans['nickname'];
+            pdo_update($this->table_fans, array('headimgurl' => $fans['avatar'], 'nickname' => $fans['nickname']), array('id' => $value['id']));
+        }
+
         if (!empty($fans)) {
             $list[$key]['credit1'] = $fans['credit1'];
             $list[$key]['credit2'] = $fans['credit2'];
@@ -54,6 +102,13 @@ if ($operation == 'display') {
     $order_count = pdo_fetchall("SELECT from_user,COUNT(1) as count FROM " . tablename($this->table_order) . "  GROUP BY from_user,weid having weid = :weid", array(':weid' => $_W['uniacid']), 'from_user');
     $pay_price = pdo_fetchall("SELECT from_user,sum(totalprice) as totalprice FROM " . tablename($this->table_order) . " WHERE status=3 GROUP BY
 from_user,weid having weid = :weid", array(':weid' => $_W['uniacid']), 'from_user');
+
+    if ($agentid != 0) {
+        $page_totalprice = 0;
+        foreach ($totallist as $k => $v) {
+            $page_totalprice = $page_totalprice + floatval($pay_price[$v['from_user']]['totalprice']);
+        }
+    }
 
     $pager = pagination($total, $pindex, $psize);
 } else if ($operation == 'record') {
@@ -253,6 +308,7 @@ WHERE a.weid = :weid {$condition} ORDER BY a.lasttime DESC,a.id DESC", array(':w
             'mobile' => trim($_GPC['mobile']),
             'is_commission' => intval($_GPC['is_commission']),
             'address' => trim($_GPC['address']),
+            'scene_str' => trim($_GPC['scene_str']),
             'lat' => trim($_GPC['baidumap']['lat']),
             'lng' => trim($_GPC['baidumap']['lng']),
             'sex' => intval($_GPC['sex']),

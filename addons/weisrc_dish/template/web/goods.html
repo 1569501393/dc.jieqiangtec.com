@@ -2,7 +2,7 @@
 {template 'public/comhead'}
 
 {if $operation == 'display'}
-<div class="main">
+<div class="main" style="margin-top:0px;">
     <ul class="nav nav-tabs" role="tablist">
         <li {if $deleted == 0}class="active"{/if}>
         <a href="{php echo $this->createWebUrl('goods', array('op' => 'display', 'storeid' => $storeid))}">商品管理</a>

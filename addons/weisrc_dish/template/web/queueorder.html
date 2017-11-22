@@ -119,8 +119,8 @@
 </div>
 {elseif $operation == 'detail'}
 <audio id="music" >
-    <source src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=A-004，A-004，请就餐？" type="audio/mpeg">
-    <embed height="0" width="0" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=A-004，A-004，请就餐？">
+    <source src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=A-004，A-004，请就餐？" type="audio/mpeg">
+    <embed height="0" width="0" src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=A-004，A-004，请就餐？">
 </audio>
 <script>
     "{if !empty($item)}"
@@ -132,7 +132,7 @@
                 return false;
             }
             var tip = "{$item['num']}，{$item['num']}，请就餐？";
-            audioEl.src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + tip;
+            audioEl.src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=" + tip;
             audioEl.load();
             audioEl.play();
             i++;
@@ -319,7 +319,13 @@
                             <span class="label label-default">未通知</span>
                             {/if}
                         </td>
-                        <td>{$item['mobile']}</td>
+                        <td>
+                            <img src="{php echo tomedia($item['fans']['headimgurl']);}" style="width:30px;height:30px;padding1px;border:1px solid #ccc"/>
+                            </br>
+                            {$item['fans']['nickname']}
+                            </br>
+                            {$item['mobile']}
+                        </td>
                         <td>
                             {$item['usercount']}
                         </td>

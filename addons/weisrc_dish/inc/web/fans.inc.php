@@ -13,7 +13,23 @@ $GLOBALS['frames'] = $this->getNaveMenu($storeid,$action);
 
 $operation = !empty($_GPC['op']) ? $_GPC['op'] : 'display';
 if ($operation == 'display') {
-    $condition = '';
+    $orderlist = pdo_fetchall("SELECT * FROM " . tablename($this->table_order) . " WHERE weid=:weid AND ischeckfans=0 ORDER BY id desc, dateline DESC ", array(':weid' => $weid));
+    foreach($orderlist as $key => $value) {
+        $fans = $this->getFansByOpenid($value['from_user']);
+        if (empty($fans['storeids'])) {
+            pdo_update($this->table_fans, array('storeids' => $value['storeid']), array('id' => $fans['id']));
+        } else {
+            $storeids = explode(',',$fans['storeids']);
+            if (!in_array($value['storeid'], $storeids)) {
+                $storeids[] = $value['storeid'];
+            }
+            $str = implode(',', $storeids);
+            pdo_update($this->table_fans, array('storeids' => $str), array('id' => $fans['id']));
+        }
+        pdo_update($this->table_order, array('ischeckfans' => 1), array('id' => $value['id']));
+    }
+
+    $condition = " weid = :weid AND from_user<>'' AND find_in_set('{$storeid}', storeids) ";
     if (!empty($_GPC['keyword'])) {
         $types = trim($_GPC['types']);
         $condition .= " AND {$types} LIKE '%{$_GPC['keyword']}%'";
@@ -27,8 +43,8 @@ if ($operation == 'display') {
     $start = ($pindex - 1) * $psize;
     $limit = "";
     $limit .= " LIMIT {$start},{$psize}";
-    $list = pdo_fetchall("SELECT * FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND from_user<>'' {$condition} ORDER BY lasttime DESC,id DESC " . $limit, array(':weid' => $weid));
-    $total = pdo_fetchcolumn("SELECT count(1) FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND from_user<>'' {$condition} ", array(':weid' => $weid));
+    $list = pdo_fetchall("SELECT * FROM " . tablename($this->table_fans) . " WHERE {$condition} ORDER BY lasttime DESC,id DESC " . $limit, array(':weid' => $weid));
+    $total = pdo_fetchcolumn("SELECT count(1) FROM " . tablename($this->table_fans) . " WHERE {$condition} ", array(':weid' => $weid));
 
     $order_count = pdo_fetchall("SELECT from_user,COUNT(1) as count FROM " . tablename($this->table_order) . " WHERE storeid=:storeid  GROUP BY from_user,weid having weid = :weid", array(':weid' => $weid, ':storeid' => $storeid), 'from_user');
     $pay_price = pdo_fetchall("SELECT from_user,sum(totalprice) as totalprice FROM " . tablename($this->table_order) . " WHERE status=3  AND

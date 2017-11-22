@@ -104,6 +104,22 @@ function checkaccount() {
 	}
 }
 
+function url_params($url) {
+	$result = array();
+	if (empty($url)) {
+		return $result;
+	}
+	$components = parse_url($url);
+	$params = explode('&',$components['query']);
+	foreach ($params as $param) {
+		if (!empty($param)) {
+			$param_array = explode('=',$param);
+			$result[$param_array[0]] = $param_array[1];
+		}
+	}
+	return $result;
+}
+
 function buildframes($frame = array('platform')){
 	global $_W, $_GPC;
 	if($_W['role'] == 'clerk') {

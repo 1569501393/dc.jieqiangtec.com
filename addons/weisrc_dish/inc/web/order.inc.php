@@ -77,48 +77,7 @@ if ($operation == 'fengniaolist') {
         $commoncondition .= " AND paytype = '" . intval($_GPC['paytype']) . "'";
     }
 
-//    if ($_GPC['out_put'] == 'output') {
-//        $sql = "select * from " . tablename($this->table_order)
-//            . " WHERE $commoncondition ORDER BY status DESC, dateline DESC ";
-//        $list = pdo_fetchall($sql, $paras);
-//        $orderstatus = array(
-//            '-1' => array('css' => 'default', 'name' => '已取消'),
-//            '0' => array('css' => 'danger', 'name' => '待处理'),
-//            '1' => array('css' => 'info', 'name' => '已确认'),
-//            '2' => array('css' => 'warning', 'name' => '已付款'),
-//            '3' => array('css' => 'success', 'name' => '已完成')
-//        );
-//
-//        $paytypes = array(
-//            '0' => array('css' => 'danger', 'name' => '未支付'),
-//            '1' => array('css' => 'info', 'name' => '余额支付'),
-//            '2' => array('css' => 'warning', 'name' => '微信支付'),
-//            '3' => array('css' => 'success', 'name' => '现金支付'),
-//            '4' => array('css' => 'warning', 'name' => '支付宝'),
-//        );
-//
-//        $i = 0;
-//        foreach ($list as $key => $value) {
-//            $arr[$i]['ordersn'] = "'".$value['ordersn'];
-//            $arr[$i]['transid'] = "'".$value['transid'];
-//            $arr[$i]['paytype'] = $paytypes[$value['paytype']]['name'];
-//            $arr[$i]['status'] = $orderstatus[$value['status']]['name'];
-//            $arr[$i]['totalprice'] = $value['totalprice'];
-//            $arr[$i]['goodsprice'] = $value['goodsprice'];
-//            $arr[$i]['dispatchprice'] = $value['dispatchprice'];
-//            $arr[$i]['packvalue'] = $value['packvalue'];
-//            $arr[$i]['tea_money'] = $value['tea_money'];
-//            $arr[$i]['service_money'] = $value['service_money'];
-//            $arr[$i]['username'] = $value['username'];
-//            $arr[$i]['tel'] = $value['tel'];
-//            $arr[$i]['address'] = $value['address'];
-//            $arr[$i]['dateline'] = date('Y-m-d H:i:s', $value['dateline']);
-//            $i++;
-//        }
-//
-//        $this->exportexcel($arr, array('订单号', '商户订单号', '支付方式', '状态', '总价', '商品价格', '配送费', '打包费', '茶位费', '服务费', '真实姓名', '电话号码', '地址', '时间'), time());
-//        exit();
-//    }
+
     if ($_GPC['out_put'] == 'output') {
         $commoncondition .= " AND ismerge = 0 ";
         $this->out_order($commoncondition, $paras);
@@ -159,6 +118,7 @@ if ($operation == 'fengniaolist') {
 } elseif ($operation == 'detail') {
     //流程 第一步确认付款 第二步确认订单 第三步，完成订单
     $id = intval($_GPC['id']);
+    $this->feiyinSendFreeMessage($id);
     $order = $this->getOrderById($id);
     $fans = $this->getFansByOpenid($order['from_user']);
 
@@ -316,6 +276,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
         $this->addOrderLog($id, $_W['user']['username'], 2, 2, 5);
         $order = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE id=:id AND weid=:weid LIMIT 1", array(':id' => $id, ':weid' => $this->_weid));
         $this->sendOrderNotice($order, $store, $setting);
+        $this->cancelfengniao($order, $store, $setting);
         message('订单关闭操作成功！', referer(), 'success');
     }
     if (!empty($_GPC['open'])) {
@@ -325,7 +286,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     }
 
     $item = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE id = :id", array(':id' => $id));
-    $goods = pdo_fetchall("SELECT a.goodsid,a.price, b.credit, a.total,b.thumb,b.title,b.id ,b.pcate FROM " . tablename($this->table_order_goods) . " a INNER JOIN " . tablename($this->table_goods) . " b ON a.goodsid=b.id WHERE a.orderid = :id", array(':id' => $id));
+    $goods = pdo_fetchall("SELECT a.goodsid,a.price, b.credit, a.total,b.thumb,b.title,b.id ,b.pcate,a.optionname FROM " . tablename($this->table_order_goods) . " a INNER JOIN " . tablename($this->table_goods) . " b ON a.goodsid=b.id WHERE a.orderid = :id", array(':id' => $id));
     $discount = pdo_fetchall("SELECT * FROM " . tablename($this->table_category) . " WHERE weid=:weid and storeid=:storeid", array(":weid" => $weid,":storeid"=>$storeid));
     if ($item['dining_mode'] == 1 || $item['dining_mode'] == 3) {
         $tablesid = intval($item['tables']);
@@ -380,7 +341,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     $position_type = intval($_GPC['position_type']);
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -410,11 +371,11 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
             $rowcount++;
         }
     }
-    $this->message("操作成功！".$rowcount, '', 0);
+    $this->message("操作成功！", '', 0);
 } elseif ($operation == 'payall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -429,7 +390,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
 } elseif ($operation == 'confirmall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -444,21 +405,16 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
 } elseif ($operation == 'cancelall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
             if ($order) {
-                if ($order['ispay'] == 1) {
-                    $coin = floatval($order['totalprice']);
-                    if ($order['paytype'] == 1) {
-                        $this->setFansCoin($order['from_user'], $coin, "码上点餐单号{$order['ordersn']}退款");
-                    }
-                }
                 pdo_update($this->table_order, array('status' => -1), array('id' => $id, 'weid' => $weid));
                 $this->addOrderLog($id, $_W['user']['username'], 2, 2, 5);
                 $order = $this->getOrderById($id);
                 $this->sendOrderNotice($order, $store, $setting);
+                $this->cancelfengniao($order, $store, $setting);
                 $rowcount++;
             }
         }
@@ -467,7 +423,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
 } elseif ($operation == 'finishall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -513,7 +469,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
 } elseif ($operation == 'noticeall') {
     $rowcount = 0;
     $notrowcount = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -543,13 +499,20 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     if (empty($order)) {
         message('订单不存在！', '', 'error');
     }
-    //if (!$this->exists()) {
-    //    message('退款失败!!！', $url, 'error');
-    //}
+    if (!$this->exists()) {
+        message('退款失败!!！', $url, 'error');
+    }
     $this->addOrderLog($id, $_W['user']['username'], 2, 2, 6);
     if ($order['ispay'] == 1 || $order['ispay'] == 2 || $order['ispay'] == 4) { //已支付和待退款的可以退款
         if ($order['paytype'] == 2) { //微信支付
-            $result = $this->refund($id);
+            if ($cur_store['is_jxkj_unipay'] == 1) { //万融收银
+                $result = $this->refund4($id, $storeid);
+            } else if ($cur_store['is_jueqi_ymf'] == 1) { //崛起支付
+                $result = $this->refund3($id, $storeid);
+            } else {
+                $result = $this->refund2($id);
+            }
+
             if ($result == 1) {
                 message('退款成功！', $url, 'success');
             } else {
@@ -583,7 +546,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     $discount_money = 0;
     $counts = 0;
     $sid = 0;
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
@@ -650,7 +613,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     pdo_insert($this->table_order, $data);
     $neworderid = pdo_insertid();
 
-    foreach ($_POST['idArr'] as $k => $id) {
+    foreach ($_GPC['idArr'] as $k => $id) {
         $id = intval($id);
         if (!empty($id)) {
             $list = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $id));
@@ -694,5 +657,14 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     $order = $this->getOrderById($id);
     $this->sendfengniao($order, $cur_store, $setting);
     message("操作成功");
+}elseif($operation == 'getcarrier') {
+    $id = intval($_GPC['id']);
+    $order = $this->getOrderById($id);
+    $this->getcarrier($order, $cur_store, $setting);
+}elseif($operation == 'complaint') {
+    $id = intval($_GPC['id']);
+    $order = $this->getOrderById($id);
+    $this->complaintfengniao($order, $cur_store, $setting);
 }
+
 include $this->template('web/order');
