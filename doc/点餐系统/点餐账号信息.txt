@@ -1,0 +1,52 @@
+先接蜂鸟的
+
+微信公众号：点了码
+
+点餐后台账号：
+http://www.dianlema.net
+admin11 /  12345678
+
+
+管理员
+admin /  apestar2017Diancan
+
+
+ftp：116.62.184.110
+diancan/apestar2017Diancan
+
+
+数据库：
+http://116.62.184.110:8888/index.php?
+
+zijidelu/apestar2017Diancan
+
+root/zijidelu
+
+
+
+
+ftp：116.62.184.110
+jieqiang/jq123456
+
+数据库：
+http://116.62.184.110:8888/Runtime/pm_1521_ea4f3288fba413ee2a26124dae1faeb8/
+root/zijidelu
+
+http://116.62.184.110:8888/index.php?
+jieqiang/jq123456
+
+
+
+王庭协:
+@黄傑  微信支付回调是写在哪个文件
+黄傑:
+/payment/wxpay
+
+
+/payment/wxpay/
+我:
+ok
+黄傑:
+你全站搜索 //hjay 
+黄傑:
+带标记的就是我改的，部分可能有缺失
