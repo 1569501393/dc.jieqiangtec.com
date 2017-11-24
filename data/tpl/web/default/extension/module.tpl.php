@@ -54,6 +54,9 @@
 		</div>
 	</nav>
 	<div class="module form-horizontal">
+        <?php
+            // var_dump('TODO jieqiangtest==$modules==',$modules);exit;
+        ?>
 		<?php  if(is_array($modules)) { foreach($modules as $row) { ?>
 		<div class="item" data-title=<?php  echo $row['title'];?> data-type=<?php  echo $row['type'];?>>
 			<div class="media">
@@ -81,7 +84,7 @@
 						<a href="<?php  echo url('extension/module/permission', array('id' => $row['name']))?>">访问权限</a>
 						&nbsp;
 						<span class="upgrade-label" module="<?php  echo $row['name'];?>" version="<?php  echo $row['version'];?>">
-						<?php  if($row['upgrade']) { ?><a href="<?php  echo url('extension/module/upgrade', array('m' => $row['name']));?>" onclick="return confirm('确认更新吗？');" style="color:red;" title="来自本地文件更新">更新</a><?php  } ?>
+						<?php  if($row['upgrade']) { ?><a href="<?php  echo url('extension/module/upgrade', array('m' => $row['name']));?>" onclick="return confirm('确认更新吗？');" style="color:red;" title="来自本地文件更新">更新222</a><?php  } ?>
 						</span>
 					</div>
 				</div>

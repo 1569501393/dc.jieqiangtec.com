@@ -9,6 +9,7 @@
         $op      = $_GPC['op'];
         $gzh     = pdo_fetchall("SELECT * FROM " . tablename('uni_account_users') . "where uid=$uid");
         $modules = pdo_fetchall("SELECT * FROM " . tablename('modules'));
+        // var_dump('TODO jieqiangtest==$modules==',$modules);exit;
 		$user    = pdo_get('users',array('uid' =>$uid));
         if (checksubmit('submit')) {
             $credit  = $_GPC['credit'];
