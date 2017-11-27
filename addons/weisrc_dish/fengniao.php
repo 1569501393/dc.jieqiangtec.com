@@ -1,4 +1,5 @@
 <?php
+// ∑‰ƒÒ≈‰ÀÕª˘¿‡
 class fengniao
 {
     private $token;
@@ -29,13 +30,13 @@ class fengniao
         return md5($seed);
     }
 
-    // step 2 ÂàõÂª∫ËÆ¢Âçï
+    // step 2 ¥¥Ω®∂©µ•
     public function sendOrder($dataArray)
     {
         $salt = mt_rand(1000, 9999);
         $dataJson = json_encode($dataArray, JSON_UNESCAPED_UNICODE);
         $urlencodeData = urlencode($dataJson) . PHP_EOL;
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
             'salt' => $salt,
@@ -47,21 +48,21 @@ class fengniao
         return $this->doPost($url, $requestJson);
     }
 
-    //ËÆ¢ÂçïÊäïËØâ
+    //∂©µ•Õ∂Àﬂ 
     public function complaintQrder($data)
     {
         $url = $this->API_URL . "/v2/order/complaint";
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
             'salt' => $salt,
             'data' => $urlencodeData,
             'signature' => $sig
         ));
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
     }
 
     public function queryQrder($partner_order_code)
@@ -71,7 +72,7 @@ class fengniao
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -80,10 +81,10 @@ class fengniao
             'signature' => $sig
         ));
 
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
     }
 
-    //ËÆ¢ÂçïÈ™ëÊâã‰ΩçÁΩÆ
+    //∂©µ•∆Ô ÷Œª÷√
     public function getcarrier($partner_order_code)
     {
         $url = $this->API_URL . "/v2/order/carrier";
@@ -91,7 +92,7 @@ class fengniao
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -100,7 +101,7 @@ class fengniao
             'signature' => $sig
         ));
 
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
     }
 
     public function cancelQrder($data) {
@@ -109,7 +110,7 @@ class fengniao
         $dataJson = json_encode($data);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -125,12 +126,12 @@ class fengniao
     public function requestToken()
     {
         $salt = mt_rand(1000, 9999);
-        // Ëé∑ÂèñÁ≠æÂêç
+        // ªÒ»°«©√˚
         $sig = $this->generateSign($this->APP_ID, $salt, $this->SECRET_KEY);
         $url = $this->API_URL . '/get_access_token';
         $tokenStr = $this->doGet($url, array('app_id' => $this->APP_ID, 'salt' => $salt, 'signature' => $sig));
         // echo $tokenStr;
-        // Ëé∑Âèñtoken
+        // ªÒ»°token
         $tokenStr = json_decode($tokenStr, true);
 
         $this->token = $tokenStr['data']['access_token'];
@@ -143,7 +144,7 @@ class fengniao
 
 
     /**
-     * ÂèëÈÄÅGETËØ∑Ê±Ç
+     * ∑¢ÀÕGET«Î«Û
      * @param string $url
      * @param array $param
      * @return bool|mixed
@@ -153,7 +154,7 @@ class fengniao
         if (empty($url) or (!empty($param) and !is_array($param))) {
             throw new InvalidArgumentException('Params is not of the expected type');
         }
-        // È™åËØÅurlÂêàÊ≥ïÊÄß
+        // —È÷§url∫œ∑®–‘
 //        if (!filter_var($url, FILTER_VALIDATE_URL)) {
 //            throw new InvalidArgumentException('Url is not valid');
 //        }
@@ -167,7 +168,7 @@ class fengniao
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ‰∏çËøõË°åssl ËÆ§ËØÅ
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ≤ªΩ¯––ssl »œ÷§
         // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         $result = curl_exec($ch);
@@ -180,7 +181,7 @@ class fengniao
     }
 
     /**
-     * POSTËØ∑Ê±Ç
+     * POST«Î«Û
      * @param $url
      * @param $param
      * @return boolean|mixed
@@ -192,7 +193,7 @@ class fengniao
             throw new InvalidArgumentException('Params is not of the expected type');
         }
 
-        // È™åËØÅurlÂêàÊ≥ïÊÄß
+        // —È÷§url∫œ∑®–‘
 //        if (!filter_var($url, FILTER_VALIDATE_URL)) {
 //            throw new InvalidArgumentException('Url is not valid');
 //        }
@@ -210,11 +211,11 @@ class fengniao
         curl_setopt($ch, CURLOPT_HEADER, false);
         // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ‰∏çËøõË°åssl ËÆ§ËØÅ
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ≤ªΩ¯––ssl »œ÷§
 
-        if (strcmp($method, "POST") == 0) {  // POST Êìç‰Ωú
+        if (strcmp($method, "POST") == 0) {  // POST ≤Ÿ◊˜
             curl_setopt($ch, CURLOPT_POST, true);
-        } else if (strcmp($method, "DELETE") == 0) { // DELETEÊìç‰Ωú
+        } else if (strcmp($method, "DELETE") == 0) { // DELETE≤Ÿ◊˜
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         } else {
             throw new InvalidArgumentException('Please input correct http method, such as POST or DELETE');

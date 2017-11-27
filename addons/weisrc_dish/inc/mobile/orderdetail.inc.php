@@ -1,5 +1,6 @@
 <?php
 global $_W, $_GPC;
+
 $weid = $this->_weid;
 $from_user = $this->_fromuser;
 $id = intval($_GPC['orderid']);
@@ -10,9 +11,9 @@ $setting = $this->getSetting();
 $order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id AND a.from_user=:from_user ORDER BY a.id DESC LIMIT 1", array(':id' => $id, ':from_user' => $from_user));
 //$order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id ORDER BY a.id DESC LIMIT 1", array(':id' => $id));
 
-if (empty($order)) {
-    message('订单不存在!');
-}
+//if (empty($order)) {
+//    message('订单不存在!');
+//}
 
 $op = $_GPC['op'];
 if ($op == 'acceptorder') { //收货
@@ -70,7 +71,14 @@ if ($op == 'acceptorder') { //收货
     if ($order['dining_mode'] == 2) {
         $deliveryuser = pdo_fetch("SELECT * FROM " . tablename($this->table_account) . " where id=:id LIMIT 1", array(':id' => $order['delivery_id']));
     }
-
+    include "../../addons/weisrc_dish/fengniao.php";
+    $setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
+    $setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
+    $r = new fengniao($setting['fengniao_appid'], $setting['fengniao_key']);
+    $r->requestToken();
+    $result = $r->queryQrderNew($_GPC['orderid']);
+    $result_order = json_decode($result)->data;
+    WeUtility::logging('pay', '$result+++++++++'.$result);
     include $this->template($this->cur_tpl . '/orderdetail');
 }
 

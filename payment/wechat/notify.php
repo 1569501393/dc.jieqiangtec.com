@@ -32,7 +32,6 @@ if (!empty($input) && empty($_GET['out_trade_no'])) {
 		);
 
 		echo array2xml($result);
-		WeUtility::logging('pay', '开始调用555+++++++++');
 		exit;
 
 	}
@@ -48,7 +47,6 @@ if (!empty($input) && empty($_GET['out_trade_no'])) {
 		);
 
 		echo array2xml($result);
-		WeUtility::logging('pay', '开始调用444+++++++++');
 		exit;
 
 	}
@@ -80,7 +78,6 @@ if(is_array($setting['payment'])) {
 	$wechat = $setting['payment']['wechat'];
 
 	WeUtility::logging('pay', var_export($get, true));
-	WeUtility::logging('pay', "fnps");
 	if(!empty($wechat)) {
 
 		ksort($get);
@@ -156,7 +153,6 @@ if(is_array($setting['payment'])) {
 				$module = module_fetch($log['module']);
 
 				if (empty($module)) {
-					WeUtility::logging('pay', '开始调用333+++++++++');
 					exit('success');
 
 				}
@@ -234,24 +230,9 @@ if(is_array($setting['payment'])) {
 							);
 
 							echo array2xml($result);
-							WeUtility::logging('pay', '准备调用111+++++++++');
-							$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE ordersn=:ordersn LIMIT 1", array(':ordersn' => $get['out_trade_no']));
-							$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
-							$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
-							$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
-							WeUtility::logging('pay', '开始调用+++++++++');
-							$this->sendfengniao($order,$store,$setting);
-
 							exit;
 
 						} else {
-							WeUtility::logging('pay', '准备调用222+++++++++');
-							$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE ordersn=:ordersn LIMIT 1", array(':ordersn' => $get['out_trade_no']));
-							$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
-							$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
-							$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
-							WeUtility::logging('pay', '开始调用+++++++++');
-							$this->sendfengniao($order,$store,$setting);
 							exit('success');
 
 						}
@@ -279,20 +260,14 @@ if($isxml) {
 	);
 
 	echo array2xml($result);
-	WeUtility::logging('pay', '准备调用222+++++++++');
 	$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE transid=:transid LIMIT 1", array(':transid' => $get['transaction_id']));
 	$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
 	$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
 	$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
-	WeUtility::logging('pay', '开始调用+++++++++');
-	WeUtility::logging('pay', '999+++++++++'.json_encode($order));
-	WeUtility::logging('pay', '000+++++++++'.json_encode($store));
 	sendfengniao($order,$store,$setting);
-	WeUtility::logging('pay', '开始调用777+++++++++');
 	exit;
 
 } else {
-	WeUtility::logging('pay', '开始调用666+++++++++');
 	exit('fail');
 
 }
@@ -301,7 +276,6 @@ function sendfengniao($order, $store, $setting)
 	global $_W, $_GPC;
 	include "../../addons/weisrc_dish/fengniao.php";
 	$rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key']);
-	WeUtility::logging('pay', '8888+++++++++');
 	$rop->requestToken();
 //        if (empty($setting['fengniao_appid']) || empty($setting['fengniao_key']) || $store['is_fengniao'] == 0) {
 //            return false;
@@ -368,9 +342,7 @@ function sendfengniao($order, $store, $setting)
 			"goods_count" => $order['totalnum'],
 			"require_receive_time" => strtotime('+1 day') * 1000
 	);
-	WeUtility::logging('pay', var_export($dataArray,1));
 	$result = $rop->sendOrder($dataArray);  // second 创建订单
 	WeUtility::logging('pay', '$result+++++++++'.$result);
-
 }
 
