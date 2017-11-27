@@ -261,10 +261,15 @@ if($isxml) {
 
 	echo array2xml($result);
 	$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE transid=:transid LIMIT 1", array(':transid' => $get['transaction_id']));
-	$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
-	$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
-	$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
-	sendfengniao($order,$store,$setting);
+
+	// TODO 判断是蜂鸟还是达达
+	if ($order['dining_mode']==2 ){
+		$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
+		$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
+		$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
+		sendfengniao($order,$store,$setting);
+	}
+	
 	exit;
 
 } else {

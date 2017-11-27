@@ -84,6 +84,28 @@ class fengniao
         echo $this->doPost($url, $requestJson) . PHP_EOL;   //发送请求
     }
 
+	// 新的查询 return
+    public function queryQrderNew($partner_order_code)
+    {
+
+        $url = $this->API_URL . "/v2/order/query";
+        $data = array("partner_order_code" => $partner_order_code);
+        $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $salt = mt_rand(1000, 9999);
+        $urlencodeData = urlencode($dataJson);
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //生成签名
+
+        $requestJson = json_encode(array(
+            'app_id' => $this->APP_ID,
+            'salt' => $salt,
+            'data' => $urlencodeData,
+            'signature' => $sig
+        ));
+
+        return $this->doPost($url, $requestJson) . PHP_EOL;   //发送请求
+    }
+    
+
     //订单骑手位置
     public function getcarrier($partner_order_code)
     {
