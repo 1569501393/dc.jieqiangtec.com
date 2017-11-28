@@ -263,11 +263,16 @@ if($isxml) {
 	$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE transid=:transid LIMIT 1", array(':transid' => $get['transaction_id']));
 
 	// TODO 判断是蜂鸟还是达达
-	if ($order['dining_mode']==2 ){
+	if ($order['dining_mode']==2 && $store['is_fengniao'] == 1){
 		$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
 		$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
 		$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
 		sendfengniao($order,$store,$setting);
+	}elseif($order['dining_mode']==2 && $store['is_fengniao'] == 0){
+		$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
+		$setting['app_key'] = "dada1ca630e2c3b1d26";
+		$setting['app_secret'] = "06efdb149bf5167ba76b4105fc56c8ec";
+		senddada($order,$store,$setting);
 	}
 	
 	exit;
@@ -349,5 +354,57 @@ function sendfengniao($order, $store, $setting)
 	);
 	$result = $rop->sendOrder($dataArray);  // second 创建订单
 	WeUtility::logging('pay', '$result+++++++++'.$result);
+}
+function senddada($order, $store, $setting)
+{
+	include "../../addons/weisrc_dish/DadaOpenapi.php";
+	//*********************配置项*************************
+	$config = array();
+	$config['app_key'] = $setting['app_key'];
+	$config['app_secret'] = $setting['app_secret'];
+	$config['source_id'] = '3450';
+	$config['url'] = 'http://newopen.imdada.cn/api/order/addOrder';
+
+	$obj = new DadaOpenapi($config);
+	//***********************发单接口************************
+//发单请求数据,只是样例数据，根据自己的需求进行更改。
+	$data = array(
+			'shop_no'=> '100',
+			'origin_id'=> $order['ordersn'],
+			'city_code'=> '0592',
+			'tips'=> 0,
+			'info'=> '测试订单',
+			'cargo_type'=> 1,
+			'cargo_weight'=> 10,
+			'cargo_price'=> $order['totalprice'],
+			'cargo_num'=> $order['totalnum'],
+			'is_prepay'=> 0,
+			'expected_fetch_time'=> time()+15*60,
+			'invoice_title'=> '测试',
+			'receiver_name'=> $order['username'],
+			'receiver_address'=> 'ssssss',
+			'receiver_phone'=> $order['tel']?:'13555566781',
+			'receiver_tel'=> $order['tel']?:'13555566781',
+			'receiver_lat'=> $store['lat']?:'31.63',
+			'receiver_lng'=> $store['lng']?:'121.41',
+			'callback'=>'http://newopen.imdada.cn/inner/api/order/status/notify'
+	);
+
+//请求接口
+	$reqStatus = $obj->makeRequest($data);
+	if (!$reqStatus) {
+		//接口请求正常，判断接口返回的结果，自定义业务操作
+		if ($obj->getCode() == 0) {
+			//返回成功 ....
+			WeUtility::logging('pay', '成功+++++++++');
+		}else{
+			//返回失败
+			WeUtility::logging('pay', '失败+++++++++');
+		}
+		echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
+	}else{
+		//请求异常或者失败
+		echo 'except';
+	}
 }
 

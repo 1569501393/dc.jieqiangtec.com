@@ -79,6 +79,35 @@ if ($op == 'acceptorder') { //收货
     $result = $r->queryQrderNew($_GPC['orderid']);
     $result_order = json_decode($result)->data;
     WeUtility::logging('pay', '$result+++++++++'.$result);
+
+    //达达*********************配置项*************************
+    include "../../addons/weisrc_dish/DadaOpenapi.php";
+    $config = array();
+    $config['app_key'] = 'dada1ca630e2c3b1d26';
+    $config['app_secret'] = '06efdb149bf5167ba76b4105fc56c8ec';
+    $config['source_id'] = '3450';
+    $config['url'] = 'http://newopen.imdada.cn/api/order/status/query';
+    $obj = new DadaOpenapi($config);
+    //***********************发单接口************************
+//发单请求数据,只是样例数据，根据自己的需求进行更改。
+    $data = array(
+        'order_id'=> '21'
+    );
+
+//请求接口
+    $reqStatus = $obj->makeRequest($data);
+    if (!$reqStatus) {
+        //接口请求正常，判断接口返回的结果，自定义业务操作
+        if ($obj->getCode() == 0) {
+            //返回成功 ....
+        }else{
+            //返回失败
+        }
+        echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
+    }else{
+        //请求异常或者失败
+        echo 'except';
+    }
     include $this->template($this->cur_tpl . '/orderdetail');
 }
 
