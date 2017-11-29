@@ -9,6 +9,7 @@ $cur_nave = 'order';
 $setting = $this->getSetting();
 
 $order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id AND a.from_user=:from_user ORDER BY a.id DESC LIMIT 1", array(':id' => $id, ':from_user' => $from_user));
+
 //$order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id ORDER BY a.id DESC LIMIT 1", array(':id' => $id));
 
 //if (empty($order)) {
@@ -67,46 +68,52 @@ if ($op == 'acceptorder') { //收货
         }
     }
 
-
     if ($order['dining_mode'] == 2) {
         $deliveryuser = pdo_fetch("SELECT * FROM " . tablename($this->table_account) . " where id=:id LIMIT 1", array(':id' => $order['delivery_id']));
     }
-    include "../../addons/weisrc_dish/fengniao.php";
-    $setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
-    $setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
-    $r = new fengniao($setting['fengniao_appid'], $setting['fengniao_key']);
-    $r->requestToken();
-    $result = $r->queryQrderNew($_GPC['orderid']);
-    $result_order = json_decode($result)->data;
-    WeUtility::logging('pay', '$result+++++++++'.$result);
-
-    //达达*********************配置项*************************
-    include "../../addons/weisrc_dish/DadaOpenapi.php";
-    $config = array();
-    $config['app_key'] = 'dada1ca630e2c3b1d26';
-    $config['app_secret'] = '06efdb149bf5167ba76b4105fc56c8ec';
-    $config['source_id'] = '3450';
-    $config['url'] = 'http://newopen.imdada.cn/api/order/status/query';
-    $obj = new DadaOpenapi($config);
-    //***********************发单接口************************
+    if($order['dining_mode']==2 && $store['is_fengniao'] == 1){
+        include "../../addons/weisrc_dish/fengniao.php";
+        $setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
+        $setting['fengniao_appid'] = $setting_config['fengniao_appid'];
+        $setting['fengniao_key'] = $setting_config['fengniao_key'];
+        $r = new fengniao($setting['fengniao_appid'], $setting['fengniao_key']);
+        $r->requestToken();
+        $result = $r->queryQrderNew($_GPC['orderid']);
+        $result_order = json_decode($result)->data;
+        WeUtility::logging('pay', '$result+++++++++'.$result);
+    }
+    if($order['dining_mode']==2 && $store['is_dada'] == 1){
+        $setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
+        //达达*********************配置项*************************
+        include "../../addons/weisrc_dish/DadaOpenapi.php";
+        $config = array();
+        $config['app_key'] = $setting_config['dada_appid'];
+        $config['app_secret'] = $setting_config['dada_key'];
+        $config['source_id'] = '3450';
+        $config['url'] = 'http://newopen.imdada.cn/api/order/status/query';
+        $obj = new DadaOpenapi($config);
+        //***********************发单接口************************
 //发单请求数据,只是样例数据，根据自己的需求进行更改。
-    $data = array(
-        'order_id'=> '21'
-    );
+        $data = array(
+            'order_id'=> $order['id']
+        );
 
 //请求接口
-    $reqStatus = $obj->makeRequest($data);
-    if (!$reqStatus) {
-        //接口请求正常，判断接口返回的结果，自定义业务操作
-        if ($obj->getCode() == 0) {
-            //返回成功 ....
+        $reqStatus = $obj->makeRequest($data);
+        if (!$reqStatus) {
+            //接口请求正常，判断接口返回的结果，自定义业务操作
+            if ($obj->getCode() == 0) {
+                $result = $obj->getResult();
+                $result_order = json_decode($result)->data;
+                //返回成功 ....
+            }else{
+                //返回失败
+            }
+            echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
         }else{
-            //返回失败
+            //请求异常或者失败
+            echo 'except';
         }
-        echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
-    }else{
-        //请求异常或者失败
-        echo 'except';
     }
     include $this->template($this->cur_tpl . '/orderdetail');
 }

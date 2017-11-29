@@ -261,17 +261,17 @@ if($isxml) {
 
 	echo array2xml($result);
 	$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE transid=:transid LIMIT 1", array(':transid' => $get['transaction_id']));
-
+	$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
 	// TODO 判断是蜂鸟还是达达
 	if ($order['dining_mode']==2 && $store['is_fengniao'] == 1){
-		$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
-		$setting['fengniao_appid'] = "826cad6d-fad5-4378-8c5a-380dd922dff8";
-		$setting['fengniao_key'] = "8be4bd4f-c971-45be-bd9d-3e640682cef1";
+		$setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
+		$setting['fengniao_appid'] = $setting_config['fengniao_appid'];
+		$setting['fengniao_key'] = $setting_config['fengniao_key'];
 		sendfengniao($order,$store,$setting);
-	}elseif($order['dining_mode']==2 && $store['is_fengniao'] == 0){
-		$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
-		$setting['app_key'] = "dada1ca630e2c3b1d26";
-		$setting['app_secret'] = "06efdb149bf5167ba76b4105fc56c8ec";
+	}elseif($order['dining_mode']==2 && $store['is_dada'] == 1){
+		$setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
+		$setting['app_key'] = $setting_config['dada_appid'];
+		$setting['app_secret'] = $setting_config['dada_key'];
 		senddada($order,$store,$setting);
 	}
 	

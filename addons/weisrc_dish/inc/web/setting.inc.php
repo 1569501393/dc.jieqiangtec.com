@@ -6,7 +6,7 @@ $title = '系统设置';
 $GLOBALS['frames'] = $this->getMainMenu();
 $config = $this->module['config']['weisrc_dish'];
 load()->func('tpl');
-$config['is_fengniao'] = 1;
+
 $stores = pdo_fetchall("SELECT * FROM " . tablename($this->table_stores) . " WHERE weid = :weid ORDER BY `id` DESC", array(':weid' => $_W['uniacid']));
 if (empty($stores)) {
     $url = $this->createWebUrl('stores', array('op' => 'display'));
@@ -38,9 +38,6 @@ if (checksubmit('submit')) {
         'tpluser' => trim($_GPC['from_user']),
         'tpltype' => intval($_GPC['tpltype']),
         'sms_enable' => intval($_GPC['sms_enable']),
-        'is_auto_commission' => intval($_GPC['is_auto_commission']),
-        'auto_commission_coin' => intval($_GPC['auto_commission_coin']),
-        'tplmission' => trim($_GPC['tplmission']),
         'sms_username' => trim($_GPC['sms_username']),
         'isneedfollow' => intval($_GPC['isneedfollow']),
         'follow_url' => trim($_GPC['follow_url']),
@@ -51,7 +48,6 @@ if (checksubmit('submit')) {
         'sms_mobile' => trim($_GPC['sms_mobile']),
         'link_card' => trim($_GPC['link_card']),
         'link_sign' => trim($_GPC['link_sign']),
-        'commission_keywords' => trim($_GPC['commission_keywords']),
         'link_card_name' => trim($_GPC['link_card_name']),
         'link_sign_name' => trim($_GPC['link_sign_name']),
         'link_recharge' => trim($_GPC['link_recharge']),
@@ -70,12 +66,9 @@ if (checksubmit('submit')) {
         'fee_rate' => floatval($_GPC['fee_rate']),
         'fee_min' => intval($_GPC['fee_min']),
         'fee_max' => intval($_GPC['fee_max']),
-        'credit_mode' => intval($_GPC['credit_mode']),
-        'payx_credit' => intval($_GPC['payx_credit']),
         'wechat' => intval($_GPC['wechat']),
         'alipay' => intval($_GPC['alipay']),
         'credit' => intval($_GPC['credit']),
-        'fengniao_mode' => intval($_GPC['fengniao_mode']),
         'is_show_home' => intval($_GPC['is_show_home']),
         'is_speaker' => intval($_GPC['is_speaker']),
         'delivery' => intval($_GPC['delivery']),
@@ -107,7 +100,10 @@ if (checksubmit('submit')) {
         $data['fengniao_appid'] = trim($_GPC['fengniao_appid']);
         $data['fengniao_key'] = trim($_GPC['fengniao_key']);
     }
-
+    if ($config['is_dada']==1) {
+        $data['dada_appid'] = trim($_GPC['dada_appid']);
+        $data['dada_key'] = trim($_GPC['dada_key']);
+    }
     if ($data['commission_money_mode'] == 2) {
         $data['commission_level'] = 2;
     }
@@ -124,15 +120,15 @@ if (checksubmit('submit')) {
 
     if (!$this->exists()) {
         if (!empty($_GPC['apiclient_cert'])) {
-            file_put_contents($certfile, 'qweqeqeqeqwewqeqweqwe');
+            file_put_contents($certfile, $_GPC['apiclient_cert']);
             $data['apiclient_cert'] = 1;
         }
         if (!empty($_GPC['apiclient_key'])) {
-            file_put_contents($keyfile, 'qweqeqeqeqwewqeqweqwe');
+            file_put_contents($keyfile, $_GPC['apiclient_key']);
             $data['apiclient_key'] = 1;
         }
         if (!empty($_GPC['rootca'])) {
-            file_put_contents($rootca, 'qweqeqeqeqwewqeqweqwe');
+            file_put_contents($rootca, $_GPC['rootca']);
             $data['rootca'] = 1;
         }
     } else {
@@ -192,46 +188,6 @@ if (checksubmit('submit')) {
     } else {
         unset($data['dateline']);
         pdo_update($this->table_setting, $data, array('weid' => $_W['uniacid']));
-    }
-
-    $rule = array(
-        'uniacid' => $_W['uniacid'],
-        'name' => "餐饮分销",
-        'module' => 'weisrc_dish',
-        'status' => 1,
-        'displayorder' => 255
-    );
-    $sql = "SELECT * FROM " . tablename('rule') . ' WHERE `module` = :module AND `name` = :name AND uniacid = :uniacid';
-    $pars = array();
-    $pars[':module'] = 'weisrc_dish';
-    $pars[':name'] = "餐饮分销";
-    $pars[':uniacid'] = $_W['uniacid'];
-    $reply = pdo_fetch($sql, $pars);
-    if (!empty($reply)) {
-        $rid = $reply['id'];
-        $result = pdo_update('rule', $rule, array('id' => $rid));
-    } else {
-        $result = pdo_insert('rule', $rule);
-        $rid = pdo_insertid();
-    }
-
-    if (!empty($rid)) {
-        $sql = 'DELETE FROM ' . tablename('rule_keyword') . ' WHERE `rid`=:rid AND `uniacid`=:uniacid';
-        $pars = array();
-        $pars[':rid'] = $rid;
-        $pars[':uniacid'] = $_W['uniacid'];
-        pdo_query($sql, $pars);
-
-        $rowtpl = array(
-            'rid' => $rid,
-            'uniacid' => $_W['uniacid'],
-            'module' => 'weisrc_dish',
-            'status' => 1,
-            'displayorder' => $rule['displayorder'],
-            'type' => 1,
-            'content' => $_GPC['commission_keywords']
-        );
-        pdo_insert('rule_keyword', $rowtpl);
     }
 
     message('操作成功', $this->createWebUrl('setting'), 'success');
