@@ -12,7 +12,6 @@ define('IN_MOBILE', true);
 
 require '../../framework/bootstrap.inc.php';
 $input = file_get_contents('php://input');
-
 $isxml = true;
 
 if (!empty($input) && empty($_GET['out_trade_no'])) {
@@ -262,19 +261,22 @@ if($isxml) {
 	echo array2xml($result);
 	$order = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_order') . " WHERE transid=:transid LIMIT 1", array(':transid' => $get['transaction_id']));
 	$store = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_stores") . " WHERE id=:id LIMIT 1", array(':id' => $order['storeid']));
+	$config_array = pdo_fetch("SELECT * FROM " . tablename('uni_account_modules') . " WHERE uniacid=:uniacid LIMIT 1", array(':uniacid' => $_W['uniacid']));
+	WeUtility::logging('pay', '1111+++++++++'.var_export($config_array,1));
+	$setting_config = unserialize($config_array['settings']);
+	WeUtility::logging('pay', '2222+++++++++'.var_export($setting_config['weisrc_dish'],1));
+	$config_setting = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_setting') . " WHERE weid=:weid LIMIT 1", array(':weid' => $_W['uniacid']));
+	WeUtility::logging('pay', '9999+++++++++'.var_export($config_setting,1));
 	// TODO 判断是蜂鸟还是达达
-	if ($order['dining_mode']==2 && $store['is_fengniao'] == 1){
-		$setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
-		$setting['fengniao_appid'] = $setting_config['fengniao_appid'];
-		$setting['fengniao_key'] = $setting_config['fengniao_key'];
+	if ($order['dining_mode']==2 && $setting_config['weisrc_dish']['is_fengniao'] == 1){
+		$setting['fengniao_appid'] = $config_setting['fengniao_appid'];
+		$setting['fengniao_key'] = $config_setting['fengniao_key'];
 		sendfengniao($order,$store,$setting);
-	}elseif($order['dining_mode']==2 && $store['is_dada'] == 1){
-		$setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
-		$setting['app_key'] = $setting_config['dada_appid'];
-		$setting['app_secret'] = $setting_config['dada_key'];
+	}elseif($order['dining_mode']==2 && $setting_config['weisrc_dish']['is_dada'] == 1){
+		$setting['app_key'] = $config_setting['dada_appid'];
+		$setting['app_secret'] = $config_setting['dada_key'];
 		senddada($order,$store,$setting);
 	}
-	
 	exit;
 
 } else {
@@ -364,13 +366,14 @@ function senddada($order, $store, $setting)
 	$config['app_secret'] = $setting['app_secret'];
 	$config['source_id'] = '3450';
 	$config['url'] = 'http://newopen.imdada.cn/api/order/addOrder';
-
+WeUtility::logging('pay', '开始调用+++++++++');
 	$obj = new DadaOpenapi($config);
+
 	//***********************发单接口************************
 //发单请求数据,只是样例数据，根据自己的需求进行更改。
 	$data = array(
 			'shop_no'=> '100',
-			'origin_id'=> $order['ordersn'],
+			'origin_id'=> $order['id'],
 			'city_code'=> '0592',
 			'tips'=> 0,
 			'info'=> '测试订单',
@@ -392,6 +395,7 @@ function senddada($order, $store, $setting)
 
 //请求接口
 	$reqStatus = $obj->makeRequest($data);
+	WeUtility::logging('pay', '333+++++++++'.var_export($reqStatus,1));
 	if (!$reqStatus) {
 		//接口请求正常，判断接口返回的结果，自定义业务操作
 		if ($obj->getCode() == 0) {
