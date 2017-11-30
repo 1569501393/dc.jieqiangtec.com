@@ -16,9 +16,9 @@ if (empty($cur_store)) {
     message('门店不存在!');
 }
 //var_dump('TODO jieqinagtest==',111);exit;
-if (!$this->exists()) {
-    $_GPC['idArr'] = '';
-}
+//if (!$this->exists()) {
+//    $_GPC['idArr'] = '';
+//}
 
 $operation = !empty($_GPC['op']) ? $_GPC['op'] : 'display';
 if ($operation == 'fengniaolist') {
@@ -406,7 +406,6 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     }
     $this->message("操作成功,共操作{$rowcount}条数据!", '', 0);
 } elseif ($operation == 'cancelall') {
-
     $rowcount = 0;
     $notrowcount = 0;
     foreach ($_GPC['idArr'] as $k => $id) {

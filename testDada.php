@@ -16,8 +16,8 @@ $config = array();
 $config['app_key'] = 'dada1ca630e2c3b1d26';
 $config['app_secret'] = '06efdb149bf5167ba76b4105fc56c8ec';
 $config['source_id'] = '3450';
-// $config['url'] = 'http://newopen.imdada.cn/api/order/formalCancel'; // 取消订单
-$config['url'] = 'http://newopen.imdada.cn/api/order/status/query'; // 查看订单
+$config['url'] = 'http://newopen.imdada.cn/api/order/formalCancel'; // 取消订单
+// $config['url'] = 'http://newopen.imdada.cn/api/order/status/query'; // 查看订单
 $obj = new DadaOpenapi($config);
 
 //***********************发单接口************************
@@ -28,7 +28,8 @@ $obj = new DadaOpenapi($config);
 );*/
 
 $data = array(
-    'order_id'=> '474', // 477
+    'order_id'=> '479', // 477
+	'cancel_reason_id'=>1
 );
 
 

@@ -11,9 +11,8 @@ include "model.php";
 include "plugin/feyin/HttpClient.class.php";
 include "templateMessage.php";
 include "fengniao.php";
-//include "dada.php";
-include "DadaOpenapi.php";
 include "plugin/ylprint.class.php";
+include "DadaOpenapi.php";
 define(EARTH_RADIUS, 6371); //地球半径，平均半径为6371km
 define('RES', '../addons/weisrc_dish/template/');
 define('CUR_MOBILE_DIR', 'dish/');
@@ -29,6 +28,194 @@ class weisrc_dishModuleSite extends Core
     public $global_sid = 0;
     public $logo = '';
     public $more_store_psize = 10;
+
+    protected function createWebUrl($do, $query = array())
+    {
+        global $_W, $_GPC;
+        $query['do'] = $do;
+        $query['m'] = strtolower($this->modulename);
+
+        $url = $_SERVER['REQUEST_URI'];
+        if (strexists($url, 'store.php')) {
+            $url = './store.php?';
+            $url .= "c=site&";
+            $url .= "a=entry&";
+            if (!empty($do)) {
+                $url .= "do={$do}&";
+            }
+            if (!empty($query)) {
+                $queryString = http_build_query($query, '', '&');
+                $url .= $queryString;
+            }
+            return $url;
+        } else {
+            return wurl('site/entry', $query);
+        }
+    }
+
+    //取得短信验证码
+    public function doWebGetDyCheckCode()
+    {
+        global $_W, $_GPC;
+        $weid = $this->_weid;
+        $from_user = trim($_GPC['from_user']);
+        $this->_fromuser = $from_user;
+        $mobile = trim($_GPC['mobile']);
+        $storeid = intval($_GPC['storeid']);
+
+        $setting = $this->getSetting();
+
+        if ($setting['is_verify_mobile']==0 || empty($setting['dayu_verify_code']) || empty($setting['dayu_appkey']) || empty($setting['dayu_secretkey'])) {
+            $this->showMsg('商家未开启验证码!');
+        }
+
+        if (!preg_match("/^13[0-9]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|17[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$|147[0-9]{8
+        }$/", $mobile)
+        ) {
+            $this->showMsg('手机号码格式不对!');
+        }
+
+        $passcheckcode = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND mobile=:mobile AND status=1 ORDER BY `id` DESC limit 1", array(':weid' => $weid, ':mobile' => $mobile));
+        if (!empty($passcheckcode)) {
+            $this->showMsg('这手机号码已经使用过!', 1);
+        }
+
+//        $checkCodeCount = pdo_fetchcolumn("SELECT count(1) FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND from_user=:from_user ", array(':weid' => $weid, ':from_user' => $from_user));
+//        if ($checkCodeCount >= 3) {
+//            $this->showMsg('您请求的验证码已超过最大限制..' . $checkCodeCount);
+//        }
+
+        //判断数据是否已经存在
+        $data = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND mobile=:mobile ORDER BY `id` DESC limit 1", array(':weid' => $weid, ':mobile' => $mobile));
+        if (!empty($data)) {
+            if (TIMESTAMP - $data['dateline'] < 60) {
+                $this->showMsg('每分钟只能获取短信一次!');
+            }
+        }
+
+        //验证码
+        $checkcode = random(6, 1);
+        $checkcode = $this->getNewCheckCode($checkcode);
+        $data = array(
+            'weid' => $weid,
+            'from_user' => $from_user,
+            'mobile' => $mobile,
+            'checkcode' => $checkcode,
+            'status' => 0,
+            'dateline' => TIMESTAMP
+        );
+
+        $sms_data = array(
+            'code' => (string)$checkcode
+        );
+
+        $result = $this->sms_send($mobile, $sms_data);
+        if ($result) {
+            pdo_insert('weisrc_dish_sms_checkcode', $data);
+            $this->showMsg('发送成功!', 1);
+        } else {
+            $this->showMsg($result, 1);
+        }
+    }
+
+
+    function sms_send($mobile, $content) {
+        global $_W;
+        load()->func('communication');
+        $setting = $this->getSetting();
+        $appkey = $setting['dayu_appkey'];
+        $secretKey = $setting['dayu_secretkey'];
+        $sms_template_code =$setting['dayu_verify_code'];
+        $signname = $setting['dayu_sign'];
+
+        if(!is_array($setting)) {
+            return error(-1, '平台没有设置短信参数');
+        }
+
+//        if($config_sms['version']==2) {
+//            date_default_timezone_set("GMT");
+//            $post = array(
+//                'PhoneNumbers' => $mobile,
+//                'SignName' => $signname,
+//                'TemplateCode' => trim($sms_template_code),
+//                'TemplateParam' => json_encode($content),
+//                'OutId' => '',
+//                'RegionId' => 'cn-hangzhou',
+//                'AccessKeyId' => $appkey,
+//                'Format' => 'json',
+//                'SignatureMethod' => 'HMAC-SHA1',
+//                'SignatureVersion' => '1.0',
+//                'SignatureNonce' => uniqid(),
+//                'Timestamp' => date('Y-m-d\TH:i:s\Z'),
+//                'Action' => 'SendSms',
+//                'Version' => '2017-05-25',
+//            );
+//            ksort($post);
+//            $str = '';
+//            foreach ($post as $key => $value){
+//                $str .= '&' . percentEncode($key) . '=' . percentEncode($value);
+//            }
+//            $stringToSign = 'GET' . '&%2F&' . percentencode(substr($str, 1));
+//            $signature = base64_encode(hash_hmac('sha1', $stringToSign, "{$secretKey}&", true));
+//            $post['Signature'] = $signature;
+//
+//            $url = 'http://dysmsapi.aliyuncs.com/?' . http_build_query($post);
+//            $result = ihttp_get($url);
+//            if(is_error($result)) {
+//                return $result;
+//            }
+//            $result = @json_decode($result['content'], true);
+//            if($result['Code'] != 'OK') {
+//                return error(-1, $result['Message']);
+//            }
+//        } else {
+            $post = array(
+                'method' => 'alibaba.aliqin.fc.sms.num.send',
+                'app_key' => $appkey,
+                'timestamp' => date('Y-m-d H:i:s'),
+                'format' => 'json',
+                'v' => '2.0',
+                'sign_method' => 'md5',
+                'sms_type' => 'normal',
+                'sms_free_sign_name' => $signname,
+                'rec_num' => $mobile,
+                'sms_template_code' => trim($sms_template_code),
+                'sms_param' => json_encode($content)
+            );
+
+            ksort($post);
+            $str = '';
+            foreach($post as $key => $val) {
+                $str .= $key.$val;
+            }
+            $secret = $secretKey;
+            $post['sign'] = strtoupper(md5($secret . $str . $secret));
+            $query = '';
+            foreach($post as $key => $val) {
+                $query .= "{$key}=" . urlencode($val) . "&";
+            }
+            $query = substr($query, 0, -1);
+            $url = 'http://gw.api.taobao.com/router/rest?' . $query;
+            $result = ihttp_get($url);
+            if(is_error($result)) {
+                return $result;
+            }
+            $result = @json_decode($result['content'], true);
+
+            if(!empty($result['error_response'])) {
+                if(isset($result['error_response']['sub_code'])) {
+                    $msg = sms_error_code($result['error_response']['sub_code']);
+                    if(empty($msg)) {
+                        $msg['msg'] = $result['error_response']['sub_msg'];
+                    }
+                } else {
+                    $msg['msg'] = $result['error_response']['msg'];
+                }
+                return error(-1, $msg['msg']);
+            }
+//        }
+        return true;
+    }
 
     function __construct()
     {
@@ -89,635 +276,6 @@ class weisrc_dishModuleSite extends Core
         $this->cur_mobile_path = RES . '/mobile/' . $this->cur_tpl;
         $this->_file_sys_tb();
     }
-
-    public function doWebgettotalprice()
-    {
-        global $_W, $_GPC;
-
-        $weid = $this->_weid;
-        $from_user = $_GPC['from_user'];
-        $storeid = intval($_GPC['storeid']);
-        $setting = $this->getSetting();
-        $is_auto_address = intval($setting['is_auto_address']);
-
-        $mode = intval($_GPC['ordertype']) == 0 ? 1 : intval($_GPC['ordertype']);
-
-        $lat = trim($_GPC['lat']);
-        $lng = trim($_GPC['lng']);
-
-        $isvip = $this->get_sys_card($from_user);
-
-        $store = $this->getStoreById($storeid);
-
-        //外卖
-        if ($mode == 2) {
-//            if (empty($lat) || empty($lng)) {
-//                $this->showTip('请重新选择配送地址!');
-//            }
-
-            //距离
-            $delivery_radius = floatval($store['delivery_radius']);
-            $distance = $this->getDistance($lat, $lng, $store['lat'], $store['lng']);
-            $distance = floatval($distance);
-            if ($store['not_in_delivery_radius'] == 0 && $delivery_radius > 0) { //只能在距离范围内
-//                if ($distance > $delivery_radius) {
-//                    $this->showTip('超出配送范围，不允许下单。');
-//                }
-            }
-        }
-
-        $cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " WHERE weid = :weid AND from_user = :from_user AND storeid=:storeid", array(':weid' => $weid, ':from_user' => 'admin', ':storeid' => $storeid));
-        if (empty($cart)) {
-            $this->showTip('请先添加商品!');
-        }
-
-        $guest_name = trim($_GPC['username']); //用户名
-        $tel = trim($_GPC['tel']); //电话
-        $address = trim($_GPC['address']);
-
-        $meal_time = trim($_GPC['meal_time']); //订餐时间
-        $counts = intval($_GPC['counts']); //预订人数
-
-        $remark = trim($_GPC['remark']); //备注
-
-        $tables = intval($_GPC['tables']); //桌号
-        $tablezonesid = intval($_GPC['tablezonesid']); //桌台
-
-        $user = $this->getFansByOpenid($from_user);
-        $fansdata = array('weid' => $weid,
-            'from_user' => $from_user,
-            'username' => $guest_name,
-            'address' => $address,
-            'mobile' => $tel
-        );
-        if (empty($guest_name)) {
-            unset($fansdata['username']);
-        }
-        if (empty($tel)) {
-            unset($fansdata['mobile']);
-        }
-        if (empty($address)) {
-            unset($fansdata['address']);
-        }
-        if ($mode == 2) { //外卖
-            $fansdata['lat'] = $lat;
-            $fansdata['lng'] = $lng;
-        }
-        if (empty($user)) {
-            pdo_insert($this->table_fans, $fansdata);
-        } else {
-            pdo_update($this->table_fans, $fansdata, array('id' => $user['id']));
-        }
-//2.购物车 //a.添加订单、订单产品
-        $totalnum = 0;
-        $totalprice = 0;
-        $goodsprice = 0;
-        $dispatchprice = 0;
-        $freeprice = 0;
-        $packvalue = 0;
-        $teavalue = 0;
-        $service_money = 0;
-
-        foreach ($cart as $value) {
-            $total = intval($value['total']);
-            $totalnum = $totalnum + intval($value['total']);
-            $goodsprice = $goodsprice + ($total * floatval($value['price']));
-            if ($mode == 2) { //打包费
-                $packvalue = $packvalue + ($total * floatval($value['packvalue']));
-            }
-        }
-
-
-        if ($mode == 2) { //外卖
-            $dispatchprice = $store['dispatchprice'];
-
-            if ($store['is_delivery_distance'] == 1 && $is_auto_address == 0) { //按距离收费
-                $distance = $this->getDistance($lat, $lng, $store['lat'], $store['lng']);
-                $distanceprice = $this->getdistanceprice($storeid, $distance);
-                $dispatchprice = floatval($distanceprice['dispatchprice']);
-            }
-
-            $freeprice = floatval($store['freeprice']);
-            if ($freeprice > 0.00) {
-                if ($goodsprice >= $freeprice) {
-                    $dispatchprice = 0;
-                }
-            }
-        }
-        if ($mode == 1) { //店内
-            if ($store['is_tea_money'] == 1) {
-                $teavalue = $counts * floatval($store['tea_money']);
-            }
-        }
-
-        $totalprice = $goodsprice + $dispatchprice + $packvalue + $teavalue;
-        if ($mode == 1) { //店内
-            $table = pdo_fetch("SELECT * FROM " . tablename($this->table_tables) . " where weid = :weid AND id=:id LIMIT 1", array(':weid' => $weid, ':id' => $tables));
-            $tablezonesid = $table['tablezonesid'];
-            $tablezones = pdo_fetch("SELECT * FROM " . tablename($this->table_tablezones) . " WHERE id = :id", array(':id' => $tablezonesid));
-            $service_rate = floatval($tablezones['service_rate']);
-            if ($service_rate > 0) {
-                $service_money = $totalprice * $service_rate / 100;
-            }
-            $totalprice = $totalprice + $service_money;
-        }
-
-        if ($mode == 2) { //外卖
-            $sendingprice = floatval($store['sendingprice']);
-            if ($sendingprice > 0.00) {
-                if ($goodsprice < $store['sendingprice']) {
-//                    $this->showTip('您的购买金额达不到起送价格!');
-                }
-            }
-        }
-
-        $result['code'] = 1;
-        if ($mode == 1) {
-            $str = '订单总价:<strong class="text-danger" id="totalprice">' . $totalprice . '</strong>';
-            $str .= '(商品:<strong class="text-danger">' . $goodsprice . '</strong>';
-            $str .= '服务费:<strong class="text-danger">' . $service_money . '</strong>';
-            $str .= '茶位费:<strong class="text-danger">' . $teavalue . '</strong>)';
-        } else if ($mode == 2) {
-            $str = '订单总价:<strong class="text-danger" id="totalprice">' . $totalprice . '</strong>';
-            $str .= '(商品:<strong class="text-danger">' . $goodsprice . '</strong>';
-            $str .= '配送费:<strong class="text-danger">' . $dispatchprice . '</strong>';
-            $str .= '打包费:<strong class="text-danger">' . $packvalue . '</strong>)';
-        } else {
-            $str = '订单总价:<strong class="text-danger" id="totalprice">' . $totalprice . '</strong>';
-        }
-
-        $result['totalprice'] = $str;
-        message($result, '', 'ajax');
-    }
-
-
-    public function doWebGetgoodsoption()
-    {
-        global $_GPC, $_W;
-        //查询商品是否存在
-        $id = intval($_GPC['id']); //商品id
-        $goods = pdo_fetchall("SELECT * FROM " . tablename("weisrc_dish_goods_option") . " WHERE goodsid=:goodsid
-        ORDER BY displayorder DESC", array
-        (":goodsid" => $id));
-        $str = '';
-        if (empty($goods)) {
-            echo json_encode(0);
-        } else {
-            $goodsgroup = array();
-            foreach ($goods as $key => $value) {
-                if (!in_array($value['start'], $goodsgroup)) {
-                    $goodsgroup[] = $value['start'];
-                }
-            }
-
-            foreach ($goodsgroup as $key1 => $val) {
-                $str .= '<ul class="que_box">' . '<span class="guige">' . $val . '</span>';
-                foreach ($goods as $key2 => $val2) {
-                    if ($val == $val2['start']) {
-                        $str .= '<li onclick="return addClass(this,' . $id . ');" specid="' . $val2['id'] . '">'
-                            . $val2['title'] . '</li>';
-                    }
-                }
-                $str .= '</ul>';
-            }
-
-            $goodsitem = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" =>
-                $id));
-            $iscard = $this->get_sys_card($this->_fromuser);
-            $goodsitem['dprice'] = $goodsitem['marketprice'];
-            if ($iscard == 1 && !empty($goodsitem['memberprice'])) {
-                $goodsitem['dprice'] = $goodsitem['memberprice'];
-            }
-
-            $data = array(
-                'price' => $goodsitem['dprice'],
-                'title' => $goodsitem['title'],
-                'content' => $str
-            );
-            echo json_encode($data);
-        }
-    }
-
-    public function doWebClearmenu()
-    {
-        global $_W, $_GPC;
-        $weid = $this->_weid;
-        $storeid = intval($_GPC['storeid']);
-        pdo_delete('weisrc_dish_cart', array('weid' => $weid, 'from_user' => 'admin', 'storeid' => $storeid));
-        $result['code'] = 0;
-        message($result, '', 'ajax');
-    }
-
-    public function doWebQueryAddress()
-    {
-        global $_W, $_GPC;
-        $weid = $this->weid;
-        $from_user = $_GPC['from_user'];
-
-        $user = pdo_fetch("SELECT * FROM " . tablename($this->table_useraddress) . " WHERE weid=:weid AND from_user=:from_user AND isdefault=1 LIMIT 1", array(':weid' => $weid, ':from_user' => $from_user));
-
-        if ($user) {
-            $result['code'] = 0;
-            $result['user'] = $user;
-            message($result, '', 'ajax');
-        } else {
-            $result['code'] = 1;
-            $result['msg'] = '用户不存在' . $from_user . $weid;
-            message($result, '', 'ajax');
-        }
-    }
-
-    public function doWebUpdateDishNumOfCategory()
-    {
-        global $_W, $_GPC;
-        $weid = $this->_weid;
-        $from_user = 'admin';
-
-        $storeid = intval($_GPC['storeid']); //门店id
-        $dishid = intval($_GPC['dishid']); //商品id
-        $optionid = $_GPC['optionid']; //商品id
-        $total = intval($_GPC['o2uNum']); //更新数量
-        $optype = trim($_GPC['optype']);
-
-        if (empty($from_user)) {
-            $result['msg'] = '会话已过期，请重新发送关键字!';
-            message($result, '', 'ajax');
-        }
-
-        $store = $this->getStoreById($storeid);
-
-//查询商品是否存在
-        $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" => $dishid));
-        if (empty($goods)) {
-            $result['msg'] = '没有相关商品';
-            message($result, '', 'ajax');
-        }
-
-        $nowtime = mktime(0, 0, 0);
-        if ($goods['lasttime'] <= $nowtime) {
-            pdo_query("UPDATE " . tablename($this->table_goods) . " SET today_counts=0,lasttime=:time WHERE id=:id", array(':id' => $dishid, ':time' => TIMESTAMP));
-        }
-
-        if (empty($optionid)) {
-            $cart = pdo_fetch("SELECT * FROM " . tablename($this->table_cart) . " WHERE goodsid=:goodsid AND weid=:weid AND storeid=:storeid AND
-from_user=:from_user", array(':goodsid' => $dishid, ':weid' => $weid, ':storeid' => $storeid, ':from_user' => $from_user));
-        } else {
-            //查询购物车有没该商品
-            $cart = pdo_fetch("SELECT * FROM " . tablename($this->table_cart) . " WHERE goodsid=:goodsid AND weid=:weid AND storeid=:storeid AND
-from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':weid' => $weid, ':storeid' => $storeid, ':from_user' => $from_user, ':optionid' => $optionid));
-        }
-
-        if ($goods['counts'] == 0) {
-            $result['msg'] = '该商品已售完!';
-            message($result, '', 'ajax');
-        }
-        if ($goods['counts'] > 0) {
-            $count = $goods['counts'] - $goods['today_counts'];
-            if ($count <= 0) {
-                $result['msg'] = '该商品已售完!!';
-                message($result, '', 'ajax');
-            }
-            if (!empty($cart)) {
-                if ($cart['total'] < $total) {
-                    if ($total > $count) {
-                        $result['msg'] = '该商品已没库存!!';
-                        message($result, '', 'ajax');
-                    }
-                }
-            } else {
-                if ($total > $count) {
-                    $result['msg'] = '该商品已没库存!!';
-                    message($result, '', 'ajax');
-                }
-            }
-        }
-
-        $iscard = $this->get_sys_card($from_user);
-        $price = floatval($goods['marketprice']);
-        if ($iscard == 1 && !empty($goods['memberprice'])) {
-            $price = floatval($goods['memberprice']);
-        }
-
-
-        $optionid = trim($_GPC['optionid']);
-        $optionids = explode('_', $optionid);
-        $optionprice = 0;
-        $optionname = '';
-
-        if (count($optionids) > 0) {
-            $options = pdo_fetchall("SELECT * FROM " . tablename("weisrc_dish_goods_option") . "  WHERE id IN ('" . implode("','", $optionids) . "')");
-            $is_first = 0;
-            foreach ($options as $key => $val) {
-                $optionprice = $optionprice + $val['price'];
-                if ($is_first == 0) {
-                    $optionname .= $val['title'];
-                } else {
-                    $optionname .= '+' . $val['title'];
-                }
-                $is_first++;
-            }
-
-        }
-
-        $price = $price + floatval($optionprice);
-
-        if (empty($cart)) {
-            //不存在的话增加商品点击量
-            pdo_query("UPDATE " . tablename($this->table_goods) . " SET subcount=subcount+1 WHERE id=:id", array(':id' => $dishid));
-
-            $addtotal = 1;
-            if ($optype == 'add') {
-                $addtotal = $total;
-            }
-
-            //添加进购物车
-            $data = array(
-                'weid' => $weid,
-                'storeid' => $goods['storeid'],
-                'goodsid' => $goods['id'],
-                'optionid' => $optionid,
-                'optionname' => $optionname,
-                'goodstype' => $goods['pcate'],
-                'price' => $price,
-                'packvalue' => $goods['packvalue'],
-                'from_user' => $from_user,
-                'total' => $addtotal
-            );
-            pdo_insert($this->table_cart, $data);
-        } else {
-            if ($optype == 'add') {
-                $total = intval($cart['total']) + $total;
-            }
-            //更新商品在购物车中的数量
-            pdo_query("UPDATE " . tablename($this->table_cart) . " SET total=:total WHERE id=:id", array(':id' => $cart['id'], ':total' => $total));
-        }
-
-        $totalcount = 0;
-        $totalprice = 0;
-        $goodscount = 0;
-
-        $cart = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " WHERE  storeid=:storeid AND from_user=:from_user AND weid=:weid", array(':storeid' => $storeid, ':from_user' => $from_user, ':weid' => $weid));
-
-        $cart_html = '<tr><td style="width: 40%;">名称</td><td>数量</td><td>单价</td><td>操作</td></tr>';
-        foreach ($cart as $key => $value) {
-            $goods_t = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id = :id LIMIT 1 ", array(':id' => $value['goodsid']));
-            if (!$this->getmodules()) {
-                $value['price'] = floatval($value['price']) + 6;
-            }
-            $cart[$key]['goodstitle'] = $goods_t['title'];
-            $totalcount = $totalcount + $value['total'];
-            $totalprice = $totalprice + $value['total'] * $value['price'];
-
-            if ($value['goodsid'] == $dishid) {
-                $goodscount = $goodscount + intval($value['total']);
-            }
-
-            if ($value['total'] > 0) {
-                $optionname = '';
-                if (!empty($value['optionname'])) {
-                    $optionname = '[' . $value['optionname'] . ']';
-                }
-
-                $cart_html .= '<tr dishid="' . $value['goodsid'] . '" optionid="' . $value['optionid'] . '"><td>' . $goods_t['title'] . $optionname . '</td><td>' . $value['total'] . '</td><td>¥<font>' . $value['price'] . '</font></td><td><i class="i-add-btn">+</i> <i class="i-remove-btn">-</i></td></tr>';
-            }
-        }
-        $cart_html .= '';
-
-        $result['totalprice'] = $totalprice;
-        $result['totalcount'] = $totalcount;
-        $result['goodscount'] = $goodscount;
-        $result['cart'] = $cart_html;
-        $result['code'] = 0;
-        message($result, '', 'ajax');
-    }
-
-    protected function createWebUrl($do, $query = array())
-    {
-        global $_W, $_GPC;
-        $query['do'] = $do;
-        $query['m'] = strtolower($this->modulename);
-
-        $url = $_SERVER['REQUEST_URI'];
-        if (strexists($url, 'store.php')) {
-            $url = './store.php?';
-            $url .= "c=site&";
-            $url .= "a=entry&";
-            if (!empty($do)) {
-                $url .= "do={$do}&";
-            }
-            if (!empty($query)) {
-                $queryString = http_build_query($query, '', '&');
-                $url .= $queryString;
-            }
-            return $url;
-        } else {
-            return wurl('site/entry', $query);
-        }
-    }
-
-    //$keyword 关键字
-    //$scene_str 场景值
-    public function createQrcode($keyword, $scene_str)
-    {
-        global $_W, $_GPC;
-
-        $acid = intval($_W['acid']);
-        $uniacccount = WeAccount::create($acid);
-        $scene_str = trim($scene_str) ? trim($scene_str) : itoast('场景值不能为空', '', '');
-        $is_exist = pdo_fetch('SELECT * FROM ' . tablename('qrcode') . ' WHERE uniacid = :uniacid AND acid = :acid AND scene_str = :scene_str AND model = 2 LIMIT 1;', array(':uniacid' => $_W['uniacid'], ':acid' => $_W['acid'], ':scene_str' => $scene_str));
-        if (!empty($is_exist)) {
-//            return "场景值:{$scene_str}已经存在,请更换场景值";
-            return $is_exist;
-        }
-        $barcode['action_info']['scene']['scene_str'] = $scene_str;
-        $barcode['action_name'] = 'QR_LIMIT_STR_SCENE';
-        $result = $uniacccount->barCodeCreateFixed($barcode);
-        if (!is_error($result)) {
-            $insert = array(
-                'uniacid' => $_W['uniacid'],
-                'acid' => $acid,
-                'qrcid' => $barcode['action_info']['scene']['scene_id'],
-                'scene_str' => $barcode['action_info']['scene']['scene_str'],
-                'keyword' => $keyword,
-                'name' => '餐饮分销',
-                'model' => 2,
-                'ticket' => $result['ticket'],
-                'url' => $result['url'],
-                'expire' => $result['expire_seconds'],
-                'createtime' => TIMESTAMP,
-                'status' => '1',
-                'type' => 'scene',
-            );
-            pdo_insert('qrcode', $insert);
-            return $insert;
-        }
-        return false;
-    }
-
-    //取得短信验证码
-    public function doWebGetDyCheckCode()
-    {
-        global $_W, $_GPC;
-        $weid = $this->_weid;
-        $from_user = trim($_GPC['from_user']);
-        $this->_fromuser = $from_user;
-        $mobile = trim($_GPC['mobile']);
-        $storeid = intval($_GPC['storeid']);
-
-        $setting = $this->getSetting();
-
-        if ($setting['is_verify_mobile'] == 0 || empty($setting['dayu_verify_code']) || empty($setting['dayu_appkey']) || empty($setting['dayu_secretkey'])) {
-            $this->showMsg('商家未开启验证码!');
-        }
-
-        if (!preg_match("/^13[0-9]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|17[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$|147[0-9]{8
-        }$/", $mobile)
-        ) {
-            $this->showMsg('手机号码格式不对!');
-        }
-
-        $passcheckcode = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND mobile=:mobile AND status=1 ORDER BY `id` DESC limit 1", array(':weid' => $weid, ':mobile' => $mobile));
-        if (!empty($passcheckcode)) {
-            $this->showMsg('这手机号码已经使用过!', 1);
-        }
-
-//        $checkCodeCount = pdo_fetchcolumn("SELECT count(1) FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND from_user=:from_user ", array(':weid' => $weid, ':from_user' => $from_user));
-//        if ($checkCodeCount >= 3) {
-//            $this->showMsg('您请求的验证码已超过最大限制..' . $checkCodeCount);
-//        }
-
-        //判断数据是否已经存在
-        $data = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_sms_checkcode') . " WHERE weid = :weid  AND mobile=:mobile ORDER BY `id` DESC limit 1", array(':weid' => $weid, ':mobile' => $mobile));
-        if (!empty($data)) {
-            if (TIMESTAMP - $data['dateline'] < 60) {
-                $this->showMsg('每分钟只能获取短信一次!');
-            }
-        }
-
-        //验证码
-        $checkcode = random(6, 1);
-        $checkcode = $this->getNewCheckCode($checkcode);
-        $data = array(
-            'weid' => $weid,
-            'from_user' => $from_user,
-            'mobile' => $mobile,
-            'checkcode' => $checkcode,
-            'status' => 0,
-            'dateline' => TIMESTAMP
-        );
-
-        $sms_data = array(
-            'code' => (string)$checkcode
-        );
-
-        $result = $this->sms_send($mobile, $sms_data);
-        if ($result) {
-            pdo_insert('weisrc_dish_sms_checkcode', $data);
-            $this->showMsg('发送成功!', 1);
-        } else {
-            $this->showMsg($result, 1);
-        }
-    }
-
-    function sms_send($mobile, $content)
-    {
-        global $_W;
-        load()->func('communication');
-        $setting = $this->getSetting();
-        $appkey = $setting['dayu_appkey'];
-        $secretKey = $setting['dayu_secretkey'];
-        $sms_template_code = $setting['dayu_verify_code'];
-        $signname = $setting['dayu_sign'];
-
-        if (!is_array($setting)) {
-            return error(-1, '平台没有设置短信参数');
-        }
-
-//        if($config_sms['version']==2) {
-//            date_default_timezone_set("GMT");
-//            $post = array(
-//                'PhoneNumbers' => $mobile,
-//                'SignName' => $signname,
-//                'TemplateCode' => trim($sms_template_code),
-//                'TemplateParam' => json_encode($content),
-//                'OutId' => '',
-//                'RegionId' => 'cn-hangzhou',
-//                'AccessKeyId' => $appkey,
-//                'Format' => 'json',
-//                'SignatureMethod' => 'HMAC-SHA1',
-//                'SignatureVersion' => '1.0',
-//                'SignatureNonce' => uniqid(),
-//                'Timestamp' => date('Y-m-d\TH:i:s\Z'),
-//                'Action' => 'SendSms',
-//                'Version' => '2017-05-25',
-//            );
-//            ksort($post);
-//            $str = '';
-//            foreach ($post as $key => $value){
-//                $str .= '&' . percentEncode($key) . '=' . percentEncode($value);
-//            }
-//            $stringToSign = 'GET' . '&%2F&' . percentencode(substr($str, 1));
-//            $signature = base64_encode(hash_hmac('sha1', $stringToSign, "{$secretKey}&", true));
-//            $post['Signature'] = $signature;
-//
-//            $url = 'http://dysmsapi.aliyuncs.com/?' . http_build_query($post);
-//            $result = ihttp_get($url);
-//            if(is_error($result)) {
-//                return $result;
-//            }
-//            $result = @json_decode($result['content'], true);
-//            if($result['Code'] != 'OK') {
-//                return error(-1, $result['Message']);
-//            }
-//        } else {
-        $post = array(
-            'method' => 'alibaba.aliqin.fc.sms.num.send',
-            'app_key' => $appkey,
-            'timestamp' => date('Y-m-d H:i:s'),
-            'format' => 'json',
-            'v' => '2.0',
-            'sign_method' => 'md5',
-            'sms_type' => 'normal',
-            'sms_free_sign_name' => $signname,
-            'rec_num' => $mobile,
-            'sms_template_code' => trim($sms_template_code),
-            'sms_param' => json_encode($content)
-        );
-
-        ksort($post);
-        $str = '';
-        foreach ($post as $key => $val) {
-            $str .= $key . $val;
-        }
-        $secret = $secretKey;
-        $post['sign'] = strtoupper(md5($secret . $str . $secret));
-        $query = '';
-        foreach ($post as $key => $val) {
-            $query .= "{$key}=" . urlencode($val) . "&";
-        }
-        $query = substr($query, 0, -1);
-        $url = 'http://gw.api.taobao.com/router/rest?' . $query;
-        $result = ihttp_get($url);
-        if (is_error($result)) {
-            return $result;
-        }
-        $result = @json_decode($result['content'], true);
-
-        if (!empty($result['error_response'])) {
-            if (isset($result['error_response']['sub_code'])) {
-                $msg = sms_error_code($result['error_response']['sub_code']);
-                if (empty($msg)) {
-                    $msg['msg'] = $result['error_response']['sub_msg'];
-                }
-            } else {
-                $msg['msg'] = $result['error_response']['msg'];
-            }
-            return error(-1, $msg['msg']);
-        }
-//        }
-        return true;
-    }
-
     public function cancelfengniao($order, $store, $setting)
     {
         global $_W, $_GPC;
@@ -751,8 +309,6 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
             message('提示:' . $returnresult['msg']);
         }
     }
-
-
     // 取消配送
     public function cancel_delivery($order, $store, $setting)
     {
@@ -840,81 +396,19 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
             }
         }
     }
-
-
-    public function complaintfengniao($order, $store, $setting)
-    {
-        global $_W, $_GPC;
-
-        if ($order['dining_mode'] != 2) {
-            return false;
-        }
-
-        $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key'], $setting['fengniao_mode']);
-        $rop->requestToken();
-
-        if (empty($setting['fengniao_appid']) || empty($setting['fengniao_key']) || $store['is_fengniao'] == 0) {
-            return false;
-        }
-
-        $orderid = $order['id'];
-
-        $dataArray = array(
-            "partner_order_code" => $orderid,
-            "order_complaint_code" => 150,
-            "order_complaint_time" => TIMESTAMP * 1000
-        );
-
-        $returnresult = $rop->complaintQrder($dataArray);  // second 创建订单
-        $returnresult = json_decode($returnresult, true);
-
-        if ($returnresult['code'] != "200") {
-            print_r($returnresult);
-            exit;
-        }
-    }
-
-    public function getcarrier($order, $store, $setting)
-    {
-        global $_W, $_GPC;
-
-        if ($order['dining_mode'] != 2) {
-            return false;
-        }
-
-        $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key'], $setting['fengniao_mode']);
-        $rop->requestToken();
-
-        if (empty($setting['fengniao_appid']) || empty($setting['fengniao_key']) || $store['is_fengniao'] == 0) {
-            return false;
-        }
-
-        $orderid = $order['id'];
-        $returnresult = $rop->getcarrier($orderid);  // second 创建订单
-        $returnresult = json_decode($returnresult, true);
-
-        if ($returnresult['code'] != "200") {
-            print_r($returnresult);
-            exit;
-        }
-    }
-
     public function sendfengniao($order, $store, $setting)
     {
         global $_W, $_GPC;
 
-        if ($order['dining_mode'] != 2) {
-            return false;
-        }
-
-        $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key'], $setting['fengniao_mode']);
+        $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key']);
         $rop->requestToken();
 
         if (empty($setting['fengniao_appid']) || empty($setting['fengniao_key']) || $store['is_fengniao'] == 0) {
             return false;
         }
+
         $orderid = $order['id'];
-        $goodsid = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
         $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
         $items_json = array();
         foreach ($goods as $goodkey => $goodvalue) {
@@ -929,16 +423,6 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
             );
         }
         $notify_url = $_W['siteroot'] . 'app/index.php?i=' . $_W['uniacid'] . '&c=entry&do=fengniaonotify&m=weisrc_dish';
-
-        $date = explode('~', $order['meal_time']);
-        $sendtime = strtotime($date[0]);
-
-        if ($sendtime > TIMESTAMP) {
-            $sendtime = $sendtime * 1000;
-        } else {
-            $sendtime = strtotime("+5 minute") * 1000;
-        }
-
         //拼装data数据
         $dataArray = array(
             'partner_remark' => $store['title'],
@@ -980,17 +464,9 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
             "is_agent_payment" => 0,
             "require_payment_pay" => 0,
             "goods_count" => $order['totalnum'],
-            "require_receive_time" => $sendtime //时间
+            "require_receive_time" => strtotime('+1 day') * 1000
         );
-
-//        $returnresult = $rop->sendOrder($dataArray);  // second 创建订单
-//        file_put_contents(IA_ROOT . "/addons/weisrc_dish/fengniao_data.log", var_export($dataArray, true) . PHP_EOL, FILE_APPEND);
-
-        $returnresult = $rop->sendOrder($dataArray);  // second 创建订单
-        $returnresult = json_decode($returnresult, true);
-        if ($returnresult['code'] != "200") {
-            message('提示:' . $returnresult['msg'] . ';门店:' . $store['title'] . ';code:' . $returnresult['code']);
-        }
+        $rop->sendOrder($dataArray);  // second 创建订单
     }
 
     public function doMobilefengniaonotify()
@@ -1174,169 +650,6 @@ status<>-1 ORDER BY id DESC LIMIT 1", array(':from_user' => $this->_fromuser, ':
         }
     }
 
-    public function doWebgetselectoption()
-    {
-        global $_GPC, $_W;
-        //查询商品是否存在
-        $id = intval($_GPC['dishid']); //商品id
-        $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" => $id));
-        if (empty($goods)) {
-            echo json_encode(0);
-        } else {
-            $iscard = $this->get_sys_card($this->_fromuser);
-            $goods['dprice'] = $goods['marketprice'];
-            if ($iscard == 1 && !empty($goods['memberprice'])) {
-                $goods['dprice'] = $goods['memberprice'];
-            }
-            $optionid = trim($_GPC['optionid']);
-            $optionids = explode('_', $optionid);
-            $optionprice = 0;
-
-            if (count($optionids) > 0) {
-                $optionprice = pdo_fetchcolumn("SELECT sum(price) FROM " . tablename("weisrc_dish_goods_option") . "  WHERE id IN ('" . implode("','", $optionids) . "')");
-
-            }
-            $goods['price'] = floatval($goods['dprice']) + floatval($optionprice);
-            echo json_encode($goods);
-        }
-    }
-
-    public function doMobilegetselectoption()
-    {
-        global $_GPC, $_W;
-        //查询商品是否存在
-        $id = intval($_GPC['dishid']); //商品id
-        $goods = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" => $id));
-        if (empty($goods)) {
-            echo json_encode(0);
-        } else {
-            $iscard = $this->get_sys_card($this->_fromuser);
-            $goods['dprice'] = $goods['marketprice'];
-            if ($iscard == 1 && !empty($goods['memberprice'])) {
-                $goods['dprice'] = $goods['memberprice'];
-            }
-            $optionid = trim($_GPC['optionid']);
-            $optionids = explode('_', $optionid);
-            $optionprice = 0;
-
-            if (count($optionids) > 0) {
-                $optionprice = pdo_fetchcolumn("SELECT sum(price) FROM " . tablename("weisrc_dish_goods_option") . "  WHERE id IN ('" . implode("','", $optionids) . "')");
-
-
-//                $option = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_goods_option") . " WHERE id=:id", array
-            }
-            $goods['price'] = floatval($goods['dprice']) + floatval($optionprice);
-            echo json_encode($goods);
-        }
-    }
-
-    public function doMobileGetgoodsoption()
-    {
-        global $_GPC, $_W;
-        //查询商品是否存在
-        $id = intval($_GPC['id']); //商品id
-        $goods = pdo_fetchall("SELECT * FROM " . tablename("weisrc_dish_goods_option") . " WHERE goodsid=:goodsid
-        ORDER BY displayorder DESC", array(":goodsid" => $id));
-        $str = '';
-        if (empty($goods)) {
-            echo json_encode(0);
-        } else {
-            $goodsgroup = array();
-            foreach ($goods as $key => $value) {
-                if (!in_array($value['start'], $goodsgroup)) {
-                    $goodsgroup[] = $value['start'];
-                }
-            }
-
-            foreach ($goodsgroup as $key1 => $val) {
-                $str .= '<ul class="que_box">' . '<span class="guige">' . $val . '</span>';
-                foreach ($goods as $key2 => $val2) {
-                    if ($val == $val2['start']) {
-                        $str .= '<li onclick="return addClass(this,' . $id . ');" specid="' . $val2['id'] . '">'
-                            . $val2['title'] . '</li>';
-                    }
-                }
-                $str .= '</ul>';
-            }
-
-            $goodsitem = pdo_fetch("SELECT * FROM " . tablename($this->table_goods) . " WHERE id=:id", array(":id" =>
-                $id));
-            $iscard = $this->get_sys_card($this->_fromuser);
-            $goodsitem['dprice'] = $goodsitem['marketprice'];
-            if ($iscard == 1 && !empty($goodsitem['memberprice'])) {
-                $goodsitem['dprice'] = $goodsitem['memberprice'];
-            }
-
-            $data = array(
-                'price' => $goodsitem['dprice'],
-                'title' => $goodsitem['title'],
-                'content' => $str
-            );
-            echo json_encode($data);
-        }
-    }
-
-    public function out_fans($strwhere, $paras, $datapage)
-    {
-        global $_GPC, $_W;
-
-        $pindex = max(1, intval($datapage));
-        $start = ($pindex - 1) * 100;
-        $limit = "";
-        $limit .= " LIMIT {$start},100";
-
-        $sql = "select * from " . tablename($this->table_fans)
-            . " WHERE $strwhere ORDER BY status DESC, dateline DESC" . $limit;
-
-        $list = pdo_fetchall($sql, $paras);
-
-        $i = 0;
-        foreach ($list as $key => $value) {
-            $shenfen = '消费者';
-            if ($value['is_commission'] == 2) {
-                if ($value['agentid'] > 0) {
-                    $shenfen = "代理商";
-                } else {
-                    $shenfen = "股东";
-                }
-            }
-
-            $order_count = pdo_fetchcolumn("SELECT COUNT(1) FROM " . tablename($this->table_order) . "  WHERE status=3 AND weid = :weid AND from_user=:from_user", array(':weid' => $_W['uniacid'], ':from_user' => $value['from_user']));
-
-            $fans = mc_fetch($value['from_user'], array("credit1", "credit2"));
-
-            $arr[$i]['nickname'] = $value['nickname'];
-            $arr[$i]['shenfen'] = $shenfen;
-            $arr[$i]['coin'] = floatval($fans['credit2']);
-
-            $pay_price = pdo_fetchcolumn("SELECT sum(totalprice) FROM " . tablename($this->table_order) . " WHERE status=3 AND weid = :weid AND from_user=:from_user", array(':weid' => $_W['uniacid'], ':from_user' => $value['from_user']));
-
-            $arr[$i]['totalprice'] = sprintf('%.2f', $pay_price);
-            $arr[$i]['ordercount'] = intval($order_count);
-
-            $mymember_count = pdo_fetchcolumn("SELECT COUNT(1) FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND (agentid=:agentid OR agentid2=:agentid)", array(':weid' => $_W['uniacid'], ':agentid' => $value['id']));
-            $arr[$i]['mymember_count'] = $mymember_count;
-
-//            $pay_price = pdo_fetchcolumn("SELECT sum(totalprice) AS totalprice FROM " . tablename($this->table_order) . " WHERE ispay=1 AND status=3 AND weid =:weid AND from_user in (SELECT from_user FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND (agentid=:agentid
-//  OR agentid2=:agentid))  ", array(':weid' => $_W['uniacid'], ':from_user' => $value['from_user'], ':agentid' => $value['id']));
-            $arr[$i]['pay_price'] = $pay_price;
-            $mymember_count2 = 0;
-            if ($value['is_commission'] == 2) {
-                if ($value['agentid'] == 0) {
-                    $mymember_count3 = pdo_fetchcolumn("SELECT COUNT(1) FROM " . tablename($this->table_fans) . " WHERE weid = :weid AND agentid=:agentid", array(':weid' => $_W['uniacid'], ':agentid' => $value['id']));
-                    $mymember_count2 = $mymember_count3;
-                } else {
-                    $mymember_count2 = 0;
-                }
-            }
-            $arr[$i]['mymember_count2'] = $mymember_count2;
-            $i++;
-        }
-
-        $this->exportexcel($arr, array('微信名', '身份', '余额', '消费总额', '单数', '下线人数', '下线消费总额', '下线代理人数'), TIMESTAMP);
-        exit();
-    }
-
     public function out_order($commoncondition, $paras)
     {
         $sql = "select * from " . tablename($this->table_order)
@@ -1394,38 +707,10 @@ status<>-1 ORDER BY id DESC LIMIT 1", array(':from_user' => $this->_fromuser, ':
             $arr[$i]['deliveryarea'] = $deliveryarea['title'];
             $arr[$i]['deliveryuser'] = empty($deliveryuser) ? $value['deliveryareaid'] : $deliveryuser['username'];
             $arr[$i]['delivery_money'] = $value['delivery_money'];
-
-
-            if ($value['couponid'] != 0) {
-                $coupon = pdo_fetch("SELECT a.* FROM " . tablename($this->table_coupon) . "
-        a INNER JOIN " . tablename($this->table_sncode) . " b ON a.id=b.couponid
- WHERE a.weid = :weid AND b.id=:couponid ORDER BY b.id
- DESC LIMIT 1", array(':weid' => $this->weid, ':couponid' => $value['couponid']));
-                if (!empty($coupon)) {
-                    if ($coupon['type'] == 2) {
-                        $coupon_info = "抵用金额" . $value['discount_money'];
-                    } else {
-                        $coupon_info = $coupon['title'];
-                    }
-                }
-            }
-            $arr[$i]['coupon_info'] = $coupon_info;
-            if (!empty($value['newlimitprice'])) {
-                $arr[$i]['newlimitprice'] = $value['newlimitprice'];
-            } else {
-                $arr[$i]['newlimitprice'] = '';
-            }
-            if (!empty($value['oldlimitprice'])) {
-                $arr[$i]['oldlimitprice'] = $value['oldlimitprice'];
-            } else {
-                $arr[$i]['oldlimitprice'] = '';
-            }
-            $arr[$i]['remark'] = $value['remark'];
-
             $i++;
         }
 
-        $this->exportexcel($arr, array('所属商家', '订单号', '商户订单号', '支付方式', '状态', '数量', '总价', '商品价格', '配送费', '打包费', '茶位费', '服务费', '真实姓名', '电话号码', '地址', '时间', '配送点', '配送员', '配送佣金', '优惠信息', '新用户满减', '老用户满减', '备注'), TIMESTAMP);
+        $this->exportexcel($arr, array('所属商家', '订单号', '商户订单号', '支付方式', '状态', '数量', '总价', '商品价格', '配送费', '打包费', '茶位费', '服务费', '真实姓名', '电话号码', '地址', '时间', '配送点', '配送员', '配送佣金'), TIMESTAMP);
         exit();
     }
 
@@ -1557,35 +842,12 @@ a INNER JOIN " . tablename($this->table_goods) . " b ON a.goodsid=b.id WHERE a.o
                 $arr[$i]['deliveryarea'] = $deliveryarea['title'];
                 $arr[$i]['deliveryuser'] = $deliveryuser['username'];
                 $arr[$i]['delivery_money'] = $value['delivery_money'];
-
-                $coupon_info = '';
-                if ($value['couponid'] != 0) {
-                    $coupon = pdo_fetch("SELECT a.* FROM " . tablename($this->table_coupon) . "
-        a INNER JOIN " . tablename($this->table_sncode) . " b ON a.id=b.couponid
- WHERE a.weid = :weid AND b.id=:couponid ORDER BY b.id
- DESC LIMIT 1", array(':weid' => $this->weid, ':couponid' => $value['couponid']));
-                    if (!empty($coupon)) {
-                        if ($coupon['type'] == 2) {
-                            $coupon_info = "抵用金额" . $value['discount_money'];
-                        } else {
-                            $coupon_info = $coupon['title'];
-                        }
-                    }
-                }
-                $arr[$i]['coupon_info'] = $coupon_info;
-                if (!empty($value['newlimitprice'])) {
-                    $arr[$i]['newlimitprice'] = $value['newlimitprice'];
-                }
-                if (!empty($value['oldlimitprice'])) {
-                    $arr[$i]['oldlimitprice'] = $value['oldlimitprice'];
-                }
-
                 $j++;
                 $i++;
             }
         }
 
-        $this->exportexcel($arr, array('所属商家', '订单号', '商户订单号', '支付方式', '状态', '产品详情', '数量', '商品价格', '总价', '配送费', '打包费', '茶位费', '服务费', '一级', '一级佣金', '二级', '二级佣金', '真实姓名', '消费身份', '电话号码', '地址', '时间', '配送点', '配送员', '配送佣金', '优惠信息', '新用户满减', '老用户满减'), TIMESTAMP);
+        $this->exportexcel($arr, array('所属商家', '订单号', '商户订单号', '支付方式', '状态', '产品详情', '数量', '商品价格', '总价', '配送费', '打包费', '茶位费', '服务费', '一级', '一级佣金', '二级', '二级佣金', '真实姓名', '消费身份', '电话号码', '地址', '时间', '配送点', '配送员', '配送佣金'), TIMESTAMP);
         exit();
     }
 
@@ -1787,6 +1049,25 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 //      $result = $result == true ? '发送成功' : $result;
     }
 
+    public function check_hourtime($begintime, $endtime)
+    {
+        global $_W, $_GPC;
+        $nowtime = intval(date("Hi"));
+        $begintime = intval(str_replace(':', '', $begintime));
+        $endtime = intval(str_replace(':', '', $endtime));
+
+        if ($begintime < $endtime) {
+            if ($begintime <= $nowtime && $nowtime <= $endtime) {
+                return 1;
+            }
+        } else {
+            if ($begintime <= $nowtime || $nowtime <= $endtime) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     //365
     public function _365SendFreeMessage($orderid = 0, $position_type = 0)
     {
@@ -1816,17 +1097,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $ordertype = $this->getOrderType();
 
         //商品id数组
-        $ordergoods = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
-        $goodsid = array();
-        if (!empty($ordergoods)) {
-            foreach ($ordergoods as $key => $row) {
-                if (isset($row['goodsid'])) {
-                    $goodsid[$row['goodsid']] = $row;
-                } else {
-                    $goodsid[] = $row;
-                }
-            }
-        }
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
 
         $store = $this->getStoreById($storeid);
 
@@ -1925,19 +1196,12 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             if ($packvalue > 0 && $dining_mode == 2) {
                 $content2 .= "打包费:{$packvalue}元\n";
             }
-
-
-            $dispatchprice = floatval($order['dispatchprice']);
-            if ($dispatchprice > 0 && $dining_mode == 2) {
-                $content2 .= "配送费:{$dispatchprice}元\n";
-            }
             if ($tea_money > 0 && $dining_mode == 1) {
                 $content2 .= "{$store['tea_tip']}:{$tea_money}元\n";
             }
             if ($service_money > 0 && $dining_mode == 1) {
                 $content2 .= "服务费:{$service_money}元\n";
             }
-
 
             $content2 .= "总数量:" . $order['totalnum'] . "   总价:" . number_format($order['totalprice'], 2) . "元\n";
             if ($dining_mode != 4 && !empty($order['meal_time'])) {
@@ -1972,12 +1236,17 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $result = ihttp_request($target, $post_data);
                 $_365status = $result['responseCode'];
                 pdo_update('weisrc_dish_print_order', array('print_status' => $_365status), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
                 return;
             }
 
             if (!empty($value['print_top'])) {
                 $print_top = "" . $value['print_top'] . $huanhang;
+
+//                if ($pos == 0) {
+//                    $print_top= '^B2' . $value['print_top'] . $huanhang;
+//                } else {
+//                    $print_top= '<B>' . $value['print_top'] . '</B>' . $huanhang;
+//                }
             }
             if (!empty($value['print_bottom'])) {
                 $print_bottom = $huanhang . $value['print_bottom'] . "";
@@ -1985,14 +1254,14 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
             //商品
             if ($value['print_label'] == '0') {
-                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
             } else {
                 //餐桌
                 $table_label = pdo_fetch("SELECT * FROM " . tablename($this->table_tables) . " WHERE id=:id", array(":id" => $order['tables']));
                 if (in_array($table_label['print_label'], explode(',', $value['print_label']))) {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
                 } else {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")");
                 }
             }
             if (empty($goods) && $dining_mode != 3 && $dining_mode != 5) {
@@ -2021,18 +1290,10 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     pdo_insert($this->table_print_order, $print_order_data);
                     $oid = pdo_insertid();
                 }
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        $money = $v['price'];
-                        $money = $money * $v['total'];
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 .= "" . $goodsname . ' ' . $v['total'] . $goods[$v['goodsid']]['unitname'] . ' ' . number_format($money, 2) . "元" . $huanhang;
-                    }
+                foreach ($order['goods'] as $v) {
+                    $money = $goodsid[$v['id']]['price'];
+                    $money = $money * $goodsid[$v['id']]['total'];
+                    $content1 .= "" . $v['title'] . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' . number_format($money, 2) . "元" . $huanhang;
                 }
                 if (!empty($value['qrcode_url']) && !empty($value['qrcode_status'])) {
                     if ($pos == 0) {
@@ -2052,7 +1313,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $result = ihttp_request($target, $post_data);
                 $_365status = $result['responseCode'];
                 pdo_update('weisrc_dish_print_order', array('print_status' => $_365status), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
             } else {
                 $content = '订单编号:' . $order['ordersn'] . $huanhang;
                 $content .= '下单日期:' . date('Y-m-d H:i:s', $order['dateline']) . $huanhang;
@@ -2064,55 +1324,38 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                         $content .= '<B>桌台</B>:' . $this->getTableName($order['tables']) . $huanhang;
                     }
                 }
-                if ($dining_mode == 4) {
-                    $content1 .= '<B>领餐牌号:' . $order['quicknum'] . '</B>' . $huanhang;
-                }
                 if (!empty($order['remark'])) {
-                    if ($pos == 0) {
-                        $content .= '^B2备注:' . $order['remark'] . $huanhang;
-                    } else {
-                        $content .= '<B>备注:' . $order['remark'] . '</B>' . $huanhang;
-                    }
+                    $content .= '备注:' . $order['remark'] . $huanhang;
                 }
 
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        if ($value['type'] == '365') { //飞印
-                            $print_order_data = array(
-                                'weid' => $weid,
-                                'orderid' => $orderid,
-                                'print_usr' => $value['print_usr'],
-                                'print_status' => -1,
-                                'dateline' => TIMESTAMP
-                            );
-                            pdo_insert($this->table_print_order, $print_order_data);
-                            $oid = pdo_insertid();
-                        }
-                        $content1 = '';
-                        $content1 .= "-------------------------" . $huanhang;
-                        $goodsname = $goods[$v['goodsid']]['title'];
-
-                        if ($pos == 0) {
-                            $content1 .= '^B2' . $goodsname . $huanhang;
-                            if (!empty($v['optionname'])) {
-                                $content1 .= '^B2' . '[' . $v['optionname'] . ']' . $huanhang;
-                            }
-                            $content1 .= '^B2数量:' . $v['total'] . $goods[$v['goodsid']]['unitname'] . $huanhang;
-                        } else {
-                            $content1 .= '<B>' . $goodsname . '</B>' . $huanhang;
-                            if (!empty($v['optionname'])) {
-                                $content1 .= '<B>' . '[' . $v['optionname'] . ']' . '</B>' . $huanhang;
-                            }
-                            $content1 .= '<B>数量:' . $v['total'] . $goods[$v['goodsid']]['unitname'] . '</B>' . $huanhang;
-                        }
-
-                        $printContent = $content . $content1;
-                        $post_data = "deviceNo=" . $deviceNo . "&key=" . $key . "&printContent=" . $printContent . "&times=" . $times;
-                        $result = ihttp_request($target, $post_data);
-                        $_365status = $result['responseCode'];
-                        pdo_update('weisrc_dish_print_order', array('print_status' => $_365status), array('id' => $oid));
-                        pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
+                foreach ($order['goods'] as $v) {
+                    if ($value['type'] == '365') { //飞印
+                        $print_order_data = array(
+                            'weid' => $weid,
+                            'orderid' => $orderid,
+                            'print_usr' => $value['print_usr'],
+                            'print_status' => -1,
+                            'dateline' => TIMESTAMP
+                        );
+                        pdo_insert($this->table_print_order, $print_order_data);
+                        $oid = pdo_insertid();
                     }
+                    $content1 = '';
+                    $content1 .= "-------------------------" . $huanhang;
+                    if ($pos == 0) {
+                        $content1 .= '^B2' . $v['title'] . $huanhang;
+                        $content1 .= '^B2数量:' . $goodsid[$v['id']]['total'] . $v['unitname'] . $huanhang;
+                    } else {
+                        $content1 .= '<B>' . $v['title'] . '</B>' . $huanhang;
+                        $content1 .= '<B>数量:' . $goodsid[$v['id']]['total'] . $v['unitname'] . '</B>' . $huanhang;
+                    }
+
+
+                    $printContent = $content . $content1;
+                    $post_data = "deviceNo=" . $deviceNo . "&key=" . $key . "&printContent=" . $printContent . "&times=" . $times;
+                    $result = ihttp_request($target, $post_data);
+                    $_365status = $result['responseCode'];
+                    pdo_update('weisrc_dish_print_order', array('print_status' => $_365status), array('id' => $oid));
                 }
             }
         }
@@ -2161,17 +1404,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $ordertype = $this->getOrderType();
 
         //商品id数组
-        $ordergoods = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
-        $goodsid = array();
-        if (!empty($ordergoods)) {
-            foreach ($ordergoods as $key => $row) {
-                if (isset($row['goodsid'])) {
-                    $goodsid[$row['goodsid']] = $row;
-                } else {
-                    $goodsid[] = $row;
-                }
-            }
-        }
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
 
         $store = $this->getStoreById($storeid);
         $paystatus = $order['ispay'] == 0 ? '未支付' : '已支付';
@@ -2279,6 +1512,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 continue;
             }
 
+
             $deviceNo = $value['print_usr'];
             $key = $value['feyin_key'];
             $times = $value['print_nums'];
@@ -2300,7 +1534,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $print = new Yprint();
                 $result = $print->action_print($member_code, $deviceNo, $cancelcontent, $api_key, $key);
                 pdo_update('weisrc_dish_print_order', array('print_status' => $result['state']), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
                 return;
             }
 
@@ -2313,14 +1546,14 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
             //商品
             if ($value['print_label'] == '0') {
-                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
             } else {
                 //餐桌
                 $table_label = pdo_fetch("SELECT * FROM " . tablename($this->table_tables) . " WHERE id=:id", array(":id" => $order['tables']));
                 if (in_array($table_label['print_label'], explode(',', $value['print_label']))) {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
                 } else {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")");
                 }
             }
             if (empty($goods) && $dining_mode != 3 && $dining_mode != 5) {
@@ -2343,23 +1576,12 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
                 $content .= "-------------------------\n";
                 $content1 = "<table><tr><td>品名</td><td>数量</td><td>单价</td></tr>";
-
-
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        $money = $v['price'];
-                        $money = $money * $v['total'];
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 .= '<tr><td>' . $goodsname . '</td><td>' . $v['total'] .
-                            $goods[$v['goodsid']]['unitname'] . '</td><td>' .
-                            number_format($money, 2) . "元</td></tr><tr><td></td><td></td><td></td></tr>";
-                    }
+                foreach ($order['goods'] as $v) {
+                    $money = $goodsid[$v['id']]['price'];
+                    $money = $money * $goodsid[$v['id']]['total'];
+                    $content1 .= '<tr><td>' . $v['title'] . '</td><td>' . $goodsid[$v['id']]['total'] .
+                        $v['unitname'] . '</td><td>' .
+                        number_format($money, 2) . "元</td></tr><tr><td></td><td></td><td></td></tr>";
                 }
                 $content1 .= "</table>\n";
 
@@ -2383,7 +1605,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $print = new Yprint();
                 $result = $print->action_print($member_code, $deviceNo, $printContent, $api_key, $key);
                 pdo_update('weisrc_dish_print_order', array('print_status' => $result['state']), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
             } else {
                 $content = '订单编号:' . $order['ordersn'] . "\n";
                 $content .= '下单日期:' . date('Y-m-d H:i:s', $order['dateline']) . "\n";
@@ -2396,47 +1617,37 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     }
                 }
 
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        if ($value['type'] == 'yilianyun') { //飞印
-                            $print_order_data = array(
-                                'weid' => $weid,
-                                'orderid' => $orderid,
-                                'print_usr' => $value['print_usr'],
-                                'print_status' => -1,
-                                'dateline' => TIMESTAMP
-                            );
-                            pdo_insert($this->table_print_order, $print_order_data);
-                            $oid = pdo_insertid();
-                        }
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 = '';
-                        $content1 .= "-------------------------\n";
-                        if ($yilian_type == 1) {
-                            $content1 .= '<FS>' . $goodsname . "</FS>\n";
-                            $content1 .= '数量:<FS>' . $v['total'] . $goods[$v['goodsid']]['unitname'] . "</FS>\n";
-                        } else {
-                            $content1 .= '@@2' . $goodsname . "\n";
-                            $content1 .= '@@2数量:' . $v['total'] . $goods[$v['goodsid']]['unitname'] . "\n";
-                        }
-
-                        $deviceNo = $value['print_usr'];
-                        $key = $value['feyin_key'];
-                        $times = $value['print_nums'];
-                        $member_code = $value['member_code'];
-                        $api_key = $value['api_key'];
-                        $printContent = $content . $content1;
-                        $print = new Yprint();
-                        $result = $print->action_print($member_code, $deviceNo, $printContent, $api_key, $key);
-                        pdo_update('weisrc_dish_print_order', array('print_status' => $result['state']), array('id' => $oid));
-                        pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
+                foreach ($order['goods'] as $v) {
+                    if ($value['type'] == 'yilianyun') { //飞印
+                        $print_order_data = array(
+                            'weid' => $weid,
+                            'orderid' => $orderid,
+                            'print_usr' => $value['print_usr'],
+                            'print_status' => -1,
+                            'dateline' => TIMESTAMP
+                        );
+                        pdo_insert($this->table_print_order, $print_order_data);
+                        $oid = pdo_insertid();
                     }
+                    $content1 = '';
+                    $content1 .= "-------------------------\n";
+                    if ($yilian_type == 1) {
+                        $content1 .= '<FS>' . $v['title'] . "</FS>\n";
+                        $content1 .= '数量:<FS>' . $goodsid[$v['id']]['total'] . $v['unitname'] . "</FS>\n";
+                    } else {
+                        $content1 .= '@@2' . $v['title'] . "\n";
+                        $content1 .= '@@2数量:' . $goodsid[$v['id']]['total'] . $v['unitname'] . "\n";
+                    }
+
+                    $deviceNo = $value['print_usr'];
+                    $key = $value['feyin_key'];
+                    $times = $value['print_nums'];
+                    $member_code = $value['member_code'];
+                    $api_key = $value['api_key'];
+                    $printContent = $content . $content1;
+                    $print = new Yprint();
+                    $result = $print->action_print($member_code, $deviceNo, $printContent, $api_key, $key);
+                    pdo_update('weisrc_dish_print_order', array('print_status' => $result['state']), array('id' => $oid));
                 }
             }
         }
@@ -2473,19 +1684,10 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $ordertype = $this->getOrderType();
 
         //商品id数组
-        $ordergoods = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
-        $goodsid = array();
-        if (!empty($ordergoods)) {
-            foreach ($ordergoods as $key => $row) {
-                if (isset($row['goodsid'])) {
-                    $goodsid[$row['goodsid']] = $row;
-                } else {
-                    $goodsid[] = $row;
-                }
-            }
-        }
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
 
         $paystatus = $order['ispay'] == 0 ? '未支付' : '已支付';
+
         $content = "订单编号:" . $order['ordersn'] . "<BR>";
         if ($dining_mode == 4) {
             $content .= '领餐牌号:' . $order['quicknum'] . "<BR>";
@@ -2622,7 +1824,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $result = $client->post(FEIE_HOSTNAME . '/printOrderAction', $feie_content);
                 $_feiestatus = $result['responseCode'];
                 pdo_update('weisrc_dish_print_order', array('print_status' => $_feiestatus), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
                 return;
             }
 
@@ -2634,14 +1835,14 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             }
             //商品
             if ($value['print_label'] == '0') {
-                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
             } else {
                 //餐桌
                 $table_label = pdo_fetch("SELECT * FROM " . tablename($this->table_tables) . " WHERE id=:id", array(":id" => $order['tables']));
                 if (in_array($table_label['print_label'], explode(',', $value['print_label']))) {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
                 } else {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")");
                 }
             }
             if (empty($goods) && $dining_mode != 3 && $dining_mode != 5) {
@@ -2671,22 +1872,11 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     pdo_insert($this->table_print_order, $print_order_data);
                     $oid = pdo_insertid();
                 }
-
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        $money = $v['price'];
-                        $money = $money * $v['total'];
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 .= $goodsname . ' ' . $v['total'] . $goods[$v['goodsid']]['unitname'] . ' ' . number_format($money, 2) . "元\n";
-                    }
+                foreach ($order['goods'] as $v) {
+                    $money = $goodsid[$v['id']]['price'];
+                    $money = $money * $goodsid[$v['id']]['total'];
+                    $content1 .= $v['title'] . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' . number_format($money, 2) . "元\n";
                 }
-
                 if (!empty($value['qrcode_url']) && !empty($value['qrcode_status'])) {
                     $print_bottom .= "<QR>" . $value['qrcode_url'] . "</QR>";
                 }
@@ -2706,7 +1896,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $result = $client->post(FEIE_HOSTNAME . '/printOrderAction', $feie_content);
                 $_feiestatus = $result['responseCode'];
                 pdo_update('weisrc_dish_print_order', array('print_status' => $_feiestatus), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
             } else { //分单
                 $content = '订单编号:' . $order['ordersn'] . "<BR>";
                 $content .= '下单日期:' . date('Y-m-d H:i:s', $order['dateline']) . "<BR>";
@@ -2716,46 +1905,36 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 if (!empty($order['remark'])) {
                     $content .= '<DB>备注:' . $order['remark'] . "</DB><BR>";
                 }
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        if ($value['type'] == 'feie') { //飞蛾
-                            $print_order_data = array(
-                                'weid' => $weid,
-                                'orderid' => $orderid,
-                                'print_usr' => $value['print_usr'],
-                                'print_status' => -1,
-                                'dateline' => TIMESTAMP
-                            );
-                            pdo_insert($this->table_print_order, $print_order_data);
-                            $oid = pdo_insertid();
-                        }
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 = '';
-                        $content1 .= "------------------------------------------------<BR>";
-                        $content1 .= '<B>名称:' . $goodsname . "</B><BR>";
-                        $content1 .= '<B>数量:' . $v['total'] . $goods[$v['goodsid']]['unitname'] . "</B><BR>";
-                        $money = $v['price'];
-                        $content1 .= '<B>价格:' . number_format($money, 2) . "元</B><BR>";
-                        $content1 .= "------------------------------------------------<BR>";
-                        $printContent = $print_top . $content . $content1 . $print_bottom;
-                        $feie_content = array(
-                            'sn' => $value['print_usr'],
-                            'printContent' => $printContent,
-                            'key' => $value['feyin_key'],
-                            'times' => $value['print_nums']//打印次数
+                foreach ($order['goods'] as $v) {
+                    if ($value['type'] == 'feie') { //飞印
+                        $print_order_data = array(
+                            'weid' => $weid,
+                            'orderid' => $orderid,
+                            'print_usr' => $value['print_usr'],
+                            'print_status' => -1,
+                            'dateline' => TIMESTAMP
                         );
-
-                        $result = $client->post(FEIE_HOSTNAME . '/printOrderAction', $feie_content);
-                        $_feiestatus = $result['responseCode'];
-                        pdo_update('weisrc_dish_print_order', array('print_status' => $_feiestatus), array('id' => $oid));
-                        pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
+                        pdo_insert($this->table_print_order, $print_order_data);
+                        $oid = pdo_insertid();
                     }
+                    $content1 = '';
+                    $content1 .= "------------------------------------------------<BR>";
+                    $content1 .= '<B>名称:' . $v['title'] . "</B><BR>";
+                    $content1 .= '<B>数量:' . $goodsid[$v['id']]['total'] . $v['unitname'] . "</B><BR>";
+                    $money = $goodsid[$v['id']]['price'];
+                    $content1 .= '<B>价格:' . number_format($money, 2) . "元</B><BR>";
+                    $content1 .= "------------------------------------------------<BR>";
+                    $printContent = $print_top . $content . $content1 . $print_bottom;
+                    $feie_content = array(
+                        'sn' => $value['print_usr'],
+                        'printContent' => $printContent,
+                        'key' => $value['feyin_key'],
+                        'times' => $value['print_nums']//打印次数
+                    );
+
+                    $result = $client->post(FEIE_HOSTNAME . '/printOrderAction', $feie_content);
+                    $_feiestatus = $result['responseCode'];
+                    pdo_update('weisrc_dish_print_order', array('print_status' => $_feiestatus), array('id' => $oid));
                 }
             }
         }
@@ -2787,18 +1966,12 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             $totalprice_content = "总价:" . number_format($totalprice, 2) . "元\n";
 
             //商品id数组
-            $goodsid = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $id), 'goodsid');
+            $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $id), 'goodsid');
             $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
 
             foreach ($goods as $v) {
-                if (!empty($goodsid[$v['id']]['optionname'])) {
-                    $goodsname = $v['title'] . '[' . $goodsid[$v['id']]['optionname'] . ']';
-                } else {
-                    $goodsname = $v['title'];
-                }
-
                 $money = $goodsid[$v['id']]['price'];
-                $orderinfo_content .= $goodsname . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' . number_format($money, 2) . "元\n";
+                $orderinfo_content .= $v['title'] . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' . number_format($money, 2) . "元\n";
             }
         }
 
@@ -2879,21 +2052,14 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             $totalprice_content = "总价:" . number_format($totalprice, 2) . "元<BR>";
 
             //商品id数组
-            $goodsid = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $id), 'goodsid');
+            $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $id), 'goodsid');
             $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
 
             foreach ($goods as $v) {
                 $money = $goodsid[$v['id']]['price'];
                 $goodstotalprice = intval($goodsid[$v['id']]['total']) * $money;
                 $goodstotalprice = number_format($goodstotalprice, 2);
-
-                if (!empty($goodsid[$v['id']]['optionname'])) {
-                    $goodsname = $v['title'] . '[' . $goodsid[$v['id']]['optionname'] . ']';
-                } else {
-                    $goodsname = $v['title'];
-                }
-
-                $orderinfo_content .= $goodsname . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' .
+                $orderinfo_content .= $v['title'] . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' .
                     number_format($money, 2) . "元" . ' ' . $goodstotalprice . "元<BR>";
             }
         }
@@ -2998,17 +2164,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $ordertype = $this->getOrderType();
 
         //商品id数组
-        $ordergoods = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
-        $goodsid = array();
-        if (!empty($ordergoods)) {
-            foreach ($ordergoods as $key => $row) {
-                if (isset($row['goodsid'])) {
-                    $goodsid[$row['goodsid']] = $row;
-                } else {
-                    $goodsid[] = $row;
-                }
-            }
-        }
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid), 'goodsid');
 
         $store = $this->getStoreById($storeid);
 
@@ -3066,7 +2222,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $content2 .= "-------------------------\n";
 
         foreach ($settings as $item => $value) {
-
             //判断打印订单类型（是否已经支付的单子）
             if ($value['print_type'] == 1 && $order['ispay'] == 0) { //支付模式未支付时
                 continue;
@@ -3133,27 +2288,24 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
                 $feiyinstatus = $this->sendFreeMessage($freeMessage);
                 pdo_update('weisrc_dish_print_order', array('print_status' => $feiyinstatus), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
                 return;
             }
 
             //商品
             if ($value['print_label'] == '0') {
-                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
             } else {
                 //餐桌
                 $table_label = pdo_fetch("SELECT * FROM " . tablename($this->table_tables) . " WHERE id=:id", array(":id" => $order['tables']));
                 if (in_array($table_label['print_label'], explode(',', $value['print_label']))) {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
                 } else {
-                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")", array(), 'id');
+                    $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "') AND labelid IN(" . $value['print_label'] . ")");
                 }
             }
-
             if (empty($goods) && $dining_mode != 3 && $dining_mode != 5) {
                 continue;
             }
-
             $order['goods'] = $goods;
             if ($goods) {
                 if ($order['isvip'] == 1) {
@@ -3167,7 +2319,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             }
 
             if ($value['is_print_all'] == 1) {
-
                 if ($value['type'] == 'feiyin') { //飞印
                     $print_order_data = array(
                         'weid' => $weid,
@@ -3180,21 +2331,11 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     $oid = pdo_insertid();
                 }
 
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        $money = $v['price'];
-                        $money = $money * $v['total'];
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 .= $goodsname . ' ' . $v['total'] . $goods[$v['goodsid']]['unitname'] . ' ' . number_format($money, 2) . "元\n";
-                    }
+                foreach ($order['goods'] as $v) {
+                    $money = $goodsid[$v['id']]['price'];
+                    $money = $money * $goodsid[$v['id']]['total'];
+                    $content1 .= $v['title'] . ' ' . $goodsid[$v['id']]['total'] . $v['unitname'] . ' ' . number_format($money, 2) . "元\n";
                 }
-
                 $msgDetail = $print_top . $content . $content1 . $content2 . $print_bottom;
                 $msgNo = time() + 1;
                 $freeMessage = array(
@@ -3205,7 +2346,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 );
                 $feiyinstatus = $this->sendFreeMessage($freeMessage);
                 pdo_update('weisrc_dish_print_order', array('print_status' => $feiyinstatus), array('id' => $oid));
-                pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
             } else {
                 $content = '订单编号:' . $order['ordersn'] . "\n";
                 $content .= '所属门店:' . $store['title'] . "\n";
@@ -3221,45 +2361,34 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     $content .= '备注:' . $order['remark'] . "\n";
                 }
 
-                foreach ($ordergoods as $v) {
-                    if ($goods[$v['goodsid']]) {
-                        if ($value['type'] == 'feiyin') { //飞印
-                            $print_order_data = array(
-                                'weid' => $weid,
-                                'orderid' => $orderid,
-                                'print_usr' => $value['print_usr'],
-                                'print_status' => -1,
-                                'dateline' => TIMESTAMP
-                            );
-                            pdo_insert($this->table_print_order, $print_order_data);
-                            $oid = pdo_insertid();
-                        }
-
-
-                        if (!empty($v['optionname'])) {
-                            $goodsname = $goods[$v['goodsid']]['title'] . '[' . $v['optionname'] . ']';
-                        } else {
-                            $goodsname = $goods[$v['goodsid']]['title'];
-                        }
-
-                        $content1 = '';
-                        $content1 .= "-------------------------\n";
-                        $content1 .= '名称:' . $goodsname . "\n";
-                        $content1 .= '数量:' . $v['total'] . $goods[$v['goodsid']]['unitname'] . "\n";
-                        $content1 .= "-------------------------\n";
-
-                        $msgDetail = $print_top . $content . $content1 . $content2 . $print_bottom;
-                        $msgNo = time() + 1;
-                        $freeMessage = array(
-                            'memberCode' => $this->member_code,
-                            'msgDetail' => $msgDetail,
-                            'deviceNo' => $this->device_no,
-                            'msgNo' => $oid,
+                foreach ($order['goods'] as $v) {
+                    if ($value['type'] == 'feiyin') { //飞印
+                        $print_order_data = array(
+                            'weid' => $weid,
+                            'orderid' => $orderid,
+                            'print_usr' => $value['print_usr'],
+                            'print_status' => -1,
+                            'dateline' => TIMESTAMP
                         );
-                        $feiyinstatus = $this->sendFreeMessage($freeMessage);
-                        pdo_update('weisrc_dish_print_order', array('print_status' => $feiyinstatus), array('id' => $oid));
-                        pdo_update('weisrc_dish_order', array('isprint' => 1), array('id' => $orderid));
+                        pdo_insert($this->table_print_order, $print_order_data);
+                        $oid = pdo_insertid();
                     }
+                    $content1 = '';
+                    $content1 .= "-------------------------\n";
+                    $content1 .= '名称:' . $v['title'] . "\n";
+                    $content1 .= '数量:' . $goodsid[$v['id']]['total'] . $v['unitname'] . "\n";
+                    $content1 .= "-------------------------\n";
+
+                    $msgDetail = $print_top . $content . $content1 . $content2 . $print_bottom;
+                    $msgNo = time() + 1;
+                    $freeMessage = array(
+                        'memberCode' => $this->member_code,
+                        'msgDetail' => $msgDetail,
+                        'deviceNo' => $this->device_no,
+                        'msgNo' => $oid,
+                    );
+                    $feiyinstatus = $this->sendFreeMessage($freeMessage);
+                    pdo_update('weisrc_dish_print_order', array('print_status' => $feiyinstatus), array('id' => $oid));
                 }
             }
         }
@@ -3748,11 +2877,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
         $site_url = str_replace('addons/bm_payu/', '', $_W['siteroot']);
         $site_url = str_replace('addons/bm_payms/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);//3174行加入
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);//3276行加入
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);//3550行加入
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);//3741行加入
-
 
         $url = $site_url . 'app' . str_replace('./', '/', $this->createMobileUrl('orderdetail', array('orderid' => $order['id']), true));
         $keyword1 = $order['ordersn'];
@@ -3854,10 +2978,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
         $site_url = str_replace('addons/bm_payu/', '', $_W['siteroot']);
         $site_url = str_replace('addons/bm_payms/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
 
         $url = $site_url . 'app' . str_replace('./', '/', $this->createMobileUrl('orderdetail', array('orderid' => $order['id']), true));
         $keyword1 = $order['ordersn'];
@@ -4123,19 +3243,11 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         );
 
         $order = pdo_fetch("select * from " . tablename($this->table_order) . " WHERE id =:id LIMIT 1", array(':id' => $oid));
-//        if ($order['ispay'] == 0) {
-//            return false;
-//        }
         $storeid = $order['storeid'];
         $store = $this->getStoreById($storeid);
 
         $site_url = str_replace('addons/bm_payu/', '', $_W['siteroot']);
         $site_url = str_replace('addons/bm_payms/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-
         $color = "#FF0033";
         if ($isall == 1) {
             $color = "#0066CC";
@@ -4326,11 +3438,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
 
         $site_url = str_replace('addons/bm_payu/', '', $_W['siteroot']);
         $site_url = str_replace('addons/bm_payms/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-        $site_url = str_replace('addons/jxkj_unipay/', '', $site_url);
-
         $url = $site_url . 'app' . str_replace('./', '/', $this->createMobileUrl('adminorderdetail', array('orderid' => $oid), true));
 
         $keyword1 = $order['ordersn'];
@@ -4502,15 +3609,8 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
         $from_user = $this->_fromuser;
 
         $dishlist = pdo_fetchall("SELECT * FROM " . tablename($this->table_cart) . " WHERE  storeid=:storeid AND from_user=:from_user AND weid=:weid", array(':from_user' => $from_user, ':weid' => $weid, ':storeid' => $storeid));
-        $dishid = 0;
         foreach ($dishlist as $key => $value) {
-            $goodsid = intval($value['goodsid']);
-            if ($dishid == $goodsid && $dishid != 0) {
-                $arr[$value['goodsid']] = $arr[$value['goodsid']] + $value['total'];
-            } else {
-                $arr[$value['goodsid']] = $value['total'];
-            }
-            $dishid = intval($value['goodsid']);
+            $arr[$value['goodsid']] = $value['total'];
         }
         return $arr;
     }
@@ -4921,12 +4021,6 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 $bank_pay_url = $_W['siteroot'] . 'app/index.php?i=' . $_W['uniacid'] . '&c=entry&tid=' . $params['tid'] . '&title=' . $params['title'] . '&fee=' . $params['fee'] . '&ordersn=' . $params['ordersn'] . '&user=' . $params['user'] . '&rid=' . $bank_pay_id . '&ms=weisrc_dish&do=payex&m=bm_payms';
             }
         }
-        if ($store['is_jxkj_unipay'] == 1) {
-            $jxkj_pay_id = intval($store['jxkj_pay_id']);
-            if ($jxkj_pay_id > 0) {
-                $jxkj_pay_url = $_W['siteroot'] . 'app/index.php?i=' . $_W['uniacid'] . '&c=entry&tid=' . $params['tid'] . '&title=' . $params['title'] . '&fee=' . $params['fee'] . '&ordersn=' . $params['ordersn'] . '&user=' . $params['user'] . '&rid=' . $jxkj_pay_id . '&ms=weisrc_dish&do=payex&m=jxkj_unipay';
-            }
-        }
 
         //快捷云支付
         if ($store['is_vtiny_bankpay'] == 1) {
@@ -4941,48 +4035,32 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             //需要获取的参数
             $host = $store['jueqi_host'];//本机服务器一码付的域名前缀（可能为独立域名，可能为微擎域名路径，具体看接口文档）
             $uid = 'weisrc_dish';//模块标识
+            //获取支付秘钥
+            $url = $host . '/index.php?s=/Home/line/getPrikey';//接口基础url
+            $url = $url . '/uid/' . $uid;//带参数
+            $prikeyResult = json_decode(file_get_contents($url), true);
+            $prikey = '';//秘钥
+            if ($prikeyResult['result'] == '1') {
+                $prikey = $prikeyResult['data'];
+                //需要获取的参数
+                $selfOrdernum = $params['ordersn'];
+                $openId = $_W['fans']['from_user'];
 
-//            $prikey = 'y4Ko5Sg9a9mPTVg0';//秘钥
-            $prikey = $store['jueqi_secret'];//秘钥
-            //需要获取的参数
-            $selfOrdernum = $params['ordersn'];
-            $openId = $_W['fans']['from_user'];
+                $customerId = trim($store['jueqi_customerId']);
+                $money = $order['totalprice'];
+                $back_url = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('pay', 'jueqiBack', $_SERVER['REQUEST_URI']);
 
-            $customerId = trim($store['jueqi_customerId']);
-            $money = $order['totalprice'];
-            $back_url = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('pay', 'jueqiBack', $_SERVER['REQUEST_URI']);
-
-            $notifyUrl = base64_encode(urlencode(($back_url)));//异步URL，必须带参数
-            $successUrl = base64_encode(urlencode(($back_url)));//成功跳转URL，必须带参数
-            $uid = 'weisrc_dish';//模块标识
-            $prikey = $prikey;//秘钥
-            $goodsName = $params['title'];//商品名称
-            $remark = '';//备注
-            //跳转到在线支付
-            $post_data1['money'] = $money;
-            $post_data1['selfOrdernum'] = $selfOrdernum;
-            $post_data1['remark'] = $remark;
-            $post_data1['openId'] = $openId;
-            $post_data1['customerId'] = $customerId;
-            $post_data1['notifyUrl'] = $notifyUrl;
-            $post_data1['successUrl'] = $successUrl;
-            $post_data1['uid'] = $uid;
-            $post_data1['goodsName'] = $goodsName;
-
-            ksort($post_data1);
-            // 说明如果有汉字请使用utf-8编码
-            $o = "";
-            foreach ($post_data1 as $k => $v) {
-                $o .= "$k=" . ($v) . "&";
+                $notifyUrl = base64_encode(urlencode(($back_url)));//异步URL，必须带参数
+                $successUrl = base64_encode(urlencode(($back_url)));//成功跳转URL，必须带参数
+                $uid = 'weisrc_dish';//模块标识
+                $prikey = $prikey;//秘钥
+                $goodsName = $params['title'];//商品名称
+                $remark = '';//备注
+                //跳转到在线支付
+                $url = $host . '/index.php?s=/Home/line/m_pay';//集成接口url
+                $url = $url . '/selfOrdernum/' . $selfOrdernum . '/openId/' . $openId . '/customerId/' . $customerId . '/money/' . $money . '/notifyUrl/' . $notifyUrl . '/successUrl/' . $successUrl . '/uid/' . $uid . '/prikey/' . $prikey . '/goodsName/' . $goodsName . '/remark/' . $remark;
+                $jueqi_ymf_url = $url;
             }
-            $post_data1 = substr($o, 0, -1);
-
-            $post_data_temp1 = $prikey . $post_data1;
-
-            $signIn = strtoupper(md5($post_data_temp1));
-            $url = $host . '/index.php?s=/Home/linenew/m_pay';//集成接口url
-            $url = $url . '/selfOrdernum/' . $selfOrdernum . '/openId/' . $openId . '/customerId/' . $customerId . '/money/' . $money . '/notifyUrl/' . $notifyUrl . '/successUrl/' . $successUrl . '/uid/' . $uid . '/goodsName/' . $goodsName . '/remark/' . $remark . '/sign/' . $signIn;
-            $jueqi_ymf_url = $url;
         }
 
         if (IMS_VERSION >= '1.5.1') {
@@ -5062,7 +4140,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
             }
         }
 
-        if (($params['paysys'] == 'bm_payms') || ($params['paysys'] == 'jxkj_unipay')) {
+        if ($params['paysys'] == 'bm_payms') {
             $order = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE ordersn = :ordersn", array(':ordersn' => $params['tid']));
             $orderid = $order['id'];
         } else {
@@ -5118,7 +4196,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                 }
 
                 file_put_contents(IA_ROOT . "/addons/weisrc_dish/params.log", var_export($params, true) . PHP_EOL, FILE_APPEND);
-                if ($params['paysys'] != 'payu' && $params['paysys'] != 'bm_payms' && $params['paysys'] != 'jxkj_unipay') {
+                if ($params['paysys'] != 'payu' && $params['paysys'] != 'bm_payms') {
                     if ($params['type'] == 'alipay') {
                         if (empty($params['transaction_id'])) {
                             return false;
@@ -5131,6 +4209,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     }
                 }
 
+                $this->sendfengniao($order, $store, $setting);
 
                 if ($order['dining_mode'] == 6) { //充值
                     $status = $this->setFansCoin($order['from_user'], $order['totalprice'], "订单编号{$orderid}充值");
@@ -5205,7 +4284,6 @@ DESC ", array(':weid' => $this->_weid, ':storeid' => $storeid));
                         }
                     }
                 }
-                $this->sendfengniao($order, $store, $setting);
                 pdo_update($this->table_order, array('istpl' => 1), array('id' => $orderid));
 //                }
             }
@@ -5309,7 +4387,7 @@ DESC ", array(':weid' => $this->_weid, ':storeid' => $storeid));
             }
         } else {
 
-            if ($params['paysys'] == 'payu' || $params['paysys'] == 'bm_payms' || $params['paysys'] == 'jxkj_unipay') {
+            if ($params['paysys'] == 'payu' || $params['paysys'] == 'bm_payms') {
                 Header("Location: {$url}");
             } else {
                 message($tip_msg, $url, 'success');
@@ -5774,12 +4852,6 @@ EOF;
             exit;
         }
 
-//        $_W['fans']['tag']['nickname'];
-//        $_W['fans']['tag']['headimgurl'];
-//        $_W['fans']['tag']['sex'];
-//        $userinfo = $_W['fans']['tag'];
-//        $from_user = $_W['fans']['openid'];
-
         //设置cookie信息
         setcookie($this->_auth2_headimgurl, $userinfo['headimgurl'], time() + 3600 * 24);
         setcookie($this->_auth2_nickname, $userinfo['nickname'], time() + 3600 * 24);
@@ -5838,7 +4910,6 @@ EOF;
         global $_W;
         $url = urlencode($url);
         $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->_appid}&redirect_uri={$url}&response_type=code&scope=snsapi_base&state=0#wechat_redirect";
-//        $oauth2_code = $url . "&code=1111";
         header("location:$oauth2_code");
     }
 
@@ -6193,7 +5264,7 @@ EOF;
                             'agentid' => intval($agent['id']),//奖励上级
                             'ordersn' => $order['ordersn'],
                             'level' => 1,
-                            'from_user' => $order['from_user'], //买家
+                            'from_user' => $order['from_user'],
                             'price' => $commission1_price,
                             'status' => $setting['commission_settlement'] == 1 ? 1 : 0,
                             'dateline' => TIMESTAMP
@@ -6201,7 +5272,6 @@ EOF;
                         pdo_insert($this->table_commission, $data);
                         if ($setting['commission_settlement'] == 1) {
                             $this->updateFansCommission($agent['from_user'], 'commission_price', $commission1_price, "单号{$order['ordersn']}一级佣金奖励");
-                            $this->sendCommissionNotice($agent['from_user'], '一级佣金奖励', $commission1_price, $order['ordersn']);
                         }
                     }
                     //2级
@@ -6241,7 +5311,7 @@ EOF;
                                     'agentid' => intval($agent2['id']),//奖励上级用户
                                     'ordersn' => $order['ordersn'],
                                     'level' => 2,
-                                    'from_user' => $order['from_user'], //买家
+                                    'from_user' => $agent2['from_user'],
                                     'price' => $commission2_price,
                                     'status' => $setting['commission_settlement'] == 1 ? 1 : 0,
                                     'dateline' => TIMESTAMP
@@ -6249,54 +5319,12 @@ EOF;
                                 pdo_insert($this->table_commission, $data);
                                 if ($setting['commission_settlement'] == 1) {
                                     $this->updateFansCommission($agent2['from_user'], 'commission_price', $commission2_price, "单号{$order['ordersn']}二级佣金奖励");
-                                    $this->sendCommissionNotice($agent2['from_user'], '二级佣金奖励', $commission2_price, $order['ordersn']);
                                 }
                             }
                         }
                     }
                 }
             }
-        }
-    }
-
-    public function sendCommissionNotice($from_user, $title, $price, $ordersn)
-    {
-        global $_W, $_GPC;
-        $weid = $this->_weid;
-        $setting = $this->getSetting();
-
-        $url = $_W['siteroot'] . 'app' . str_replace('./', '/', $this->createMobileUrl('usercenter', array(), true));
-        if (!empty($setting['tplmission'])) {
-            $templateid = $setting['tplmission'];
-            $first = "您有新的佣金奖励";
-
-            $content = array(
-                'first' => array(
-                    'value' => $first,
-                    'color' => '#a6a6a9'
-                ),
-                'keyword1' => array(
-                    'value' => $title,
-                    'color' => '#a6a6a9'
-                ),
-                'keyword2' => array(
-                    'value' => '已奖励',
-                    'color' => '#a6a6a9'
-                ),
-                'keyword3' => array(
-                    'value' => '奖励金额' . $price,
-                    'color' => '#a6a6a9'
-                ),
-                'remark' => array(
-                    'value' => '订单号:' . $ordersn,
-                    'color' => '#a6a6a9'
-                ),
-            );
-
-            load()->model('account');
-            $access_token = WeAccount::token();
-            $templateMessage = new templateMessage();
-            $templateMessage->send_template_message($from_user, $templateid, $content, $access_token, $url);
         }
     }
 
@@ -6629,49 +5657,20 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
     //设置订单积分
     public function setOrderCredit($orderid, $add = true)
     {
-        $setting = $this->getSetting();
-
         $order = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE id=:id LIMIT 1", array(':id' => $orderid));
         if (empty($order)) {
             return false;
         }
-        $credit = 0.00;
 
-        //商品积分
-        if ($setting['credit_mode'] == 1) {
-            $ordergoods = pdo_fetchall("SELECT goodsid, total FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
-            if (!empty($ordergoods)) {
-                $sql = 'SELECT `credit` FROM ' . tablename($this->table_goods) . ' WHERE `id` = :id';
-                foreach ($ordergoods as $goods) {
-                    $goodsCredit = pdo_fetchcolumn($sql, array(':id' => $goods['goodsid']));
-                    $credit += $goodsCredit * floatval($goods['total']);
-                }
-            }
-        } else {
-            //订单积分
-            $storeid = intval($order['storeid']);
-            $store = $this->getStoreById($storeid);
-
-            if ($store['is_default_givecredit'] == 1) {
-                $payx_credit = intval($setting['payx_credit']);
-            } else {
-                $payx_credit = intval($store['givecredit']);
-            }
-
-            //本次消费积分
-            if ($payx_credit != 0) {
-                $credit = floatval($order['totalprice']) * $payx_credit;
-                $credit = intval($credit);
+        $ordergoods = pdo_fetchall("SELECT goodsid, total FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $orderid));
+        if (!empty($ordergoods)) {
+            $credit = 0.00;
+            $sql = 'SELECT `credit` FROM ' . tablename($this->table_goods) . ' WHERE `id` = :id';
+            foreach ($ordergoods as $goods) {
+                $goodsCredit = pdo_fetchcolumn($sql, array(':id' => $goods['goodsid']));
+                $credit += $goodsCredit * floatval($goods['total']);
             }
         }
-
-        $debugdata = array(
-            'payx_score' => $payx_credit,
-            'totalprice' => $order['totalprice'],
-            'orderid' => $orderid
-        );
-
-        file_put_contents(IA_ROOT . "/addons/weisrc_dish/credit.log", var_export($debugdata, true) . PHP_EOL, FILE_APPEND);
 
         //增加积分
         if (!empty($credit)) {
@@ -6681,7 +5680,7 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
             $fans = fans_search($uid, array("credit1"));
             if (!empty($fans)) {
                 $uid = intval($fans['uid']);
-                $remark = $add == true ? '码上点餐积分奖励 订单ID:' . $orderid : '码上点餐积分扣除 订单ID:' . $orderid;
+                $remark = $add == true ? '微点餐积分奖励 订单ID:' . $orderid : '微点餐积分扣除 订单ID:' . $orderid;
                 $log = array();
                 $log[0] = $uid;
                 $log[1] = $remark;
@@ -7135,7 +6134,7 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
         return $text;
     }
 
-    function refund2($id)
+    function refund($id)
     {
         global $_W;
         include_once IA_ROOT . '/addons/weisrc_dish/cert/WxPay.Api.php';
@@ -7145,8 +6144,8 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
         $WxPayApi = new WxPayApi();
         $input = new WxPayRefund();
 
-        $path_cert = IA_ROOT . '/addons/weisrc_dish/cert/apiclient_cert_' . $_W['uniacid'] . '.pem';
-        $path_key = IA_ROOT . '/addons/weisrc_dish/cert/apiclient_key_' . $_W['uniacid'] . '.pem';
+        $path_cert = '/home/ftp/1520/admin-20170731/admin-20170626-SqT/diancantwz/addons/weisrc_dish/cert/apiclient_cert_' . $_W['uniacid'] . '.pem';
+        $path_key =  '/home/ftp/1520/admin-20170731/admin-20170626-SqT/diancantwz/addons/weisrc_dish/cert/apiclient_key_' . $_W['uniacid'] . '.pem';
         $account_info = $_W['account'];
         $refund_order = $this->getOrderById($id);
 
@@ -7168,13 +6167,13 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
             $input->SetTransaction_id($refundid);
             $input->SetOut_refund_no($refund_order['id']);
             $result = $WxPayApi->refund($input, 6, $path_cert, $path_key, $key);
+
             if ($result['return_code'] == 'SUCCESS') {
                 $input2 = new WxPayOrderQuery();
                 $input2->SetAppid($appid);
                 $input2->SetMch_id($mchid);
                 $input2->SetTransaction_id($refundid);
                 $result2 = $WxPayApi->orderQuery($input2, 6, $key);
-
                 if ($result2['return_code'] == 'SUCCESS' && $result2['trade_state'] == 'REFUND') {
                     pdo_update($this->table_order, array('ispay' => 3), array('id' => $refund_order['id']));
                     return 1;
@@ -7191,77 +6190,6 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
         } else {
             message('非微信支付!');
         }
-    }
-
-    function refund3($id, $storeid)
-    {
-
-        global $_W;
-        $store = $this->getStoreById($storeid);
-        $refund_order = $this->getOrderById($id);
-
-        if ($store['is_jueqi_ymf'] == 1 && $refund_order['paytype'] == 2) {
-            //需要获取的参数
-            $host = $store['jueqi_host'];//本机服务器一码付的域名前缀（可能为独立域名，可能为微擎域名路径，具体看接口文档）
-            $uid = 'weisrc_dish';//模块标识
-            $prikey = 'y4Ko5Sg9a9mPTVg0';//秘钥
-
-            $post_data1['uid'] = $uid;
-            $post_data1['orderno'] = $refund_order['transid'];
-
-
-            ksort($post_data1);
-            // 说明如果有汉字请使用utf-8编码
-            $o = "";
-            foreach ($post_data1 as $k => $v) {
-                $o .= "$k=" . ($v) . "&";
-            }
-            $post_data1 = substr($o, 0, -1);
-
-            $post_data_temp1 = $prikey . $post_data1;
-
-            $signIn = strtoupper(md5($post_data_temp1));
-
-            $url = $host . '/index.php?s=/Home/linenew/m_backpay';//接口基础url
-            $url = $url . '/uid/' . $uid . '/orderno/' . $refund_order['transid'] . '/sign/' . $signIn;//带参数
-            $result = json_decode(file_get_contents($url), true);
-
-            if ($result['result'] == '0000') {
-                pdo_update($this->table_order, array('ispay' => 3), array('id' => $refund_order['id']));
-                return 1;
-            } else {
-                pdo_update($this->table_order, array('ispay' => 4), array('id' => $refund_order['id']));
-                message('操作失败，原因:' . $result['desc']);
-                return 0;
-            }
-        } else {
-            message('不是微信支付或者一码付没开启.');
-        }
-
-    }
-
-    //万容
-    function refund4($id, $storeid)
-    {
-        global $_W;
-        $store = $this->getStoreById($storeid);
-        $refund_order = $this->getOrderById($id);
-        if ($store['is_jxkj_unipay'] == 1 && $refund_order['paytype'] == 2) {
-            $url = $_W['siteroot'] . 'app/index.php?i=' . $_W['uniacid'] . '&c=entry&tid=' . $refund_order['ordersn'] . '&ms=weisrc_dish&do=refundex&m=jxkj_unipay';
-            $result = json_decode(file_get_contents($url), true);
-            if ($result['result'] == '1') {
-                pdo_update($this->table_order, array('ispay' => 3), array('id' => $refund_order['id']));
-                return 1;
-            } else {
-                pdo_update($this->table_order, array('ispay' => 4), array('id' => $refund_order['id']));
-                message('操作失败，原因:' . $result['desc']);
-                return 0;
-            }
-        } else {
-            message('退款失败！');
-        }
-        $res = $storeid . '-' . $id;
-        return $res;
     }
 
     //预订订单是否存在
@@ -7515,7 +6443,7 @@ print_usr=:print_usr) AND storeid = :storeid {$condition} ORDER BY id DESC limit
         }
 
         //商品id数组
-        $goodsid = pdo_fetchall("SELECT * FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $order['id']), 'goodsid');
+        $goodsid = pdo_fetchall("SELECT goodsid,total,price FROM " . tablename($this->table_order_goods) . " WHERE orderid = :orderid", array(':orderid' => $order['id']), 'goodsid');
 
         //商品
         $goods = pdo_fetchall("SELECT * FROM " . tablename($this->table_goods) . "  WHERE id IN ('" . implode("','", array_keys($goodsid)) . "')");
