@@ -1,5 +1,5 @@
 <?php
-// ∑‰ƒÒ≈‰ÀÕª˘¿‡
+// ËúÇÈ∏üÈÖçÈÄÅÂü∫Á±ª
 class fengniao
 {
     private $token;
@@ -9,6 +9,7 @@ class fengniao
 
     function __construct($appid, $key, $mode = 1)
     {
+//        var_dump('fengniao',111);
         if ($mode == 1) {
             $this->API_URL = 'https://open-anubis.ele.me/anubis-webapi';
         } else {
@@ -30,13 +31,13 @@ class fengniao
         return md5($seed);
     }
 
-    // step 2 ¥¥Ω®∂©µ•
+    // step 2 ÂàõÂª∫ËÆ¢Âçï
     public function sendOrder($dataArray)
     {
         $salt = mt_rand(1000, 9999);
         $dataJson = json_encode($dataArray, JSON_UNESCAPED_UNICODE);
         $urlencodeData = urlencode($dataJson) . PHP_EOL;
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
             'salt' => $salt,
@@ -48,21 +49,21 @@ class fengniao
         return $this->doPost($url, $requestJson);
     }
 
-    //∂©µ•Õ∂Àﬂ 
+    //ËÆ¢ÂçïÊäïËØâ
     public function complaintQrder($data)
     {
         $url = $this->API_URL . "/v2/order/complaint";
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
             'salt' => $salt,
             'data' => $urlencodeData,
             'signature' => $sig
         ));
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
     }
 
     public function queryQrder($partner_order_code)
@@ -72,7 +73,7 @@ class fengniao
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -81,10 +82,10 @@ class fengniao
             'signature' => $sig
         ));
 
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
     }
 
-	// –¬µƒ≤È—Ø return
+    // Êñ∞ÁöÑÊü•ËØ¢ return
     public function queryQrderNew($partner_order_code)
     {
 
@@ -93,7 +94,7 @@ class fengniao
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -102,11 +103,11 @@ class fengniao
             'signature' => $sig
         ));
 
-        return $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
+        return $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
     }
-    
 
-    //∂©µ•∆Ô ÷Œª÷√
+
+    //ËÆ¢ÂçïÈ™ëÊâã‰ΩçÁΩÆ
     public function getcarrier($partner_order_code)
     {
         $url = $this->API_URL . "/v2/order/carrier";
@@ -114,7 +115,7 @@ class fengniao
         $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -123,7 +124,7 @@ class fengniao
             'signature' => $sig
         ));
 
-        echo $this->doPost($url, $requestJson) . PHP_EOL;   //∑¢ÀÕ«Î«Û
+        echo $this->doPost($url, $requestJson) . PHP_EOL;   //ÂèëÈÄÅËØ∑Ê±Ç
     }
 
     public function cancelQrder($data) {
@@ -132,7 +133,7 @@ class fengniao
         $dataJson = json_encode($data);
         $salt = mt_rand(1000, 9999);
         $urlencodeData = urlencode($dataJson);
-        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //…˙≥…«©√˚
+        $sig = $this->generateBusinessSign($this->APP_ID, $this->token, $urlencodeData, $salt);   //ÁîüÊàêÁ≠æÂêç
 
         $requestJson = json_encode(array(
             'app_id' => $this->APP_ID,
@@ -148,12 +149,12 @@ class fengniao
     public function requestToken()
     {
         $salt = mt_rand(1000, 9999);
-        // ªÒ»°«©√˚
+        // Ëé∑ÂèñÁ≠æÂêç
         $sig = $this->generateSign($this->APP_ID, $salt, $this->SECRET_KEY);
         $url = $this->API_URL . '/get_access_token';
         $tokenStr = $this->doGet($url, array('app_id' => $this->APP_ID, 'salt' => $salt, 'signature' => $sig));
         // echo $tokenStr;
-        // ªÒ»°token
+        // Ëé∑Âèñtoken
         $tokenStr = json_decode($tokenStr, true);
 
         $this->token = $tokenStr['data']['access_token'];
@@ -166,7 +167,7 @@ class fengniao
 
 
     /**
-     * ∑¢ÀÕGET«Î«Û
+     * ÂèëÈÄÅGETËØ∑Ê±Ç
      * @param string $url
      * @param array $param
      * @return bool|mixed
@@ -176,7 +177,7 @@ class fengniao
         if (empty($url) or (!empty($param) and !is_array($param))) {
             throw new InvalidArgumentException('Params is not of the expected type');
         }
-        // —È÷§url∫œ∑®–‘
+        // È™åËØÅurlÂêàÊ≥ïÊÄß
 //        if (!filter_var($url, FILTER_VALIDATE_URL)) {
 //            throw new InvalidArgumentException('Url is not valid');
 //        }
@@ -190,7 +191,7 @@ class fengniao
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ≤ªΩ¯––ssl »œ÷§
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ‰∏çËøõË°åssl ËÆ§ËØÅ
         // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         $result = curl_exec($ch);
@@ -203,7 +204,7 @@ class fengniao
     }
 
     /**
-     * POST«Î«Û
+     * POSTËØ∑Ê±Ç
      * @param $url
      * @param $param
      * @return boolean|mixed
@@ -215,7 +216,7 @@ class fengniao
             throw new InvalidArgumentException('Params is not of the expected type');
         }
 
-        // —È÷§url∫œ∑®–‘
+        // È™åËØÅurlÂêàÊ≥ïÊÄß
 //        if (!filter_var($url, FILTER_VALIDATE_URL)) {
 //            throw new InvalidArgumentException('Url is not valid');
 //        }
@@ -233,11 +234,11 @@ class fengniao
         curl_setopt($ch, CURLOPT_HEADER, false);
         // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ≤ªΩ¯––ssl »œ÷§
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     //  ‰∏çËøõË°åssl ËÆ§ËØÅ
 
-        if (strcmp($method, "POST") == 0) {  // POST ≤Ÿ◊˜
+        if (strcmp($method, "POST") == 0) {  // POST Êìç‰Ωú
             curl_setopt($ch, CURLOPT_POST, true);
-        } else if (strcmp($method, "DELETE") == 0) { // DELETE≤Ÿ◊˜
+        } else if (strcmp($method, "DELETE") == 0) { // DELETEÊìç‰Ωú
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         } else {
             throw new InvalidArgumentException('Please input correct http method, such as POST or DELETE');

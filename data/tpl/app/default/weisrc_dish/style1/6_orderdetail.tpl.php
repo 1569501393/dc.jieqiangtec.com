@@ -572,6 +572,48 @@
                 <span class="value ng-binding"> <?php  echo $order['packvalue'];?></span>
             </div>
             <?php  } ?>
+            <?php  if($order['dining_mode']==2 && $store['is_fengniao'] == 1) { ?>
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送员姓名</span>
+                <span class="value ng-binding"> <?php  echo $result_order['carrier_driver_name'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送员电话</span>
+                <span class="value ng-binding"> <?php  echo $result_order['carrier_driver_phone'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送费</span>
+                <span class="value ng-binding"> <?php  echo $result_order['order_total_delivery_cost'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">预计送达时间</span>
+                <span class="value ng-binding"> <?php  echo $result_order['estimate_arrive_time'];?></span>
+            </div>
+            <?php  } ?>
+            <?php  if($order['dining_mode']==2 && $store['is_dada'] == 1) { ?>
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送员姓名</span>
+                <span class="value ng-binding"> <?php  echo $result_order['transporterName'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送员电话</span>
+                <span class="value ng-binding"> <?php  echo $result_order['transporterPhone'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">配送费</span>
+                <span class="value ng-binding"> <?php  echo $result_order['deliveryFee'];?></span>
+            </div>
+
+            <div class="item ng-scope">
+                <span class="label ng-binding">预计送达时间</span>
+                <span class="value ng-binding"> <?php  echo $result_order['finishTime'];?></span>
+            </div>
+            <?php  } ?>
             <?php  } ?>
             <?php  if($order['dining_mode']==3) { ?>
             <div class="item ng-scope">
@@ -611,6 +653,9 @@
                 <span class="value ng-binding"> <?php  echo $order['remark'];?></span>
             </div>
             <?php  } ?>
+
+
+
         </div>
     </div>
 </div>

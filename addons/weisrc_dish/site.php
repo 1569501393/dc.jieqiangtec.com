@@ -11,6 +11,8 @@ include "model.php";
 include "plugin/feyin/HttpClient.class.php";
 include "templateMessage.php";
 include "fengniao.php";
+//include "dada.php";
+include "DadaOpenapi.php";
 include "plugin/ylprint.class.php";
 define(EARTH_RADIUS, 6371); //地球半径，平均半径为6371km
 define('RES', '../addons/weisrc_dish/template/');

@@ -90,6 +90,27 @@
         </div>
     </div>
     <?php  } ?>
+    <?php  if($config['is_dada']==1) { ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            达达配送
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">App ID:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="dada_appid" value="<?php  echo $setting['dada_appid'];?>" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">Secret Key:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="dada_key" value="<?php  echo $setting['dada_key'];?>" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php  } ?>
     <div class="panel panel-default">
         <div class="panel-heading">
             模式
