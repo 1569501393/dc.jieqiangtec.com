@@ -15,7 +15,6 @@ $setting = $this->getSetting();
 $order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id AND a.from_user=:from_user ORDER BY a.id DESC LIMIT 1", array(':id' => $id, ':from_user' => $from_user));
 
 
-
 //$order = pdo_fetch("SELECT a.* FROM " . tablename($this->table_order) . " AS a LEFT JOIN " . tablename($this->table_stores) . " AS b ON a.storeid=b.id  WHERE a.id =:id ORDER BY a.id DESC LIMIT 1", array(':id' => $id));
 
 //if (empty($order)) {
@@ -79,10 +78,8 @@ if ($op == 'acceptorder') { //收货
     }
 
 
-
-
     $config_array = pdo_fetch("SELECT * FROM " . tablename('uni_account_modules') . " WHERE uniacid=:uniacid LIMIT 1", array(':uniacid' => $_W['uniacid']));
-    WeUtility::logging('pay', '1111+++++++++'.var_export($config_array,1));
+    WeUtility::logging('pay', '1111+++++++++' . var_export($config_array, 1));
     $setting_config = unserialize($config_array['settings']);
 //    var_dump('TODO jieqiangtest table==',$setting_config,$_W['uniacid']);exit;
     $config_setting = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_setting') . " WHERE weid=:weid LIMIT 1", array(':weid' => $_W['uniacid']));
@@ -90,8 +87,8 @@ if ($op == 'acceptorder') { //收货
     $store['is_fengniao'] = $setting_config['weisrc_dish']['is_fengniao'];
     $store['is_dada'] = $setting_config['weisrc_dish']['is_dada'];
     // TODO判断蜂鸟还是达达
-    if($order['dining_mode']==2 && $setting_config['weisrc_dish']['is_fengniao'] == 1){
-        include "../../addons/weisrc_dish/fengniao.php";
+    if ($order['dining_mode'] == 2 && $setting_config['weisrc_dish']['is_fengniao'] == 1) {
+//        include "../../addons/weisrc_dish/fengniao.php";
 //        $setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
         $setting['fengniao_appid'] = $config_setting['fengniao_appid'];
         $setting['fengniao_key'] = $config_setting['fengniao_key'];
@@ -99,8 +96,8 @@ if ($op == 'acceptorder') { //收货
         $r->requestToken();
         $result = $r->queryQrderNew($_GPC['orderid']);
         $result_order = json_decode($result)->data;
-        WeUtility::logging('pay', '$result+++++++++'.$result);
-    }elseif($order['dining_mode']==2 && $setting_config['weisrc_dish']['is_dada'] == 1){
+        WeUtility::logging('pay', '$result+++++++++' . $result);
+    } elseif ($order['dining_mode'] == 2 && $setting_config['weisrc_dish']['is_dada'] == 1) {
 //        $setting_config = pdo_fetch("SELECT * FROM " . tablename("weisrc_dish_setting") . " WHERE weid=:weid LIMIT 1", array(':weid' => $store['weid']));
 
 //         var_dump('TODO jieqiangtest==$setting_config==',$setting_config,$store);
@@ -116,12 +113,12 @@ if ($op == 'acceptorder') { //收货
         //***********************发单接口************************
 //发单请求数据,只是样例数据，根据自己的需求进行更改。
         $data = array(
-            'order_id'=> $order['id']
+            'order_id' => $order['id']
         );
 
-//请求接口
+        // 请求接口
         $reqStatus = $obj->makeRequest($data);
-//         var_dump('TODO jieqiangtest==结果$reqStatus==',$reqStatus);
+        // var_dump('TODO jieqiangtest==结果$reqStatus==',$reqStatus);
         if (!$reqStatus) {
             //接口请求正常，判断接口返回的结果，自定义业务操作
             if ($obj->getCode() == 0) {
@@ -129,11 +126,11 @@ if ($op == 'acceptorder') { //收货
                 $result_order = json_decode($result->data);*/
                 $result_order = $obj->getResult();
                 //返回成功 ....
-            }else{
+            } else {
                 //返回失败
             }
             // echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
-        }else{
+        } else {
             //请求异常或者失败
             echo 'except';
         }

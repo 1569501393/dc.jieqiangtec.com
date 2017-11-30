@@ -723,7 +723,7 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
         global $_W, $_GPC;
 
         if ($order['dining_mode'] != 2) {
-            return false;
+            return;
         }
 
         $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key'], $setting['fengniao_mode']);
@@ -751,6 +751,96 @@ from_user=:from_user AND optionid=:optionid ", array(':goodsid' => $dishid, ':we
             message('提示:' . $returnresult['msg']);
         }
     }
+
+
+    // 取消配送
+    public function cancel_delivery($order, $store, $setting)
+    {
+        global $_W, $_GPC;
+
+        if ($order['dining_mode'] != 2) {
+            return;
+        }
+
+
+        // TODO 判断是蜂鸟还是达达
+        $config_array = pdo_fetch("SELECT * FROM " . tablename('uni_account_modules') . " WHERE uniacid=:uniacid LIMIT 1", array(':uniacid' => $_W['uniacid']));
+        WeUtility::logging('pay', '1111+++++++++' . var_export($config_array, 1));
+        $setting_config = unserialize($config_array['settings']);
+        WeUtility::logging('pay', '2222+++++++++' . var_export($setting_config['weisrc_dish'], 1));
+//        $config_setting = pdo_fetch("SELECT * FROM " . tablename('weisrc_dish_setting') . " WHERE weid=:weid LIMIT 1", array(':weid' => $_W['uniacid']));
+        WeUtility::logging('pay', '9999+++++++++' . var_export($setting_config, 1));
+        if ($order['dining_mode'] == 2 && $setting_config['weisrc_dish']['is_fengniao'] == 1) {
+            $setting['fengniao_appid'] = $setting['fengniao_appid'];
+            $setting['fengniao_key'] = $setting['fengniao_key'];
+            $setting['fengniao_mode'] = 1 ;
+            // sendfengniao($order, $store, $setting);
+
+            $rop = new fengniao($setting['fengniao_appid'], $setting['fengniao_key'], $setting['fengniao_mode']);
+            $rop->requestToken();
+            $orderid = $order['id'];
+
+            $dataArray = array(
+                "partner_order_code" => $orderid,
+                "order_cancel_reason_code" => 2,
+                "order_cancel_description" => "商家取消订单",
+                "order_cancel_time" => TIMESTAMP * 1000
+            );
+
+            $returnresult = $rop->cancelQrder($dataArray);  // 取消订单
+            if ($returnresult['code'] != "200") {
+                message('提示:' . $returnresult['msg']);
+            }
+            WeUtility::logging('pay', '取消订单$returnresult+++++++++' . var_export($returnresult, true));
+
+        } elseif ($order['dining_mode'] == 2 && $setting_config['weisrc_dish']['is_dada'] == 1) {
+            $setting['app_key'] = $setting['dada_appid'];
+            $setting['app_secret'] = $setting['dada_key'];
+            // senddada($order, $store, $setting);
+
+            //*********************配置项*************************
+            $config = array();
+            $config['app_key'] = $setting['app_key'];
+            $config['app_secret'] = $setting['app_secret'];
+            $config['source_id'] = '3450';
+            $config['url'] = 'http://newopen.imdada.cn/api/order/formalCancel';
+            WeUtility::logging('pay', '开始调用+++++++++');
+            $obj = new DadaOpenapi($config);
+
+            //***********************发单接口************************
+//发单请求数据,只是样例数据，根据自己的需求进行更改。
+            $data = array(
+                'order_id'=> $order['id'], // 477
+                'cancel_reason_id'=>1
+            );
+
+//请求接口
+            $reqStatus = $obj->makeRequest($data);
+
+//            var_dump('TODO jieqinagtest=$data=111==',$obj,$reqStatus);exit;
+
+            WeUtility::logging('dada', '达达取消订单' . var_export($reqStatus, 1));
+            if (!$reqStatus) {
+                // $result_order = $obj->getResult();
+                $result = $obj->getResult();
+//                var_dump('TODO jieqinagtest=$data=',$data,$result,$reqStatus);exit;
+                //接口请求正常，判断接口返回的结果，自定义业务操作
+                if ($obj->getCode() == 0) {
+                    //返回成功 ....
+                    WeUtility::logging('dada', '达达取消订单成功+++++++++');
+                } else {
+                    //返回失败
+                    WeUtility::logging('dada', '达达取消订单失败111+++++++++');
+                }
+                // echo sprintf('code:%s，msg:%s', $obj->getCode(), $obj->getMsg());
+            } else {
+                //请求异常或者失败
+                // echo 'except';
+                WeUtility::logging('dada', '达达取消订单失败222+++++++++');
+            }
+        }
+    }
+
 
     public function complaintfengniao($order, $store, $setting)
     {
@@ -1975,7 +2065,7 @@ givetime<:givetime", array(':weid' => $weid, ':from_user' => $from_user, ':givet
                     }
                 }
                 if ($dining_mode == 4) {
-                    $content1 .= '<B>领餐牌号:' . $order['quicknum'].  '</B>'  . $huanhang;
+                    $content1 .= '<B>领餐牌号:' . $order['quicknum'] . '</B>' . $huanhang;
                 }
                 if (!empty($order['remark'])) {
                     if ($pos == 0) {
@@ -7149,8 +7239,10 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
         }
 
     }
+
     //万容
-    function refund4($id,$storeid){
+    function refund4($id, $storeid)
+    {
         global $_W;
         $store = $this->getStoreById($storeid);
         $refund_order = $this->getOrderById($id);
@@ -7160,15 +7252,15 @@ DESC LIMIT 1", array(':tid' => $orderid, ':uniacid' => $this->_weid));
             if ($result['result'] == '1') {
                 pdo_update($this->table_order, array('ispay' => 3), array('id' => $refund_order['id']));
                 return 1;
-            }else{
+            } else {
                 pdo_update($this->table_order, array('ispay' => 4), array('id' => $refund_order['id']));
-                message('操作失败，原因:'.$result['desc']);
+                message('操作失败，原因:' . $result['desc']);
                 return 0;
             }
-        }else {
+        } else {
             message('退款失败！');
         }
-        $res=$storeid.'-'.$id;
+        $res = $storeid . '-' . $id;
         return $res;
     }
 

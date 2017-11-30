@@ -142,7 +142,8 @@ class fengniao
             'signature' => $sig
         ));
 
-        echo $this->doPost($url, $requestJson);
+        // echo $this->doPost($url, $requestJson);
+        return $this->doPost($url, $requestJson);
     }
 
     // step 1

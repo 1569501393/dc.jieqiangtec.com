@@ -2,6 +2,7 @@
 global $_W, $_GPC;
 $weid = $this->_weid;
 $setting = $this->getSetting();
+//var_dump($setting);
 load()->func('tpl');
 $action = 'order';
 $title = $this->actions_titles[$action];
@@ -9,10 +10,12 @@ $storeid = intval($_GPC['storeid']);
 $GLOBALS['frames'] = $this->getNaveMenu($storeid,$action);
 $returnid = $this->checkPermission($storeid);
 $cur_store = $this->getStoreById($storeid);
+
+
 if (empty($cur_store)) {
     message('门店不存在!');
 }
-
+//var_dump('TODO jieqinagtest==',111);exit;
 if (!$this->exists()) {
     $_GPC['idArr'] = '';
 }
@@ -276,7 +279,7 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
         $this->addOrderLog($id, $_W['user']['username'], 2, 2, 5);
         $order = pdo_fetch("SELECT * FROM " . tablename($this->table_order) . " WHERE id=:id AND weid=:weid LIMIT 1", array(':id' => $id, ':weid' => $this->_weid));
         $this->sendOrderNotice($order, $store, $setting);
-        $this->cancelfengniao($order, $store, $setting);
+        $this->cancel_delivery($order, $store, $setting);
         message('订单关闭操作成功！', referer(), 'success');
     }
     if (!empty($_GPC['open'])) {
@@ -403,23 +406,32 @@ DESC LIMIT 1", array(':tid' => $id, ':uniacid' => $this->_weid));
     }
     $this->message("操作成功,共操作{$rowcount}条数据!", '', 0);
 } elseif ($operation == 'cancelall') {
+
     $rowcount = 0;
     $notrowcount = 0;
     foreach ($_GPC['idArr'] as $k => $id) {
+
         $id = intval($id);
         if (!empty($id)) {
             $order = $this->getOrderById($id);
+
             if ($order) {
+
                 pdo_update($this->table_order, array('status' => -1), array('id' => $id, 'weid' => $weid));
                 $this->addOrderLog($id, $_W['user']['username'], 2, 2, 5);
                 $order = $this->getOrderById($id);
-                $this->sendOrderNotice($order, $store, $setting);
-                $this->cancelfengniao($order, $store, $setting);
+
+                // TODO 本地屏蔽 
+                // $this->sendOrderNotice($order, $store, $setting);
+
+                $this->cancel_delivery($order, $store, $setting);
                 $rowcount++;
             }
         }
     }
+//    echo array('data'=>array('error'=>111));
     $this->message("操作成功,共操作{$rowcount}条数据!", '', 0);
+    // message("操作成功,共操作{$rowcount}条数据!", '', 0);
 } elseif ($operation == 'finishall') {
     $rowcount = 0;
     $notrowcount = 0;
