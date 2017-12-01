@@ -5,6 +5,7 @@ $action = 'setting';
 $title = '系统设置';
 $GLOBALS['frames'] = $this->getMainMenu();
 $config = $this->module['config']['weisrc_dish'];
+//var_dump('TODO jieqiangtest=$config=',$config);exit;
 load()->func('tpl');
 
 $stores = pdo_fetchall("SELECT * FROM " . tablename($this->table_stores) . " WHERE weid = :weid ORDER BY `id` DESC", array(':weid' => $_W['uniacid']));
@@ -13,6 +14,7 @@ if (empty($stores)) {
 }
 
 $setting = $this->getSetting();
+//var_dump('TODO jieqiangtest=$setting=',$setting);exit;
 
 $fans = $this->getFansByOpenid($setting['tpluser']);
 if (checksubmit('submit')) {

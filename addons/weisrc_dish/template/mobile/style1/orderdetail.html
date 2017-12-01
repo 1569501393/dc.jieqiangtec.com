@@ -157,9 +157,9 @@
         {/if}
         {/if}
         {if $store['is_add_dish']==1}
-		{if $order['paytype'] == 3 && $order['status']<=1 && $order['status']!=-1 && ($order['dining_mode']==1)}
-		 <span class="button border-blue" onclick="appendDish()">我要加菜</span>
-		{/if}
+        {if $order['paytype'] == 3 && $order['status']<=1 && $order['status']!=-1 && ($order['dining_mode']==1)}
+         <span class="button border-blue" onclick="appendDish()">我要加菜</span>
+        {/if}
         {/if}
         <span class="button border-blue ng-hide" ng-show="can_complete()" ng-click="complete()">完成</span>
         <span class="button border-red ng-hide" ng-show="can_pay_online()" ng-click="pay_online()">支付</span>
@@ -592,8 +592,7 @@
                 <span class="label ng-binding">预计送达时间</span>
                 <span class="value ng-binding"> {$result_order['estimate_arrive_time']}</span>
             </div>
-            {/if}
-            {if $order['dining_mode']==2 && $store['is_dada'] == 1}
+            {elseif $order['dining_mode']==2 && $store['is_dada'] == 1}
             <div class="item ng-scope">
                 <span class="label ng-binding">配送员姓名</span>
                 <span class="value ng-binding"> {$result_order['transporterName']}</span>
@@ -686,7 +685,7 @@
     }
 
 
-	//店内点餐加单
+    //店内点餐加单
     function appendorder() {
         var url = "{php echo $this->createMobileUrl('waplist', array('mode' => 1, 'storeid' => $order['storeid'], 'tablesid' => $order['tables'], 'append' => 1), true)}";
         window.location.href = url;
