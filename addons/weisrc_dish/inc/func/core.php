@@ -204,38 +204,58 @@ class Core extends WeModuleSite
                 )
             );
         } elseif($_W['isfounder'] || $_W['role'] == 'manager') {
-            $navemenu[0] = array(
-                'title' => '<icon style="color:#8d8d8d;" class="fa fa-cog"></icon>  业务菜单',
-                'items' => array(
-                    0 => $this->createMainMenu('门店管理 ', $do, 'stores2', ''),
-                    9 => $this->createMainMenu('账号管理 ', $do, 'account', ''),
-                    2 => $this->createMainMenu('商户提现 ', $do, 'business', ''),
-                    1 => $this->createMainMenu('订单中心 ', $do, 'allorder', ''),
-                    4 => $this->createMainMenu('配送管理 ', $do, 'delivery', ''),
-                    3 => $this->createMainMenu('充值返现 ', $do, 'recharge', ''),
-                    6 => $this->createMainMenu('广告管理 ', $do, 'ad', ''),
-                    8 => $this->createMainMenu('顾客管理 ', $do, 'allfans', ''),
-                    5 => $this->createMainMenu('门店类型 ', $do, 'type', ''),
-                    7 => $this->createMainMenu('门店区域 ', $do, 'area', ''),
-                    10 => $this->createMainMenu('模版管理 ', $do, 'template', ''),
-                    11 => $this->createMainMenu('系统设置 ', $do, 'setting', ''),
-                )
-            );
 
-            $navemenu[1] = array(
-                'title' => '<icon style="color:#8d8d8d;" class="fa fa-inbox"></icon>  入口设置',
-                'items' => array(
-                    0 => $this->createCoverMenu('平台首页', 'cover', 'index', ''),
-                    1 => $this->createCoverMenu('门店列表 ', 'cover', 'waprestList', ''),
-                    2 => $this->createCoverMenu('我的订单 ', 'cover', 'order', ''),
-                    3 => $this->createCoverMenu('用户中心 ', 'cover', 'usercenter', ''),
-                    4 => $this->createCoverMenu('酒水寄存 ', 'cover', 'savewineform', ''),
-                    5 => $this->createCoverMenu('商家订单管理 ', 'cover', 'adminorder', ''),
-                    6 => $this->createCoverMenu('配送中心入口 ', 'cover', 'deliveryorder', ''),
-                    7 => $this->createCoverMenu('我邀请的好友 ', 'cover', 'mymemberlist', ''),
-                    8 => $this->createCoverMenu('全屏广告 ', 'cover', 'adscreen', ''),
-                )
-            );
+
+//            var_dump('用户id=is创建者==',$_W['uid'],$_W['isfounder'],$_W['role'],$GLOBALS['frames']);exit;
+            if ($_W['isfounder']){
+                $navemenu[0] = array(
+                    'title' => '<icon style="color:#8d8d8d;" class="fa fa-cog"></icon>  业务菜单',
+                    'items' => array(
+                        0 => $this->createMainMenu('门店管理 ', $do, 'stores2', ''),
+                        9 => $this->createMainMenu('账号管理 ', $do, 'account', ''),
+                        2 => $this->createMainMenu('商户提现 ', $do, 'business', ''),
+                        1 => $this->createMainMenu('订单中心 ', $do, 'allorder', ''),
+                        4 => $this->createMainMenu('配送管理 ', $do, 'delivery', ''),
+                        3 => $this->createMainMenu('充值返现 ', $do, 'recharge', ''),
+                        6 => $this->createMainMenu('广告管理 ', $do, 'ad', ''),
+                        8 => $this->createMainMenu('顾客管理 ', $do, 'allfans', ''),
+                        5 => $this->createMainMenu('门店类型 ', $do, 'type', ''),
+                        7 => $this->createMainMenu('门店区域 ', $do, 'area', ''),
+                        10 => $this->createMainMenu('模版管理 ', $do, 'template', ''),
+                        11 => $this->createMainMenu('系统设置 ', $do, 'setting', ''),
+                    )
+                );
+
+                $navemenu[1] = array(
+                    'title' => '<icon style="color:#8d8d8d;" class="fa fa-inbox"></icon>  入口设置',
+                    'items' => array(
+                        0 => $this->createCoverMenu('平台首页', 'cover', 'index', ''),
+                        1 => $this->createCoverMenu('门店列表 ', 'cover', 'waprestList', ''),
+                        2 => $this->createCoverMenu('我的订单 ', 'cover', 'order', ''),
+                        3 => $this->createCoverMenu('用户中心 ', 'cover', 'usercenter', ''),
+                        4 => $this->createCoverMenu('酒水寄存 ', 'cover', 'savewineform', ''),
+                        5 => $this->createCoverMenu('商家订单管理 ', 'cover', 'adminorder', ''),
+                        6 => $this->createCoverMenu('配送中心入口 ', 'cover', 'deliveryorder', ''),
+                        7 => $this->createCoverMenu('我邀请的好友 ', 'cover', 'mymemberlist', ''),
+                        8 => $this->createCoverMenu('全屏广告 ', 'cover', 'adscreen', ''),
+                    )
+                );
+            }else{
+                $navemenu[0] = array(
+                    'title' => '<icon style="color:#8d8d8d;" class="fa fa-cog"></icon>  业务菜单',
+                    'items' => array(
+                        0 => $this->createMainMenu('门店管理 ', $do, 'stores2', ''),
+                        9 => $this->createMainMenu('账号管理 ', $do, 'account', ''),
+                        1 => $this->createMainMenu('订单中心 ', $do, 'allorder', ''),
+                        4 => $this->createMainMenu('配送管理 ', $do, 'delivery', ''),
+                        3 => $this->createMainMenu('充值返现 ', $do, 'recharge', ''),
+                        8 => $this->createMainMenu('顾客管理 ', $do, 'allfans', ''),
+                        5 => $this->createMainMenu('门店类型 ', $do, 'type', ''),
+                        7 => $this->createMainMenu('门店区域 ', $do, 'area', ''),
+                        11 => $this->createMainMenu('系统设置 ', $do, 'setting', ''),
+                    )
+                );
+            }
         }
         return $navemenu;
     }
@@ -341,13 +361,15 @@ class Core extends WeModuleSite
         );
 
         $cur_color = '#8d8d8d';
-        $navemenu[] = array(
-            'title' => '<icon style="color:' . $cur_color . ';" class="fa fa-money"></icon>  财务管理',
-            'items' => array(
-                0 => $this->createSubMenu('提现管理 ', $do, 'businesscenter', 'fa-angle-right', $cur_color, $storeid),
-                1 => $this->createSubMenu('账号设置 ', $do, 'businesssetting', 'fa-angle-right', $cur_color, $storeid)
-            ),
-        );
+        if ($_W['isfounder']) {
+            $navemenu[] = array(
+                'title' => '<icon style="color:' . $cur_color . ';" class="fa fa-money"></icon>  财务管理',
+                'items' => array(
+                    0 => $this->createSubMenu('提现管理 ', $do, 'businesscenter', 'fa-angle-right', $cur_color, $storeid),
+                    1 => $this->createSubMenu('账号设置 ', $do, 'businesssetting', 'fa-angle-right', $cur_color, $storeid)
+                ),
+            );
+        }
 
         $cur_color = '#8d8d8d';
         $navemenu[] = array(
