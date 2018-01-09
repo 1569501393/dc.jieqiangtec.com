@@ -24,7 +24,8 @@ if ($mode == 5 || $mode == 6) {
     $is_handle_goods = 0;
 }
 if (empty($from_user)) {
-    $this->showTip('请重新发送关键字进入系统!');
+    // TODO jieqiangtest
+	$this->showTip('请重新发送关键字进入系统!');
 }
 $isvip = $this->get_sys_card($from_user);
 
@@ -441,7 +442,8 @@ $this->addOrderLog($orderid, $touser, 1, 1, 1);
 //} else {
     $result['orderid'] = $orderid;
     $result['code'] = $this->msg_status_success;
-    $result['msg'] = '操作成功';
+	$result['msg'] = '操作成功';
+	$result['totalprice'] = $totalprice;
     message($result, '', 'ajax');
 //}
 

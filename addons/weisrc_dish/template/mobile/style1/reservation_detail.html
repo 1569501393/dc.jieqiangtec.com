@@ -205,8 +205,13 @@
                             },
                             success: function (data) {
                                 if (data.message['code'] != 0) {
-                                    var url = "{php echo $this->createMobileUrl('pay', array(), true)}"+"&orderid="+data.message['orderid'];
-                                    location.href = url;
+                                    if(data.message['totalprice'] == 0){
+                                        alert("订单提交成功！");
+                                    }else{
+                                        var url = "{php echo $this->createMobileUrl('pay', array(), true)}"+"&orderid="+data.message['orderid'];
+                                        location.href = url;
+                                    }
+
                                 } else {
                                     alert(data.message['msg']);
                                     //'网络不稳定，请重新尝试!'
